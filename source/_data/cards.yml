@@ -1,0 +1,50 @@
+head:
+  favicon: /assets/logo.png
+
+navbar:
+  sitename: Wayne.Jin
+  menu:
+    - name: About Me
+      url: /aboutme
+    - name: Blog
+      url: /
+    - name: Photo
+      url: /photo/
+    - name: Projects
+      url: /projects/
+  
+  sticky: true
+
+cover:
+  sitename: Wayne.Jin Blog
+  description: Hi 👋 Nice to meet u
+
+style:
+  color:
+    main_color: '#888'
+
+meta:
+  author:
+    name: Wayne.Jin
+    url: https://waynelens.github.io
+  
+  auto_excerpt:
+    enable: true
+    length: 300
+  
+  toc:
+    enable: true
+
+footer:
+  copyright_since: false
+  custom_text:
+    - 'Find me on [Github](https://github.com/waynelens) or [Instagram](https://www.instagram.com/wayne_lens/)'
+    - 'And mail me at wayne.jin@waynelens.dev'
+
+fancybox: 
+  enable: true
+  auto: true
+
+darkmode: true
+
+# 之後埋GA
