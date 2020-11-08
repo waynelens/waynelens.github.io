@@ -3,23 +3,26 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Wayne.Jin
 subtitle: ''
-description: ''
-keywords:
-author: John Doe
+description: 'I am a web dev rookie. Here collect my study experience.'
+keywords: 
+  - 'C#'
+  - '.Net'
+  - 'Vue.js'
+author: Wayne.Jin
 language: en
-timezone: ''
+timezone: 'Asia/Taipei'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
+url: https://waynelens.dev
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :year/:mon th/:day/:title/
 permalink_defaults:
 pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
