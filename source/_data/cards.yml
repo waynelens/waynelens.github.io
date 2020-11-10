@@ -1,17 +1,25 @@
 head:
-  favicon: /assets/logo.png
+  favicon: /static/favicon.png
+
+opengraph: 
+    enable: true
+    type: 
+    twitter_card: summary_large_image
+    twitter_id: XT0JHxExYHnGOi2
+    twitter_site: https://twitter.com/XT0JHxExYHnGOi2
+    image: page.thumbnail
+    fb_admins: 
+    fb_app_id: 
 
 navbar:
   sitename: Wayne.Jin
   menu:
-    - name: About Me
-      url: /aboutme
     - name: Blog
       url: /
-    - name: Photo
-      url: /photo/
+    - name: Me
+      url: /Me/
     - name: Projects
-      url: /projects/
+      url: /Projects/
   
   sticky: true
 
@@ -27,6 +35,10 @@ meta:
   author:
     name: Wayne.Jin
     url: https://waynelens.github.io
+  
+  thumbnail: 
+    enable: true
+    default:
   
   auto_excerpt:
     enable: true
