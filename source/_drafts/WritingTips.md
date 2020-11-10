@@ -17,3 +17,7 @@ categories:
 
 ## 生成新分頁
 ```hexo new page "Title"```
+
+## Gitalk評論系統
+https://github.com/gitalk/gitalk/blob/master/readme-cn.md#%E8%AE%BE%E7%BD%AE
+* 要申請 Github Application，在設定=>developer setting

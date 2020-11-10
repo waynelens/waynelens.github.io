@@ -46,6 +46,16 @@ meta:
   
   toc:
     enable: true
+    list_number: true
+
+comments:
+  use: gitalk
+  gitalk:
+    repo: waynelens.github.io
+    owner: waynelens
+    clientID: 3483953fa800319b2dc1
+    clientSecret: e5cbffb3b5a8ad01b0114e529a49ef46c24f6d97
+
 
 footer:
   copyright_since: false

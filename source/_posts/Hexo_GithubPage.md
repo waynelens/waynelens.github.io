@@ -7,6 +7,7 @@ categories:
 tags: 
     - hexo
     - github page
+toc: true
 ---
 ### 前言
 在踏入coding的職場領域時，才逐漸意識到撰寫自己Blog的重要性。<!--more-->

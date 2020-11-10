@@ -5,6 +5,7 @@ tags:
 categories:
 # 縮圖只能用imgur等實質連結 
 thumbnail: 
+toc: true
 ---
 <!-- css補充，放最下面 -->
 <style>
