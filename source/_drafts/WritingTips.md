@@ -26,3 +26,7 @@ https://github.com/gitalk/gitalk/blob/master/readme-cn.md#%E8%AE%BE%E7%BD%AE
 主題強制加入的文字
 > Powered by Hexo | Theme - Cards
 * 進入themes/cards/source/footer.ejs 刪除即可
+
+## 外觀部分反饋
+* 手機端的文章大綱蓋版了
+* 文章內容跟背景切割度不夠
