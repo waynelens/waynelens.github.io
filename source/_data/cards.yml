@@ -1,16 +1,6 @@
 head:
   favicon: /static/favicon.png
 
-opengraph: 
-    enable: true
-    type: 
-    twitter_card: summary_large_image
-    twitter_id: XT0JHxExYHnGOi2
-    twitter_site: https://twitter.com/XT0JHxExYHnGOi2
-    image: page.thumbnail
-    fb_admins: 
-    fb_app_id: 
-
 navbar:
   sitename: Wayne.Jin
   menu:
@@ -32,6 +22,8 @@ style:
     main_color: '#888'
 
 meta:
+  title: ''
+  
   author:
     name: Wayne.Jin
     url: https://waynelens.github.io
@@ -55,7 +47,6 @@ comments:
     owner: waynelens
     clientID: 3483953fa800319b2dc1
     clientSecret: e5cbffb3b5a8ad01b0114e529a49ef46c24f6d97
-
 
 footer:
   copyright_since: false

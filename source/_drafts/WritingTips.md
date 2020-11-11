@@ -21,3 +21,8 @@ categories:
 ## Gitalk評論系統
 https://github.com/gitalk/gitalk/blob/master/readme-cn.md#%E8%AE%BE%E7%BD%AE
 * 要申請 Github Application，在設定=>developer setting
+
+## 去除footer多餘字樣
+主題強制加入的文字
+> Powered by Hexo | Theme - Cards
+* 進入themes/cards/source/footer.ejs 刪除即可
