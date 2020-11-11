@@ -1,5 +1,5 @@
 ---
-title: ''
+title: 'Me'
 date: 2020-11-10 18:22:24
 toc: false
 ---
@@ -31,9 +31,46 @@ toc: false
 * 大三下，系上專題--基於OpenCV的車輛違規辨識
 
 💼 **2020.1 - 2020.9 銀箭彩色冲印股份有限公司**
-* 
+
 
 💼 **2020.6 - 2020.10 Build School學員** 
+* 2020.6 C#基礎學習
+* 2020.6-7 網頁前端 HTML/CSS/RWD/ Bootstrap
+* 2020.7-8 前端技術 JavaScript/jQuery/Google Map API
+* 2020.8 Azure/MS SQL資料庫
+* 2020.8-10 ASP.NET MVC、Git及Github、Vue.js、.NET Core MVC
+----------
+### 技能
+<div id="skill">
+
+<div>
+
+**前端**
+* HTML、CSS、JS
+* Bootstrap、Vuetify
+* Vue Cli、Vuex
+</div>
+
+<div>
+
+**後端**
+* C#
+* ASP.NET MVC5
+* .NET Core3
+* MS SQL
+* Entity Framework
+* Web API
+</div>
+
+<div>
+
+**其他**
+* Git&Github
+* Azure DevOps
+* TOEIC 600
+</div>
+
+</div>
 
 
 
@@ -45,5 +82,10 @@ toc: false
 
 #avator{
     text-align:center;
+}
+
+#skill{
+    display: flex;
+    justify-content: space-between;
 }
 </style>
