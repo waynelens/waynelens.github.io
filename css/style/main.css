@@ -885,7 +885,7 @@ overflows table td {
   width: 20px;
   height: 20px;
 }
-.header .header__right .dropdown-icon:hover + .dropdown-menus {
+.header .header__right .dropdown-icon:focus + .dropdown-menus {
   display: flex;
 }
 .header .header__right .dropdown-menus {
@@ -1022,7 +1022,7 @@ a.search-result__link:hover {
 .btn-toc * {
   margin: 8px;
 }
-.btn-toc:hover + .toc-menus {
+.btn-toc:focus + .toc-menus {
   display: block;
 }
 .toc-menus {
