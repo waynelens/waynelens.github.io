@@ -6,10 +6,6 @@ navbar:
   menu:
     - name: Blog
       url: /
-    - name: Me
-      url: /Me/
-    - name: Projects
-      url: /Projects/
   
   sticky: true
 
@@ -51,13 +47,11 @@ comments:
 footer:
   copyright_since: false
   custom_text:
-    - 'Find me on [Github](https://github.com/waynelens) or [Instagram](https://www.instagram.com/wayne_lens/)'
-    - 'And mail me at wayne.jin@waynelens.dev'
+    - 'Find me on [Github](https://github.com/waynelens)'
+    - 'And mail me at hi@waynelens.dev'
 
 fancybox: 
   enable: true
   auto: true
 
 darkmode: true
-
-# 之後埋GA
