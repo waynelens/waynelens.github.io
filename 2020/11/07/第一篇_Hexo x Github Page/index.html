@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+        <link rel="icon" type="image/png" sizes="16x16" href="/function%20small()%20%7B%20%5Bnative%20code%5D%20%7D">
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>第一篇:Hexo X Github Page | Wayne.Jin</title>
+
+
+    <meta name="keywords" content="hexo, github page, C#,.Net,Vue.js">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="前言在踏入coding的職場領域時，才逐漸意識到撰寫自己Blog的重要性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一篇:Hexo X Github Page">
+<meta property="og:url" content="https://waynelens.dev/2020/11/07/%E7%AC%AC%E4%B8%80%E7%AF%87_Hexo%20x%20Github%20Page/">
+<meta property="og:site_name" content="Wayne.Jin">
+<meta property="og:description" content="前言在踏入coding的職場領域時，才逐漸意識到撰寫自己Blog的重要性。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/4jqwWcW.png">
+<meta property="og:image" content="https://i.imgur.com/0nnR3vn.png">
+<meta property="og:image" content="https://i.imgur.com/JpRALOh.png">
+<meta property="og:image" content="https://i.imgur.com/4csMHrX.png">
+<meta property="og:image" content="https://i.imgur.com/Jpx3WNd.png">
+<meta property="og:image" content="https://i.imgur.com/Et0hF31.png">
+<meta property="og:image" content="https://i.imgur.com/lMS3sbL.png">
+<meta property="og:image" content="https://i.imgur.com/FlCzdwi.png">
+<meta property="og:image" content="https://i.imgur.com/UiTshL5.png">
+<meta property="og:image" content="https://i.imgur.com/o2YCN75.png">
+<meta property="og:image" content="https://i.imgur.com/9QqnQtp.png">
+<meta property="article:published_time" content="2020-11-06T16:33:57.000Z">
+<meta property="article:modified_time" content="2022-02-06T15:12:38.872Z">
+<meta property="article:author" content="Wayne.Jin">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="github page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.imgur.com/4jqwWcW.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/dark.css" media="none">
+        
+    
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Wayne.Jin</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">Blog</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">Blog</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        第一篇:Hexo X Github Page
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/11/" class="post-meta__date button">2020-11-07</a>
+        
+    <span class="separate-dot"></span><a href="/categories/Blog/" class="button">Blog</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blog%E7%9A%84%E9%81%B8%E6%93%87"><span class="toc-number">2.</span> <span class="toc-text">Blog的選擇</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E9%81%B8%E9%A0%85"><span class="toc-number">2.1.</span> <span class="toc-text">參考選項</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%90%86%E7%94%B1"><span class="toc-number">2.2.</span> <span class="toc-text">理由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-x-Github-Page%E6%90%AD%E5%BB%BA"><span class="toc-number">3.</span> <span class="toc-text">Hexo x Github Page搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%A9%9F"><span class="toc-number">3.1.</span> <span class="toc-text">步驟</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Github-Page%E8%A8%AD%E5%AE%9A"><span class="toc-number">3.2.</span> <span class="toc-text">Github Page設定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%9DHexo"><span class="toc-number">3.3.</span> <span class="toc-text">安裝Hexo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%A3%E7%B5%90Github%E5%92%8C%E6%9C%AC%E5%9C%B0"><span class="toc-number">3.4.</span> <span class="toc-text">連結Github和本地</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%AB%E6%96%87%E7%AB%A0%E3%80%81%E7%99%BC%E5%B8%83%E6%96%87%E7%AB%A0"><span class="toc-number">3.5.</span> <span class="toc-text">寫文章、發布文章</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B6%81%E5%AE%9Adomain"><span class="toc-number">3.6.</span> <span class="toc-text">綁定domain</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">遇到的問題</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E6%99%82%E5%8D%A1%E4%BD%8F%E4%B8%8D%E5%8B%95"><span class="toc-number">4.1.</span> <span class="toc-text">部署時卡住不動</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-number">5.</span> <span class="toc-text">結語</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E4%BE%86%E6%BA%90"><span class="toc-number">5.1.</span> <span class="toc-text">參考來源</span></a></li></ol></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blog%E7%9A%84%E9%81%B8%E6%93%87"><span class="toc-number">2.</span> <span class="toc-text">Blog的選擇</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E9%81%B8%E9%A0%85"><span class="toc-number">2.1.</span> <span class="toc-text">參考選項</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%90%86%E7%94%B1"><span class="toc-number">2.2.</span> <span class="toc-text">理由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-x-Github-Page%E6%90%AD%E5%BB%BA"><span class="toc-number">3.</span> <span class="toc-text">Hexo x Github Page搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%A9%9F"><span class="toc-number">3.1.</span> <span class="toc-text">步驟</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Github-Page%E8%A8%AD%E5%AE%9A"><span class="toc-number">3.2.</span> <span class="toc-text">Github Page設定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%9DHexo"><span class="toc-number">3.3.</span> <span class="toc-text">安裝Hexo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%A3%E7%B5%90Github%E5%92%8C%E6%9C%AC%E5%9C%B0"><span class="toc-number">3.4.</span> <span class="toc-text">連結Github和本地</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%AB%E6%96%87%E7%AB%A0%E3%80%81%E7%99%BC%E5%B8%83%E6%96%87%E7%AB%A0"><span class="toc-number">3.5.</span> <span class="toc-text">寫文章、發布文章</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B6%81%E5%AE%9Adomain"><span class="toc-number">3.6.</span> <span class="toc-text">綁定domain</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">遇到的問題</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E6%99%82%E5%8D%A1%E4%BD%8F%E4%B8%8D%E5%8B%95"><span class="toc-number">4.1.</span> <span class="toc-text">部署時卡住不動</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-number">5.</span> <span class="toc-text">結語</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E4%BE%86%E6%BA%90"><span class="toc-number">5.1.</span> <span class="toc-text">參考來源</span></a></li></ol></li></ol>
+    </div>
+
+
+<article class="post post__with-toc content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在踏入coding的職場領域時，才逐漸意識到撰寫自己Blog的重要性。<a id="more"></a></p>
+<ul>
+<li>將自己踩過的雷記下來，避免重複犯錯。</li>
+<li>以菜鳥來說，在面試時也是可以當個拿出來說嘴的履歷。</li>
+<li>在學習的路程上，受到了很多blog的幫助。<br>做為一個programmer，我能做的不多，將所學持續回饋是我能盡的微薄之力。 </li>
+</ul>
+<hr>
+<h3 id="Blog的選擇"><a href="#Blog的選擇" class="headerlink" title="Blog的選擇"></a>Blog的選擇</h3><p>因為自己平常都是以<strong>markdown</strong>這個輕量的標記語言，紀錄自己遇到的問題或想法，所以一開始就鎖定透過撰寫markdown來發布內容的工具。<br>並且我是大量用<strong>Github</strong>保存我的任何創作，加入<strong>git</strong>和<strong>Github</strong>是很重要的。</p>
+<h4 id="參考選項"><a href="#參考選項" class="headerlink" title="參考選項"></a>參考選項</h4><ul>
+<li><strong>Vue Press</strong>: 因為平時都以Vue.js開發，目光自然有放在尤雨溪大神的新工具。</li>
+<li><strong>HackMD</strong>: 一個各大Conf使用頻率很高的共筆軟體，支援很多markdown語法的擴展。</li>
+<li><strong>Notion</strong>: 最近很火紅的筆記軟體，朋友一時之間大量入坑，介面看起來蠻漂亮的。</li>
+<li><strong>Hexo</strong>: 在看Vue press文件時，有提到Vue目前文件還是用Hexo產生的。</li>
+</ul>
+<h4 id="理由"><a href="#理由" class="headerlink" title="理由"></a>理由</h4><blockquote>
+<p>HackMD、Notion</p>
+</blockquote>
+<p>在大學期間有不少的時間使用<strong>HackMD</strong>，他對於markdown的擴展語法支援頗高，對於分享內容有很大急迫性的話，的確是個相當好的選擇。<br>可惜我對於這個Blog的期待，不僅僅是放我的文筆紀錄，我還希望:</p>
+<ul>
+<li>能夠使用自己購買的<strong>domain</strong>，辨識度高</li>
+<li>放上自己履歷、Projects</li>
+<li>平時偶有攝影作品，需要點樣式擴展性</li>
+</ul>
+<p>基本上這兩個就是很純粹的筆記服務，除了內容展現，沒有其他的了。</p>
+<blockquote>
+<p>Vue Press</p>
+</blockquote>
+<p>官方文件大概逛一圈，感覺是彈性挺大的，而且支援Vue component的引入<small>(雖然我不是很想在Blog上折騰太多XD)。</small><br><br>不過試著配置一番後，實在說不上友好，我在調整想要的樣式時，官方文件和網路資源實在幫助不大。<br>如果想要開箱就用，Vue文件那種style是你的菜的話，<strong>Vue Press</strong>很推薦。</p>
+<blockquote>
+<p>Hexo</p>
+</blockquote>
+<p>一開始就被它的主題功能吸引，雖然我是很想要高度訂製的外觀，但是要直接拓荒實在累了點啊… …<br><br>Hexo有預設categories、tags、亮暗切換和i18n多國語言等功能，完整的第三方主題一般也會在這幾個內建功能上做一些基本設定。</p>
+<p>檔案結構也規劃的不錯，照著文檔放置檔案，搭配Hexo Cli，生成靜態檔案和發布到Github Page，可以放心的寫作，而不是在網頁功能上折騰。</p>
+<hr>
+<h3 id="Hexo-x-Github-Page搭建"><a href="#Hexo-x-Github-Page搭建" class="headerlink" title="Hexo x Github Page搭建"></a>Hexo x Github Page搭建</h3><p>其實一開始是先去Hexo的官網看文件，但到部署階段我就混亂了。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/docs/github-pages.html">部署文件</a>的中英文版本內容不一樣。</li>
+<li>我想要main branch部署網頁(編譯後的靜態檔案)，另一個branch放置寫作內容。</li>
+</ul>
+<blockquote>
+<p>後來找到<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35668237?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=973100277712297984">知乎</a>上的文章，才成功搭建。</p>
+</blockquote>
+<h4 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h4><ul>
+<li>Github Page設定</li>
+<li>安裝Hexo</li>
+<li>連結Github和本地</li>
+<li>寫文章、發布文章</li>
+<li>綁定domain</li>
+</ul>
+<h4 id="Github-Page設定"><a href="#Github-Page設定" class="headerlink" title="Github Page設定"></a>Github Page設定</h4><p>首先在Github創建一個Repository，並勾選README，先讓Repo有個東西<br><img src="https://i.imgur.com/4jqwWcW.png" alt="img"></p>
+<p>之後進入<code>⚙️settings</code>，選定main branch當作host的分支，主題隨便選一個就好。<br><img src="https://i.imgur.com/0nnR3vn.png" alt="img"></p>
+<p>現在你有了一個Github Page，如果Repository名稱設定是:</p>
+<ul>
+<li><code>&lt;你的Github ID&gt;.github.io</code>，則你的Github Page預設域名就是<br><code>https://&lt;你的Github ID&gt;.github.io</code></li>
+<li>其他名稱，則你的Github Page預設域名就是<br><code>https://&lt;你的Github ID&gt;.github.io/&lt;Repository名稱&gt;</code><br><img src="https://i.imgur.com/JpRALOh.png" alt="img"></li>
+</ul>
+<h4 id="安裝Hexo"><a href="#安裝Hexo" class="headerlink" title="安裝Hexo"></a>安裝Hexo</h4><p>這個工具是基於Node.js的，所以先把環境和NPM裝起來吧。<br>之後進入terminal:</p>
+<ul>
+<li><code>npm i hexo-cli -g</code>，全域安裝hexo工具。</li>
+<li><code>hexo -v</code>，確認有安裝起來。</li>
+</ul>
+<p><img src="https://i.imgur.com/4csMHrX.png" alt="img"></p>
+<p>之後找個喜歡的位置，在terminal輸入:</p>
+<ul>
+<li><code>hexo init &lt;你想要的folder名稱&gt;</code>，這會直接幫你建立對應名稱的資料夾，和生成必要的資料結構。</li>
+<li>在資料夾下輸入 <code>npm i</code>，下載<code>package.json</code>中相依的套件。</li>
+<li>輸入 <code>hexo g</code>生成編譯的靜態檔案。</li>
+<li>輸入<code>hexo s</code>，啟動本地端server</li>
+<li>在瀏覽器網址輸入 <code>localhost:4000</code>，就可以預覽結果了。</li>
+</ul>
+<p><img src="https://i.imgur.com/Jpx3WNd.png" alt="img"></p>
+<h4 id="連結Github和本地"><a href="#連結Github和本地" class="headerlink" title="連結Github和本地"></a>連結Github和本地</h4><p>打開Blog根目錄的<code>_config.yml</code>，這個是hexo的配置文件，在裡面找到<code>deploy</code>選項。</p>
+<p><img src="https://i.imgur.com/Et0hF31.png" alt="img"></p>
+<ul>
+<li><code>type</code>填git</li>
+<li><code>repository</code>填Github的項目地址</li>
+<li><code>branch</code> 填main或master，視Github上的分支名稱為何。</li>
+</ul>
+<blockquote>
+<p>註 <a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/140094">IThome: Github從2020.10將master改名為main</a></p>
+</blockquote>
+<h4 id="寫文章、發布文章"><a href="#寫文章、發布文章" class="headerlink" title="寫文章、發布文章"></a>寫文章、發布文章</h4><ul>
+<li>安裝發布套件 <code>npm i hexo-deployer-git</code></li>
+<li>如果你需要在Github的同一個Repo管理文章內容及hexo配置(也方便跨裝置編寫)，這時候切換到一個新branch，因為發布之後，main branch會被靜態檔案覆蓋。</li>
+<li>輸入 <code>hexo new post &lt;文章標題&gt;</code>，在<code>source/_posts</code>下就會多出一個<code>&lt;文章標題&gt;.md</code>的檔案。</li>
+<li>在第二個branch上編寫完文件後，<code>hexo g</code>加上<code>hexo d</code>將整包網站部署上去。</li>
+</ul>
+<p>這是發布用的main branch<br><img src="https://i.imgur.com/lMS3sbL.png" alt="img"></p>
+<p>這是編寫內容和配置的另一個branch，透過一般的<code>pull</code>、 <code>push</code>操作即可。<br><img src="https://i.imgur.com/FlCzdwi.png" alt="img"></p>
+<h4 id="綁定domain"><a href="#綁定domain" class="headerlink" title="綁定domain"></a>綁定domain</h4><p>如果有個專屬域名，就綁定到Github Page上吧!<br>進入Github Repo的<code>⚙️settings</code></p>
+<ul>
+<li>在<code>Custom Domain</code>填進domain</li>
+<li>並啟動Https</li>
+</ul>
+<p><img src="https://i.imgur.com/UiTshL5.png" alt="img"><br>此時可以查看，main branch的根目錄是不是出現了<code>CNAME</code>這個沒有後綴副檔名的檔案。<br><img src="https://i.imgur.com/o2YCN75.png" alt="img"><br>如果沒有的話，自己在本地端的 <code>/source</code>下新增<code>CNAME</code>，其內容就是你的domain。<br>之後再發布一次，Github的main branch就有CNAME了。<br><img src="https://i.imgur.com/9QqnQtp.png" alt="img"></p>
+<hr>
+<h3 id="遇到的問題"><a href="#遇到的問題" class="headerlink" title="遇到的問題"></a>遇到的問題</h3><h4 id="部署時卡住不動"><a href="#部署時卡住不動" class="headerlink" title="部署時卡住不動"></a>部署時卡住不動</h4><p>在首次的<code>hexo d</code>時，可能遇到滿螢幕的類似錯誤訊息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">warning: LF will be replaced by CRLF in xxxxx</span><br><span class="line">The file will have its original line endings in your working directory.</span><br></pre></td></tr></table></figure>
+<p>將git的CRLF關掉就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config –global core.autocrlf false</span><br></pre></td></tr></table></figure>
+<p>雖然是內容農場，還是要附<a target="_blank" rel="noopener" href="https://www.itread01.com/content/1546312562.html">來源</a></p>
+<hr>
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>這篇文章主要講了如何讓Hexo成功的在Github Page host起來。<br>Hexo真的有很多的功能可以玩，設定起來也不難，保持了一定的設定彈性又不讓寫作者花費太多心思在架站上。</p>
+<p>下一篇會講如何將第三方主題帶入，原本預設的是<code>landscape</code>主題。<br>主題除了外觀外，一些配置也幫你設定好了，甚至帶入了更多Hexo不提供的設置，大大減低拓荒的進度。</p>
+<h4 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h4><p>以下是我這次有參考到的網站:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/">Hexo官網</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35668237?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=973100277712297984">超详细Hexo+Github博客搭建小白教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.itread01.com/content/1546312562.html">Git提交時提示 “The file will have its original line endings in your working directory”</a></li>
+</ul>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>updated at 2022-02-06</p></div> 
+    <div class="post-entry__tags"><a href="/tags/hexo/" class="post-tags__link button"># hexo</a><a href="/tags/github-page/" class="post-tags__link button"># github page</a></div> 
+</article>
+
+
+
+
+    <div class="post__comments post__with-toc content-card" id="comment">
+        
+    <h4>Comments</h4>
+    
+    
+    
+    
+    
+    <div id="gitalk-container"></div>
+
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+    
+    
+
+
+    
+     
+ 
+
+ 
+    
+    
+        
+            <p>Find me on <a target="_blank" rel="noopener" href="https://github.com/waynelens">Github</a></p>
+
+        
+            <p>And mail me at <a href="mailto:&#x68;&#105;&#64;&#x77;&#x61;&#x79;&#110;&#101;&#108;&#101;&#x6e;&#115;&#46;&#100;&#x65;&#x76;">&#x68;&#105;&#64;&#x77;&#x61;&#x79;&#110;&#101;&#108;&#101;&#x6e;&#115;&#46;&#100;&#x65;&#x76;</a></p>
+
+        
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('false'),
+            auto_fancybox = Boolean('true')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    <script>
+        function loadComment() {
+            let e, i;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                var gitalk = new Gitalk({
+                    clientID: '3483953fa800319b2dc1',
+                    clientSecret: 'e5cbffb3b5a8ad01b0114e529a49ef46c24f6d97',
+                    repo: 'waynelens.github.io',
+                    owner: 'waynelens',
+                    admin: 'waynelens',
+                    id: window.location.pathname,
+                    distractionFreeMode: false
+                });
+                gitalk.render('gitalk-container');
+            };
+            (i = document.createElement("link")).rel = "stylesheet",
+            i.href = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css',
+            document.head.appendChild(i);
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+
+
+
+    </body>
+</html>
