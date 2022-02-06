@@ -18,7 +18,7 @@ timezone: 'Asia/Taipei'
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
 url: https://waynelens.dev
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :category/:title
 permalink_defaults:
 pretty_urls:
   trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
