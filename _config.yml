@@ -3,15 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Wayne.Jin
+title: 'Wayne.Jin' # 即Document.title
 subtitle: ''
-description: 'I am a web dev rookie. Here collect my study experience.'
+description: 'Hi!我是目前就職於帆宣系統科技的Wayne,負責內部ERP的維運。'
 keywords: 
   - 'C#'
   - '.Net'
   - 'Vue.js'
-author: Wayne.Jin
-language: en
+  - 'SQL Server'
+author: 'Wayne Jin'
+language: 'zh' # <html lang='zh'>
 timezone: 'Asia/Taipei'
 
 # URL
