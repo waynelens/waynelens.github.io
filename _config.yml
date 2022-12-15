@@ -23,8 +23,8 @@ permalink: :category/:lang/:title # 資源連結的格式，參考 https://hexo.
 permalink_defaults:
   - lang: zh
 pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -44,23 +44,26 @@ external_link:
   enable: true # Open external links in new tab
   field: site # Apply to the whole site
   exclude: ''
-filename_case: 0
+filename_case: 1 # 1 lower case; 2 upper case
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: true # true的話，每次產生新文章，都會同步生成同名資料夾來存放asset資源
+marked:
+  prePendRoot: true
+  postAsset: true # 用md語法 ![](image.jpg)，來直接存取同名資料夾的資源
 relative_link: false
-future: true
+future: false # 是否顯示時間標記是未來的文章
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
-  tab_replace: ''
-  wrap: true
+  auto_detect: true # Doc是說耗費編譯資源，建議關掉detect，並自行宣告code block的語言；但是Highlight.js是在npm編譯的，不是瀏覽器即時運算，覺得差別不大。
+  tab_replace: ' ' # 按Tab會換成什麼string，設定兩個space
+  wrap: true # line_number開的話，wrap一定要開。但是Doc最終還是沒說明wrap在幹嘛。
   hljs: false
 prismjs:
   enable: false
   preprocess: true
   line_number: true
-  tab_replace: ''
+  tab_replace: ' '
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
