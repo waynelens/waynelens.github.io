@@ -19,11 +19,12 @@ timezone: 'Asia/Taipei'
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
 url: https://waynelens.dev
 root: /
-permalink: :category/:title
+permalink: :category/:lang/:title # 資源連結的格式，參考 https://hexo.io/docs/permalinks
 permalink_defaults:
+  - lang: zh
 pretty_urls:
-  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: false # Set to false to remove trailing '.html' from permalinks
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -36,7 +37,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :lang/:title.md # File name of new posts
 default_layout: post
 titlecase: true # Transform title into titlecase
 external_link:
