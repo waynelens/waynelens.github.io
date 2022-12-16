@@ -19,7 +19,7 @@ timezone: 'Asia/Taipei'
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
 url: https://waynelens.dev
 root: /
-permalink: :category/:lang/:title # 資源連結的格式，參考 https://hexo.io/docs/permalinks
+permalink: :category/:lang/:title/ # 資源連結的格式，參考 https://hexo.io/docs/permalinks; 需要以 / 結尾，否則github issue #2650
 permalink_defaults:
   - lang: zh
 pretty_urls:
