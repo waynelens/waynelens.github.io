@@ -1,0 +1,57 @@
+head:
+  favicon: '/static/favicon.png'
+
+navbar:
+  sitename: Wayne.Jin
+  menu:
+    - name: Blog
+      url: /
+  
+  sticky: true
+
+cover:
+  sitename: Wayne.Jin Blog
+  description: Hi 👋 Nice to meet u
+
+style:
+  color:
+    main_color: '#888'
+
+meta:
+  title: ''
+  
+  author:
+    name: Wayne.Jin
+    url: https://waynelens.github.io
+  
+  thumbnail: 
+    enable: true
+    default:
+  
+  auto_excerpt:
+    enable: true
+    length: 300
+  
+  toc:
+    enable: true
+    list_number: true
+
+comments:
+  use: gitalk
+  gitalk:
+    repo: waynelens.github.io
+    owner: waynelens
+    clientID: 3483953fa800319b2dc1
+    clientSecret: e5cbffb3b5a8ad01b0114e529a49ef46c24f6d97
+
+footer:
+  copyright_since: false
+  custom_text:
+    - 'Find me on [Github](https://github.com/waynelens)'
+    - 'And mail me at hi@waynelens.dev'
+
+fancybox: 
+  enable: true
+  auto: true
+
+darkmode: true

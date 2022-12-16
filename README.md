@@ -5,3 +5,6 @@
 
 # 寫作 Command
 - ```hexo new '<article title>' --lang tw|en```: 新增特定語系文章，預設是zh。
+
+# 設定
+- icon字體：London Handlettering Regular

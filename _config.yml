@@ -38,7 +38,7 @@ skip_render:
 
 # Writing
 new_post_name: :lang/:title.md # File name of new posts
-default_layout: post
+default_layout: post # Scaffolds/post.md
 titlecase: true # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
