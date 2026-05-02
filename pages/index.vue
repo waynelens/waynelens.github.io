@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Minimalist Photography Blog',
+  title: 'Wayne Jin',
   description: 'A focused header-first workspace for refining the AppHeader presentation.'
 })
 </script>
