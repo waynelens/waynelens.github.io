@@ -12,19 +12,11 @@ const props = defineProps<{
 }>()
 
 const previewImage = computed(() => props.post.cover || props.post.images?.[0] || '')
-const lightbox = ref({
-  open: false,
-  src: '',
-  index: 0
-})
+const contentLightbox = ref(false)
 
 const openPreview = () => {
   if (!previewImage.value) return
-  lightbox.value = {
-    open: true,
-    src: previewImage.value,
-    index: 0
-  }
+  contentLightbox.value = true
 }
 </script>
 
@@ -34,7 +26,7 @@ const openPreview = () => {
       v-if="previewImage"
       class="home-post-image"
       type="button"
-      :aria-label="`Open ${post.title || 'post'} preview image`"
+      :aria-label="`Open ${post.title || 'post'} content preview`"
       @click="openPreview"
     >
       <img :src="previewImage" :alt="post.title || 'Post preview image'" loading="lazy">
@@ -45,7 +37,6 @@ const openPreview = () => {
     <div class="home-post-body">
       <div class="home-post-meta">
         <span>{{ post.date || 'Unpublished' }}</span>
-        <span v-if="post.tags?.length">{{ post.tags[0] }}</span>
       </div>
 
       <h2>{{ post.title }}</h2>
@@ -63,11 +54,10 @@ const openPreview = () => {
       </NuxtLink>
     </div>
 
-    <Lightbox
-      :open="lightbox.open"
-      :src="lightbox.src"
-      :index="lightbox.index"
-      @close="lightbox.open = false"
+    <HomePostLightbox
+      :open="contentLightbox"
+      :post="post"
+      @close="contentLightbox = false"
     />
   </article>
 </template>
@@ -77,6 +67,7 @@ const openPreview = () => {
   display: grid;
   grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
   gap: 16px;
+  align-items: stretch;
   width: 100%;
   margin: 0 0 18px;
   padding: 14px;
@@ -92,7 +83,7 @@ const openPreview = () => {
   border-radius: calc(var(--radius-xl) - 9px);
   overflow: hidden;
   background: var(--bg-soft);
-  cursor: zoom-in;
+  cursor: pointer;
 }
 
 .home-post-image img {
@@ -111,7 +102,8 @@ const openPreview = () => {
 
 .home-post-body {
   display: grid;
-  align-content: end;
+  grid-template-rows: auto auto 1fr auto auto;
+  height: 100%;
   gap: 12px;
   min-width: 0;
   padding: clamp(8px, 1.4vw, 18px);
@@ -131,9 +123,12 @@ const openPreview = () => {
   margin: 0;
   color: var(--text);
   font-family: var(--font-display);
-  font-size: clamp(1.55rem, 2vw, 2.35rem);
+  font-size: clamp(1.2rem, 1.45vw, 1.9rem);
   font-weight: 500;
-  line-height: 1.02;
+  line-height: 1.08;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .home-post-description {
@@ -179,7 +174,13 @@ const openPreview = () => {
   }
 
   .home-post-body {
+    grid-template-rows: auto auto auto auto auto;
+    height: auto;
     padding: 18px 8px 8px;
+  }
+
+  .home-post h2 {
+    font-size: clamp(1.1rem, 4.4vw, 1.5rem);
   }
 }
 </style>
