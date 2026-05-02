@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Abstract photography placeholder 3">
+  <defs>
+    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#14161c"/>
+      <stop offset="45%" stop-color="#182634"/>
+      <stop offset="100%" stop-color="#c5a17a"/>
+    </linearGradient>
+    <radialGradient id="r3" cx="65%" cy="28%" r="50%">
+      <stop offset="0%" stop-color="#fff1d6" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fff1d6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#g3)"/>
+  <circle cx="820" cy="420" r="320" fill="url(#r3)"/>
+  <rect x="120" y="980" width="960" height="220" rx="36" fill="rgba(255,255,255,0.05)"/>
+  <path d="M120 980C260 910 390 920 520 980C650 1040 790 1050 1080 960V1200H120Z" fill="rgba(14,18,24,0.55)"/>
+</svg>

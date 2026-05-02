@@ -1,0 +1,159 @@
+:root {
+  color-scheme: dark;
+  --bg: #e5e5e5;
+  --bg-elevated: rgba(255, 255, 255, 0.72);
+  --bg-soft: rgba(0, 0, 0, 0.04);
+  --line: rgba(0, 0, 0, 0.09);
+  --text: rgba(18, 18, 18, 0.92);
+  --muted: rgba(18, 18, 18, 0.66);
+  --accent: #f2c38b;
+  --accent-2: #91b8ff;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --font-brand: "Playwrite Deutschland Schulausgangschrift", "Segoe Script", cursive;
+  --font-display: "Georgia", "Times New Roman", serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --page-bg: #e5e5e5;
+  --page-bg-end: #d8d8d8;
+  --page-accent-a: rgba(255, 255, 255, 0.3);
+  --page-accent-b: rgba(0, 0, 0, 0.03);
+}
+
+@font-face {
+  font-family: "Playwrite Deutschland Schulausgangschrift";
+  src:
+    local("Playwrite Deutschland Schulausgangschrift"),
+    url("../fonts/PlaywriteDeutschlandSchulausgangschrift-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #e5e5e5;
+  --bg-elevated: rgba(255, 255, 255, 0.72);
+  --bg-soft: rgba(0, 0, 0, 0.04);
+  --line: rgba(0, 0, 0, 0.09);
+  --text: rgba(18, 18, 18, 0.92);
+  --muted: rgba(18, 18, 18, 0.66);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+  --page-bg: #e5e5e5;
+  --page-bg-end: #d8d8d8;
+  --page-accent-a: rgba(255, 255, 255, 0.3);
+  --page-accent-b: rgba(0, 0, 0, 0.03);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, var(--page-accent-a), transparent 30%),
+    radial-gradient(circle at right 20%, var(--page-accent-b), transparent 22%),
+    linear-gradient(180deg, var(--page-bg) 0%, var(--page-bg-end) 100%);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-main {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 72px;
+}
+
+.glass-panel {
+  background: var(--bg-elevated);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.section-title {
+  margin: 0;
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.fade-up {
+  animation: fade-up 520ms ease both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .app-main {
+    width: min(100% - 20px, 1200px);
+    padding-top: 20px;
+  }
+}
