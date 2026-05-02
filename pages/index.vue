@@ -1,4 +1,12 @@
 <script setup lang="ts">
+const { data } = await useAsyncData('home-posts', () => queryCollection('blog').all())
+
+const posts = computed(() => {
+  return [...(data.value || [])].sort((a, b) => {
+    return String(b.date || '').localeCompare(String(a.date || ''))
+  })
+})
+
 useSeoMeta({
   title: 'Wayne Jin',
   description: 'A focused header-first workspace for refining the AppHeader presentation.'
@@ -6,11 +14,44 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="home-stage" />
+  <section class="home-feed fade-up" aria-label="Photography posts">
+    <HomePostPreview
+      v-for="post in posts"
+      :key="post.path"
+      :post="post"
+    />
+
+    <div v-if="!posts.length" class="home-empty glass-panel">
+      <p class="eyebrow">No posts</p>
+      <h1 class="section-title">Stories are coming soon.</h1>
+    </div>
+  </section>
 </template>
 
 <style scoped>
-.home-stage {
+.home-feed {
   min-height: calc(100vh - 180px);
+  column-count: 2;
+  column-gap: 18px;
+}
+
+.home-empty {
+  display: grid;
+  gap: 10px;
+  padding: clamp(22px, 4vw, 40px);
+  border-radius: var(--radius-xl);
+  break-inside: avoid;
+}
+
+.home-empty h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 1;
+}
+
+@media (max-width: 1080px) {
+  .home-feed {
+    column-count: 1;
+  }
 }
 </style>
