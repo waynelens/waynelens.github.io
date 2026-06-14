@@ -110,7 +110,7 @@ useSeoMeta({
 
 .article-body :deep(p),
 .article-body :deep(li) {
-  color: rgba(255, 255, 255, 0.84);
+  color: var(--text);
 }
 
 .article-body :deep(img) {
