@@ -1,79 +1,66 @@
 # Minimalist Photography Blog
 
-A narrative-driven digital gallery designed specifically for photographers. Featuring a "Preview-Left, Narrative-Right" dual-column design for desktop and an Instagram-style immersive experience for mobile.
+A narrative-driven photography blog and digital gallery. The site presents photo stories in a responsive card feed, with dedicated article pages and full, non-cropped image collections.
 
-## 🌟 Core UX Design Philosophy
+## Features
 
-- **Visual Anchor (Visual-First)**: The homepage utilizes a split-screen layout. On desktop, the left side features an interactive image carousel, allowing readers to quickly preview the essence of a post without leaving the page.
-- **Mobile-Native**: The mobile experience is optimized as a vertical card feed, mimicking the familiar browsing logic of Instagram.
-- **Narrative Experience**: Inside the post, text and high-definition imagery are interwoven, providing an ultimate viewing experience via PhotoSwipe 5 integration.
-- **Full Collection**: Every post ends with a non-cropped masonry gallery, ensuring the integrity of the photographer’s original composition.
+- Responsive photography post feed
+- Markdown-based articles with typed frontmatter
+- Image previews and a lightweight custom carousel
+- Full gallery using a CSS multi-column layout
+- Custom image lightbox
+- Dark and light themes
+- Static generation and automatic GitHub Pages deployment
+- Images hosted on Cloudflare R2
 
----
+## Tech Stack
 
-## 🛠 Tech Stack
+| Area | Implementation |
+| :--- | :--- |
+| Framework | Nuxt 4 and Vue 3 |
+| Content | Nuxt Content 3 with Markdown |
+| Validation | Zod |
+| Gallery | Vue components and CSS multi-column layout |
+| Image viewer | Custom Vue lightbox |
+| Storage | Cloudflare R2 |
+| Hosting | GitHub Pages |
 
-| Domain | Solution | Notes |
-| :--- | :--- | :--- |
-| **Framework** | [Nuxt 3](https://nuxt.com/) | Static Site Generation (SSG) deployed on GitHub Pages |
-| **UI Foundation** | [Shadcn Vue](https://www.shadcn-vue.com/) | Minimalist and modern UI components |
-| **Carousel** | [Embla Carousel](https://www.emblacarousel.com/) | Lightweight, extensible carousel for quick previews |
-| **Lightbox** | [PhotoSwipe 5](https://photoswipe.com/) | Top-tier gesture zooming and large image viewing |
-| **CMS** | [Nuxt Content v2](https://content.nuxt.com/) | Markdown + Git-based content management |
-| **Storage** | [Cloudflare R2](https://www.cloudflare.com/products/r2/) | Efficient S3-compatible storage with zero egress fees |
-| **Grid System** | [Vue Masonry Wall](https://github.com/yeger/vue-masonry-wall) | Non-cropped gallery display for post footers |
-
----
-
-## 📁 Project Structure (UX-Focused)
+## Project Structure
 
 ```text
 .
+├── assets/css/             # Global styles
 ├── components/
-│   ├── ui/                 # Shadcn base components
-│   ├── gallery/
-│   │   ├── PreviewCarousel.vue # Desktop left-side carousel (Embla)
-│   │   ├── PostGallery.vue     # Full masonry gallery at post end
-│   │   └── Lightbox.vue        # PhotoSwipe wrapper
-│   └── layout/
-│       ├── AppHeader.vue       # Nav bar (i18n + Theme toggle)
-│       └── PostCard.vue        # Responsive index card (Dual-column)
-├── content/                # Markdown articles (.md)
+│   ├── gallery/           # Carousel, gallery, and lightbox
+│   └── layout/            # Header and post previews
+├── content/blog/           # Markdown photography stories
+├── layouts/default.vue     # Shared page layout
 ├── pages/
-│   ├── index.vue           # Homepage (Instagram-style browsing)
-│   └── blog/
-│       └── [...slug].vue   # Immersive article page
-└── nuxt.config.ts          # Core config & PWA settings
+│   ├── index.vue          # Homepage feed
+│   └── blog/[...slug].vue # Article page
+├── content.config.ts       # Blog collection schema
+└── nuxt.config.ts          # Nuxt configuration
 ```
 
----
+## Local Development
 
-## 📸 UX Architecture
+```bash
+npm install
+npm run dev
+```
 
-### 1. Homepage Preview (Index Page)
-- **Desktop (Dual-Column)**: 
-  - **Left**: `PreviewCarousel` allowing readers to swipe through highlights immediately.
-  - **Right**: `Sticky` information column with title, narrative snippet, hashtags, and links.
-- **Mobile (Vertical Feed)**: 
-  - **Instagram Style**: Image carousel on top, followed by text metadata and navigation buttons.
+Create a production build with:
 
-### 2. Post Detail
-- A top-to-bottom vertical reading flow supporting full-width imagery.
-- All embedded images support "Click to Zoom" via `PhotoSwipe`.
+```bash
+npm run generate
+```
 
-### 3. Post Footer (The Collection)
-- Showcases the "Complete Gallery" of the series.
-- Uses `Masonry` layout to **strictly maintain original aspect ratios (No Cropping)**.
+## Publishing Workflow
 
----
+1. Upload exported images to Cloudflare R2.
+2. Add a Markdown file under `content/blog/` and define its metadata and image URLs in frontmatter.
+3. Push to `main`; GitHub Actions generates the static site and deploys it to GitHub Pages.
 
-## 🚀 Workflow
+## License
 
-1. **Upload**: Export high-quality AVIF/P3 photos and upload them to Cloudflare R2.
-2. **Write**: Create Markdown files in `content/` with `images: [...]` defined in Frontmatter.
-3. **Deploy**: `git push` to main. GitHub Actions triggers SSG and deploys to GitHub Pages.
-
----
-
-## ⚖️ License
-The code is licensed under MIT; all photography content remains the property of the author.
+The code is licensed under MIT. All photography content remains the property of the author.
