@@ -5,8 +5,10 @@ export default defineContentConfig({
   collections: {
     blog: defineCollection({
       type: 'page',
-      source: 'blog/*.md',
+      source: 'blog/**/*.md',
       schema: z.object({
+        lang: z.enum(['en', 'zh-TW']),
+        translationKey: z.string(),
         title: z.string(),
         description: z.string(),
         date: z.string(),

@@ -1,4 +1,6 @@
 ---
+lang: en
+translationKey: clare-first-dive-at-bitoujiao
 title: Clare’s First Dive at Bitoujiao
 description: Clare’s first time entering the ocean at Bitoujiao, where calm water, coral reefs, and soft changing light made the day feel quietly memorable.
 date: 2024-09-01
