@@ -1,9 +1,14 @@
 <script setup lang="ts">
 const route = useRoute()
+const { locale, setLocale } = useI18n()
 
 const { data: post } = await useAsyncData(route.path, () => {
   return queryCollection('blog').path(route.path).first()
 })
+
+if (post.value?.lang && locale.value !== post.value.lang) {
+  await setLocale(post.value.lang)
+}
 
 const images = computed(() => {
   const value = post.value?.images || []
@@ -20,12 +25,12 @@ useSeoMeta({
   <article v-if="post" class="article fade-up">
     <header class="article-hero glass-panel">
       <div class="article-head">
-        <p class="eyebrow">Narrative post</p>
+        <p class="eyebrow">{{ $t('post.narrative') }}</p>
         <h1 class="section-title">{{ post.title }}</h1>
         <p class="article-description">{{ post.description }}</p>
 
         <div class="article-meta">
-          <span class="chip">{{ post.date || 'Unpublished' }}</span>
+          <span class="chip">{{ post.date || $t('common.unpublished') }}</span>
           <span v-for="tag in post.tags || []" :key="tag" class="chip">{{ tag }}</span>
         </div>
       </div>
@@ -42,8 +47,8 @@ useSeoMeta({
 
   <div v-else class="article-not-found glass-panel">
     <p class="eyebrow">404</p>
-    <h1 class="section-title">Post not found</h1>
-    <NuxtLink to="/" class="read-more">Back to home</NuxtLink>
+    <h1 class="section-title">{{ $t('post.notFound') }}</h1>
+    <NuxtLink to="/" class="read-more">{{ $t('post.backHome') }}</NuxtLink>
   </div>
 </template>
 

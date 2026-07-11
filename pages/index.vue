@@ -1,10 +1,13 @@
 <script setup lang="ts">
+const { locale } = useI18n()
 const { data } = await useAsyncData('home-posts', () => queryCollection('blog').all())
 
 const posts = computed(() => {
-  return [...(data.value || [])].sort((a, b) => {
-    return String(b.date || '').localeCompare(String(a.date || ''))
-  })
+  return [...(data.value || [])]
+    .filter(post => post.lang === locale.value)
+    .sort((a, b) => {
+      return String(b.date || '').localeCompare(String(a.date || ''))
+    })
 })
 
 useSeoMeta({
@@ -14,7 +17,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <section class="home-feed fade-up" aria-label="Photography posts">
+  <section class="home-feed fade-up" :aria-label="$t('home.aria')">
     <HomePostPreview
       v-for="post in posts"
       :key="post.path"
@@ -22,8 +25,8 @@ useSeoMeta({
     />
 
     <div v-if="!posts.length" class="home-empty glass-panel">
-      <p class="eyebrow">No posts</p>
-      <h1 class="section-title">Stories are coming soon.</h1>
+      <p class="eyebrow">{{ $t('home.noPosts') }}</p>
+      <h1 class="section-title">{{ $t('home.comingSoon') }}</h1>
     </div>
   </section>
 </template>

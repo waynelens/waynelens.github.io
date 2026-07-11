@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n()
 const props = defineProps<{
   images: string[]
   title?: string
@@ -30,20 +31,20 @@ const prev = () => {
       <img
         v-if="images.length"
         :src="images[current]"
-        :alt="title || 'Preview image'"
+        :alt="title || t('carousel.previewImage')"
       >
       <div v-else class="carousel-empty">
-        <span>No preview image yet</span>
+        <span>{{ $t('carousel.noImage') }}</span>
       </div>
     </div>
 
     <div class="carousel-footer">
       <div class="carousel-controls">
-        <button type="button" @click="prev">Prev</button>
-        <button type="button" @click="next">Next</button>
+        <button type="button" @click="prev">{{ $t('carousel.previous') }}</button>
+        <button type="button" @click="next">{{ $t('carousel.next') }}</button>
       </div>
 
-      <div v-if="images.length" class="carousel-dots" aria-label="Image navigation">
+      <div v-if="images.length" class="carousel-dots" :aria-label="$t('carousel.navigation')">
         <button
           v-for="(image, index) in images"
           :key="image + index"

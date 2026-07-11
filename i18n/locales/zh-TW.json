@@ -1,0 +1,46 @@
+{
+  "header": {
+    "home": "首頁",
+    "actions": "社群、語言與主題操作",
+    "rss": "RSS 訂閱",
+    "instagram": "Instagram 個人頁面",
+    "switchToLight": "切換為亮色主題",
+    "switchToDark": "切換為深色主題",
+    "switchToEnglish": "切換為英文",
+    "switchToTraditionalChinese": "切換為繁體中文"
+  },
+  "common": {
+    "close": "關閉",
+    "unpublished": "尚未發佈"
+  },
+  "home": {
+    "aria": "攝影文章",
+    "noPosts": "目前沒有文章",
+    "comingSoon": "新的故事即將上線。",
+    "postTags": "文章標籤",
+    "readPost": "閱讀文章",
+    "openPreview": "開啟「{title}」內容預覽",
+    "previewImage": "文章預覽圖片"
+  },
+  "post": {
+    "preview": "文章預覽",
+    "openFull": "開啟完整文章",
+    "narrative": "攝影故事",
+    "notFound": "找不到文章",
+    "backHome": "回到首頁"
+  },
+  "carousel": {
+    "previewImage": "預覽圖片",
+    "noImage": "尚無預覽圖片",
+    "previous": "上一張",
+    "next": "下一張",
+    "navigation": "圖片導覽"
+  },
+  "gallery": {
+    "collection": "作品集",
+    "full": "完整相簿",
+    "description": "保留每張照片原始比例的無裁切瀏布流相簿。",
+    "imageAlt": "相簿圖片 {number}",
+    "expandedAlt": "放大圖片 {number}"
+  }
+}

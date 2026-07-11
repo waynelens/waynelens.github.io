@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n()
 const props = defineProps<{
   open: boolean
   src: string
@@ -19,9 +20,9 @@ const close = () => {
   <Teleport to="body">
     <Transition name="lightbox">
       <div v-if="props.open" class="lightbox" @click.self="close">
-        <button class="lightbox-close" type="button" @click="close">Close</button>
+        <button class="lightbox-close" type="button" @click="close">{{ $t('common.close') }}</button>
         <figure class="lightbox-frame">
-          <img :src="props.src" :alt="`Expanded image ${props.index + 1}`">
+          <img :src="props.src" :alt="t('gallery.expandedAlt', { number: props.index + 1 })">
         </figure>
       </div>
     </Transition>

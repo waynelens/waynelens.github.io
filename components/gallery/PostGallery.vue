@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n()
 defineProps<{
   images: string[]
 }>()
@@ -18,11 +19,11 @@ const openImage = (src: string, index: number) => {
   <section class="gallery stack">
     <div class="gallery-head">
       <div>
-        <p class="eyebrow">Collection</p>
-        <h2 class="section-title">Full gallery</h2>
+        <p class="eyebrow">{{ $t('gallery.collection') }}</p>
+        <h2 class="section-title">{{ $t('gallery.full') }}</h2>
       </div>
       <p class="muted">
-        A non-cropped masonry-style grid that keeps each frame's original proportions.
+        {{ $t('gallery.description') }}
       </p>
     </div>
 
@@ -34,7 +35,7 @@ const openImage = (src: string, index: number) => {
         class="gallery-tile"
         @click="openImage(image, index)"
       >
-        <img :src="image" :alt="`Gallery image ${index + 1}`" loading="lazy">
+        <img :src="image" :alt="t('gallery.imageAlt', { number: index + 1 })" loading="lazy">
       </button>
     </div>
 

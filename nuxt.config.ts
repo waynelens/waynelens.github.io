@@ -1,5 +1,29 @@
+import { readdirSync } from 'node:fs'
+import { join, relative, resolve, sep } from 'node:path'
+
+const blogContentDirectory = resolve('content/blog')
+
+const collectMarkdownFiles = (directory: string): string[] => {
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = join(directory, entry.name)
+
+    if (entry.isDirectory()) return collectMarkdownFiles(entryPath)
+    return entry.isFile() && entry.name.endsWith('.md') ? [entryPath] : []
+  })
+}
+
+const blogRoutes = collectMarkdownFiles(blogContentDirectory).map((file) => {
+  const contentPath = relative(blogContentDirectory, file)
+    .split(sep)
+    .join('/')
+    .replace(/\.md$/, '')
+    .toLowerCase()
+
+  return `/blog/${contentPath}`
+})
+
 export default defineNuxtConfig({
-  modules: ['@nuxt/content'],
+  modules: ['@nuxt/content', '@nuxtjs/i18n'],
   components: [
     {
       path: '~/components',
@@ -7,6 +31,11 @@ export default defineNuxtConfig({
     }
   ],
   css: ['~/assets/css/main.css'],
+  nitro: {
+    prerender: {
+      routes: blogRoutes
+    }
+  },
   app: {
     head: {
       title: 'Wayne Jin',
@@ -28,6 +57,21 @@ export default defineNuxtConfig({
           searchDepth: 3
         }
       }
+    }
+  },
+  i18n: {
+    defaultLocale: 'zh-TW',
+    strategy: 'no_prefix',
+    lazy: true,
+    langDir: 'locales',
+    locales: [
+      { code: 'zh-TW', language: 'zh-TW', name: '繁體中文', file: 'zh-TW.json' },
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' }
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
     }
   }
 })

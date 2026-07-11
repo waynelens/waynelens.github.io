@@ -1,5 +1,8 @@
 <script setup lang="ts">
+const route = useRoute()
+const { locale, setLocale, t } = useI18n()
 const theme = ref<'dark' | 'light'>('dark')
+const switchingLocale = ref(false)
 
 const applyTheme = (value: 'dark' | 'light') => {
   theme.value = value
@@ -16,9 +19,47 @@ const toggleTheme = () => {
   applyTheme(theme.value === 'dark' ? 'light' : 'dark')
 }
 
-const themeLabel = computed(() => (theme.value === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'))
-const rssLabel = 'RSS feed'
-const instagramLabel = 'Instagram profile'
+const targetLocale = computed(() => (locale.value === 'zh-TW' ? 'en' : 'zh-TW'))
+const localeButtonText = computed(() => (targetLocale.value === 'en' ? 'EN' : '中'))
+const localeLabel = computed(() => (
+  targetLocale.value === 'en'
+    ? t('header.switchToEnglish')
+    : t('header.switchToTraditionalChinese')
+))
+const themeLabel = computed(() => (
+  theme.value === 'dark' ? t('header.switchToLight') : t('header.switchToDark')
+))
+
+const switchLanguage = async () => {
+  if (switchingLocale.value) return
+
+  switchingLocale.value = true
+  const nextLocale = targetLocale.value
+
+  try {
+    if (route.path.startsWith('/blog/')) {
+      const currentPost = await queryCollection('blog').path(route.path).first()
+
+      if (currentPost?.translationKey) {
+        const translatedPost = await queryCollection('blog')
+          .where('translationKey', '=', currentPost.translationKey)
+          .where('lang', '=', nextLocale)
+          .first()
+
+        await setLocale(nextLocale)
+
+        if (translatedPost?.path) {
+          await navigateTo(translatedPost.path)
+          return
+        }
+      }
+    }
+
+    await setLocale(nextLocale)
+  } finally {
+    switchingLocale.value = false
+  }
+}
 const themeIconPath = computed(() => (
   theme.value === 'dark'
     ? 'M12 18a6 6 0 0 0 0-12a6 6 0 0 0 0 12m0-15a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V4a1 1 0 0 1 1-1m0 18a1 1 0 0 1-1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1-1 1m9-9a1 1 0 0 1-1 1h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 1 1M5 12a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h1a1 1 0 0 1 1 1m13.95 6.05a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41M7.17 7.17a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41m10.61-1.41a1 1 0 0 1 0 1.41l-.71.71a1 1 0 0 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0M7.17 16.83a1 1 0 0 1 0 1.41l-.71.71a1 1 0 0 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0'
@@ -31,16 +72,16 @@ const instagramIconPath = 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-
 <template>
   <header class="header-shell">
     <div class="header-backdrop">
-      <NuxtLink to="/" class="brand" aria-label="Home">
+      <NuxtLink to="/" class="brand" :aria-label="$t('header.home')">
         <span class="brand-mark">WJ</span>
       </NuxtLink>
 
-      <div class="icon-group" aria-label="Social and theme actions">
+      <div class="icon-group" :aria-label="$t('header.actions')">
         <button
           class="theme-button"
           type="button"
-          :aria-label="rssLabel"
-          :title="rssLabel"
+          :aria-label="$t('header.rss')"
+          :title="$t('header.rss')"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path :d="rssIconPath" />
@@ -50,12 +91,23 @@ const instagramIconPath = 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-
         <button
           class="theme-button"
           type="button"
-          :aria-label="instagramLabel"
-          :title="instagramLabel"
+          :aria-label="$t('header.instagram')"
+          :title="$t('header.instagram')"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path :d="instagramIconPath" />
           </svg>
+        </button>
+
+        <button
+          class="theme-button language-button"
+          type="button"
+          :aria-label="localeLabel"
+          :title="localeLabel"
+          :disabled="switchingLocale"
+          @click="switchLanguage"
+        >
+          <span>{{ localeButtonText }}</span>
         </button>
 
         <button
@@ -110,8 +162,8 @@ const instagramIconPath = 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-
 
 .icon-group {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: clamp(180px, 18vw, 222px);
+  grid-template-columns: repeat(4, 1fr);
+  width: clamp(220px, 22vw, 280px);
   gap: 8px;
 }
 
@@ -134,6 +186,17 @@ const instagramIconPath = 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-
   background: color-mix(in srgb, currentColor 8%, transparent);
 }
 
+.theme-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.language-button span {
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+}
+
 .theme-button svg {
   width: 24px;
   height: 24px;
@@ -152,7 +215,7 @@ const instagramIconPath = 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-
   }
 
   .icon-group {
-    width: clamp(164px, 46vw, 204px);
+    width: clamp(208px, 58vw, 248px);
     gap: 6px;
   }
 }

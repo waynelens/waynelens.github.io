@@ -1,0 +1,46 @@
+{
+  "header": {
+    "home": "Home",
+    "actions": "Social, language, and theme actions",
+    "rss": "RSS feed",
+    "instagram": "Instagram profile",
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme",
+    "switchToEnglish": "Switch to English",
+    "switchToTraditionalChinese": "Switch to Traditional Chinese"
+  },
+  "common": {
+    "close": "Close",
+    "unpublished": "Unpublished"
+  },
+  "home": {
+    "aria": "Photography posts",
+    "noPosts": "No posts",
+    "comingSoon": "Stories are coming soon.",
+    "postTags": "Post tags",
+    "readPost": "Read post",
+    "openPreview": "Open {title} content preview",
+    "previewImage": "Post preview image"
+  },
+  "post": {
+    "preview": "Post preview",
+    "openFull": "Open full post",
+    "narrative": "Narrative post",
+    "notFound": "Post not found",
+    "backHome": "Back to home"
+  },
+  "carousel": {
+    "previewImage": "Preview image",
+    "noImage": "No preview image yet",
+    "previous": "Prev",
+    "next": "Next",
+    "navigation": "Image navigation"
+  },
+  "gallery": {
+    "collection": "Collection",
+    "full": "Full gallery",
+    "description": "A non-cropped masonry-style grid that keeps each frame's original proportions.",
+    "imageAlt": "Gallery image {number}",
+    "expandedAlt": "Expanded image {number}"
+  }
+}

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n()
 const props = defineProps<{
   post: {
     path: string
@@ -26,17 +27,17 @@ const openPreview = () => {
       v-if="previewImage"
       class="home-post-image"
       type="button"
-      :aria-label="`Open ${post.title || 'post'} content preview`"
+      :aria-label="t('home.openPreview', { title: post.title || '' })"
       @click="openPreview"
     >
-      <img :src="previewImage" :alt="post.title || 'Post preview image'" loading="lazy">
+      <img :src="previewImage" :alt="post.title || t('home.previewImage')" loading="lazy">
     </button>
 
     <div v-else class="home-post-fallback" aria-hidden="true" />
 
     <div class="home-post-body">
       <div class="home-post-meta">
-        <span>{{ post.date || 'Unpublished' }}</span>
+        <span>{{ post.date || $t('common.unpublished') }}</span>
       </div>
 
       <h2>{{ post.title }}</h2>
@@ -45,12 +46,12 @@ const openPreview = () => {
         {{ post.description }}
       </p>
 
-      <div v-if="post.tags?.length" class="home-post-tags" aria-label="Post tags">
+      <div v-if="post.tags?.length" class="home-post-tags" :aria-label="$t('home.postTags')">
         <span v-for="tag in post.tags" :key="tag" class="chip">{{ tag }}</span>
       </div>
 
       <NuxtLink :to="post.path" class="home-post-link">
-        Read post
+        {{ $t('home.readPost') }}
       </NuxtLink>
     </div>
 

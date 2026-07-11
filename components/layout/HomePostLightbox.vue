@@ -27,18 +27,18 @@ const close = () => {
       <div v-if="props.open" class="home-post-lightbox" @click.self="close">
         <div class="home-post-lightbox-panel glass-panel">
           <button class="home-post-lightbox-close" type="button" @click="close">
-            Close
+            {{ $t('common.close') }}
           </button>
 
           <header class="home-post-lightbox-head">
-            <p class="eyebrow">Post preview</p>
+            <p class="eyebrow">{{ $t('post.preview') }}</p>
             <h2 class="section-title">{{ props.post.title }}</h2>
             <p v-if="props.post.description" class="home-post-lightbox-description">
               {{ props.post.description }}
             </p>
 
             <div class="home-post-lightbox-meta">
-              <span class="chip">{{ props.post.date || 'Unpublished' }}</span>
+              <span class="chip">{{ props.post.date || $t('common.unpublished') }}</span>
               <span
                 v-for="tag in props.post.tags || []"
                 :key="tag"
@@ -54,7 +54,7 @@ const close = () => {
           </div>
 
           <NuxtLink :to="props.post.path" class="home-post-lightbox-link">
-            Open full post
+            {{ $t('post.openFull') }}
           </NuxtLink>
         </div>
       </div>
