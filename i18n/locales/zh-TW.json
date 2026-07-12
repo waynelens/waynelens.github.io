@@ -42,5 +42,11 @@
     "description": "保留每張照片原始比例的無裁切瀏布流相簿。",
     "imageAlt": "相簿圖片 {number}",
     "expandedAlt": "放大圖片 {number}"
+  },
+  "share": {
+    "button": "分享限時動態",
+    "preparing": "正在準備圖片…",
+    "downloaded": "圖片已下載，連結已複製",
+    "failed": "無法建立圖片"
   }
 }

@@ -42,5 +42,11 @@
     "description": "A non-cropped masonry-style grid that keeps each frame's original proportions.",
     "imageAlt": "Gallery image {number}",
     "expandedAlt": "Expanded image {number}"
+  },
+  "share": {
+    "button": "Share story",
+    "preparing": "Preparing image...",
+    "downloaded": "Image downloaded; link copied",
+    "failed": "Unable to create image"
   }
 }

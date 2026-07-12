@@ -15,6 +15,8 @@ const images = computed(() => {
   return Array.isArray(value) ? value : []
 })
 
+const shareImage = computed(() => post.value?.cover || images.value[0] || '')
+
 useSeoMeta({
   title: () => post.value?.title || 'Article',
   description: () => post.value?.description || 'Photography story'
@@ -33,6 +35,14 @@ useSeoMeta({
           <span class="chip">{{ post.date || $t('common.unpublished') }}</span>
           <span v-for="tag in post.tags || []" :key="tag" class="chip">{{ tag }}</span>
         </div>
+
+        <StoryShareButton
+          v-if="shareImage"
+          :title="post.title"
+          :image-url="shareImage"
+          :path="post.path"
+          :lang="post.lang"
+        />
       </div>
 
       <PreviewCarousel :images="images" :title="post.title" />
