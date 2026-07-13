@@ -44,7 +44,8 @@
   },
   "share": {
     "button": "分享限時動態",
-    "preparing": "正在準備圖片…",
+    "preparing": "正在建立文章摘要卡…",
+    "ready": "已完成，再按一次即可分享",
     "downloaded": "圖片已下載，連結已複製",
     "failed": "無法建立圖片"
   }

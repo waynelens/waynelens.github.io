@@ -1,17 +1,37 @@
 <script setup lang="ts">
 const props = defineProps<{
   title: string
+  description?: string
+  date?: string
   imageUrl: string
   path: string
   lang: 'en' | 'zh-TW'
 }>()
 
 const { t } = useI18n()
-const { shareStory } = useStoryShare()
-const state = ref<'idle' | 'preparing' | 'downloaded' | 'error'>('idle')
+const { generateStoryFile, shareStory } = useStoryShare()
+const state = ref<'idle' | 'preparing' | 'ready' | 'downloaded' | 'error'>('idle')
+const preparedFile = shallowRef<File>()
+let preparation: Promise<File> | undefined
+
+const prepareCard = () => {
+  preparation ||= generateStoryFile(props)
+  return preparation
+}
+
+onMounted(() => {
+  prepareCard()
+    .then((file) => {
+      preparedFile.value = file
+    })
+    .catch(() => {
+      preparation = undefined
+    })
+})
 
 const label = computed(() => {
   if (state.value === 'preparing') return t('share.preparing')
+  if (state.value === 'ready') return t('share.ready')
   if (state.value === 'downloaded') return t('share.downloaded')
   if (state.value === 'error') return t('share.failed')
   return t('share.button')
@@ -22,14 +42,20 @@ const handleShare = async () => {
   state.value = 'preparing'
 
   try {
-    const result = await shareStory(props)
+    if (!preparedFile.value && navigator.share) {
+      preparedFile.value = await prepareCard()
+      state.value = 'ready'
+      return
+    }
+
+    const result = await shareStory(props, preparedFile.value)
     state.value = result === 'downloaded' ? 'downloaded' : 'idle'
   } catch (error) {
-    console.error('Story share failed', error)
+    console.error('Article card share failed', error)
     state.value = 'error'
   }
 
-  if (state.value !== 'idle') {
+  if (state.value !== 'idle' && state.value !== 'ready') {
     setTimeout(() => {
       state.value = 'idle'
     }, 3500)

@@ -44,7 +44,8 @@
   },
   "share": {
     "button": "Share story",
-    "preparing": "Preparing image...",
+    "preparing": "Creating article card...",
+    "ready": "Ready — tap to share",
     "downloaded": "Image downloaded; link copied",
     "failed": "Unable to create image"
   }

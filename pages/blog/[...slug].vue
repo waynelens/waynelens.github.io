@@ -39,6 +39,8 @@ useSeoMeta({
         <StoryShareButton
           v-if="shareImage"
           :title="post.title"
+          :description="post.description"
+          :date="post.date"
           :image-url="shareImage"
           :path="post.path"
           :lang="post.lang"
