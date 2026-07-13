@@ -30,7 +30,11 @@ export default defineNuxtConfig({
       pathPrefix: false
     }
   ],
-  css: ['~/assets/css/main.css'],
+  css: [
+    '@fontsource-variable/inter/wght.css',
+    '@fontsource-variable/noto-sans-tc/wght.css',
+    '~/assets/css/main.css'
+  ],
   nitro: {
     prerender: {
       routes: blogRoutes

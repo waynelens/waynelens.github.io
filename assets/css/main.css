@@ -13,8 +13,8 @@
   --radius-lg: 20px;
   --radius-md: 14px;
   --font-brand: "Playwrite Deutschland Schulausgangschrift", "Segoe Script", cursive;
-  --font-display: "Georgia", "Times New Roman", serif;
-  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-display: "Inter Variable", "Noto Sans TC Variable", sans-serif;
+  --font-body: "Inter Variable", "Noto Sans TC Variable", sans-serif;
   --page-bg: #ffffff;
   --page-bg-end: #f3f3f3;
   --page-accent-a: rgba(255, 255, 255, 0.3);

@@ -137,9 +137,7 @@ export const useStoryShare = () => {
     context.font = '400 46px "Playwrite Deutschland Schulausgangschrift", "Segoe Script", cursive'
     context.fillText('WJ', 76, 116)
 
-    context.font = input.lang === 'zh-TW'
-      ? '600 72px "Microsoft JhengHei", "Noto Sans TC", sans-serif'
-      : '600 76px Georgia, "Times New Roman", serif'
+    context.font = '600 72px "Inter Variable", "Noto Sans TC Variable", sans-serif'
 
     const lines = wrapText(context, input.title, 920)
     const lineHeight = input.lang === 'zh-TW' ? 96 : 92
@@ -150,7 +148,7 @@ export const useStoryShare = () => {
     })
 
     context.fillStyle = 'rgba(255, 255, 255, 0.78)'
-    context.font = '500 30px "Segoe UI", sans-serif'
+    context.font = '500 30px "Inter Variable", "Noto Sans TC Variable", sans-serif'
     context.fillText('WAYNELENS.DEV', 76, 1818)
 
     const safeTitle = input.path

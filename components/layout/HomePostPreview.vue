@@ -126,7 +126,7 @@ const openPreview = () => {
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 1.45vw, 1.9rem);
   font-weight: 500;
-  line-height: 1.08;
+  line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
