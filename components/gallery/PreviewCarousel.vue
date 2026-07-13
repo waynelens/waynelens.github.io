@@ -63,6 +63,7 @@ const prev = () => {
   padding: 14px;
   display: grid;
   gap: 14px;
+  min-width: 0;
 }
 
 .carousel-stage {
@@ -97,6 +98,7 @@ const prev = () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -121,6 +123,9 @@ const prev = () => {
 .carousel-dots {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 12rem;
+  flex-wrap: wrap;
   gap: 8px;
 }
 

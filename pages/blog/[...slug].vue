@@ -66,6 +66,7 @@ useSeoMeta({
 .article {
   display: grid;
   gap: 24px;
+  min-width: 0;
 }
 
 .article-hero,
@@ -79,6 +80,7 @@ useSeoMeta({
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   gap: 18px;
   padding: 18px;
+  min-width: 0;
 }
 
 .article-head {
