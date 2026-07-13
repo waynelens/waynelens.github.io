@@ -39,7 +39,6 @@
   "gallery": {
     "collection": "作品集",
     "full": "完整相簿",
-    "description": "保留每張照片原始比例的無裁切瀏布流相簿。",
     "imageAlt": "相簿圖片 {number}",
     "expandedAlt": "放大圖片 {number}"
   },

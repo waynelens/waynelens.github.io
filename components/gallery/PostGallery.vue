@@ -22,9 +22,6 @@ const openImage = (src: string, index: number) => {
         <p class="eyebrow">{{ $t('gallery.collection') }}</p>
         <h2 class="section-title">{{ $t('gallery.full') }}</h2>
       </div>
-      <p class="muted">
-        {{ $t('gallery.description') }}
-      </p>
     </div>
 
     <div class="gallery-grid">
