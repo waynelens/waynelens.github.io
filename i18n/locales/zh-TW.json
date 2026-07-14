@@ -59,5 +59,19 @@
     "navigate": "選擇",
     "openResult": "開啟",
     "close": "關閉"
+  },
+  "rssDialog": {
+    "title": "訂閱 RSS",
+    "description": "複製或分享訂閱連結，再加入你慣用的 RSS 閱讀器。",
+    "traditionalChinese": "繁體中文",
+    "english": "English",
+    "current": "目前語言",
+    "copy": "複製連結",
+    "copied": "已複製",
+    "share": "分享",
+    "shareCopied": "連結已複製",
+    "viewXml": "檢視 XML",
+    "shareTitle": "Wayne Jin 攝影故事 RSS",
+    "shareText": "訂閱 Wayne Jin 最新的攝影故事。"
   }
 }

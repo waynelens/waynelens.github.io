@@ -59,5 +59,19 @@
     "navigate": "Navigate",
     "openResult": "Open",
     "close": "Close"
+  },
+  "rssDialog": {
+    "title": "Subscribe via RSS",
+    "description": "Copy or share a feed link with your preferred RSS reader.",
+    "traditionalChinese": "Traditional Chinese",
+    "english": "English",
+    "current": "Current language",
+    "copy": "Copy link",
+    "copied": "Copied",
+    "share": "Share",
+    "shareCopied": "Link copied",
+    "viewXml": "View XML",
+    "shareTitle": "Wayne Jin photography RSS",
+    "shareText": "Subscribe to new photography stories from Wayne Jin."
   }
 }
