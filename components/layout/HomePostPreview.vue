@@ -30,7 +30,12 @@ const openPreview = () => {
       :aria-label="t('home.openPreview', { title: post.title || '' })"
       @click="openPreview"
     >
-      <img :src="previewImage" :alt="post.title || t('home.previewImage')" loading="lazy">
+      <ResponsiveImage
+        class="home-post-image-element"
+        :src="previewImage"
+        :alt="post.title || t('home.previewImage')"
+        sizes="(max-width: 860px) calc(100vw - 48px), (max-width: 1080px) 48vw, 24vw"
+      />
     </button>
 
     <div v-else class="home-post-fallback" aria-hidden="true" />
@@ -87,7 +92,7 @@ const openPreview = () => {
   cursor: pointer;
 }
 
-.home-post-image img {
+.home-post-image-element {
   width: 100%;
   height: auto;
   display: block;

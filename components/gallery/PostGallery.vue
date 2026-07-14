@@ -32,7 +32,12 @@ const openImage = (src: string, index: number) => {
         class="gallery-tile"
         @click="openImage(image, index)"
       >
-        <img :src="image" :alt="t('gallery.imageAlt', { number: index + 1 })" loading="lazy">
+        <ResponsiveImage
+          class="gallery-image"
+          :src="image"
+          :alt="t('gallery.imageAlt', { number: index + 1 })"
+          sizes="(max-width: 640px) calc(100vw - 36px), (max-width: 960px) 50vw, 33vw"
+        />
       </button>
     </div>
 
@@ -84,7 +89,7 @@ const openImage = (src: string, index: number) => {
   break-inside: avoid;
 }
 
-.gallery-tile img {
+.gallery-image {
   width: 100%;
   height: auto;
 }

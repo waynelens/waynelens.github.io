@@ -22,7 +22,12 @@ const close = () => {
       <div v-if="props.open" class="lightbox" @click.self="close">
         <button class="lightbox-close" type="button" @click="close">{{ $t('common.close') }}</button>
         <figure class="lightbox-frame">
-          <img :src="props.src" :alt="t('gallery.expandedAlt', { number: props.index + 1 })">
+          <img
+            :src="props.src"
+            :alt="t('gallery.expandedAlt', { number: props.index + 1 })"
+            decoding="async"
+            fetchpriority="high"
+          >
         </figure>
       </div>
     </Transition>

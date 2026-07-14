@@ -28,11 +28,16 @@ const prev = () => {
 <template>
   <section class="carousel glass-panel">
     <div class="carousel-stage">
-      <img
+      <ResponsiveImage
         v-if="images.length"
+        class="carousel-image"
         :src="images[current]"
         :alt="title || t('carousel.previewImage')"
-      >
+        :default-width="1200"
+        sizes="(max-width: 980px) calc(100vw - 64px), 50vw"
+        loading="eager"
+        fetch-priority="high"
+      />
       <div v-else class="carousel-empty">
         <span>{{ $t('carousel.noImage') }}</span>
       </div>
@@ -74,13 +79,13 @@ const prev = () => {
   background: rgba(255, 255, 255, 0.03);
 }
 
-.carousel-stage img,
+.carousel-image,
 .carousel-empty {
   width: 100%;
   height: 100%;
 }
 
-.carousel-stage img {
+.carousel-image {
   object-fit: cover;
 }
 

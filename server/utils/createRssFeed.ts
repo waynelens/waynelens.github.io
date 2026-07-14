@@ -1,6 +1,7 @@
 import { Feed } from 'feed'
 import { queryCollection } from '@nuxt/content/server'
 import type { H3Event } from 'h3'
+import { getImageVariant } from '../../shared/utils/image'
 
 type FeedLocale = 'en' | 'zh-TW'
 
@@ -67,7 +68,7 @@ export const createRssFeed = async (event: H3Event, locale: FeedLocale) => {
       description: post.description,
       date: publishedAt,
       published: publishedAt,
-      image: post.cover ? toAbsoluteUrl(post.cover) : undefined,
+      image: post.cover ? getImageVariant(post.cover, 1200) : undefined,
       category: post.tags.map(name => ({ name })),
       author: [{
         name: 'Wayne Jin',
