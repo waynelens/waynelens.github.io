@@ -3,6 +3,7 @@ const route = useRoute()
 const { locale, setLocale, t } = useI18n()
 const theme = ref<'dark' | 'light'>('dark')
 const switchingLocale = ref(false)
+const { openSearch } = useSearchDialog()
 
 const applyTheme = (value: 'dark' | 'light') => {
   theme.value = value
@@ -66,7 +67,7 @@ const themeIconPath = computed(() => (
     : 'M12 3a9 9 0 1 0 9 9c0-.48-.04-.94-.12-1.39A7.5 7.5 0 0 1 12.39 4.12A9 9 0 0 0 12 3m0 2a7 7 0 0 0 6.32 9.95A7 7 0 1 1 12 5'
 ))
 const rssIconPath = 'M5 17a2 2 0 1 1 0 4a2 2 0 0 1 0-4m0-6a8 8 0 0 1 8 8h-2a6 6 0 0 0-6-6zm0-6a14 14 0 0 1 14 14h-2A12 12 0 0 0 5 7z'
-const instagramIconPath = 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm5 2.5A4.5 4.5 0 1 1 7.5 12A4.5 4.5 0 0 1 12 7.5m0 2A2.5 2.5 0 1 0 14.5 12A2.5 2.5 0 0 0 12 9.5M17.75 6.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.75 6.5'
+const searchIconPath = 'm21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0a8 8 0 0 1 16 0Z'
 </script>
 
 <template>
@@ -80,22 +81,23 @@ const instagramIconPath = 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-
         <button
           class="theme-button"
           type="button"
-          :aria-label="$t('header.rss')"
-          :title="$t('header.rss')"
+          :aria-label="$t('search.open')"
+          :title="$t('search.open')"
+          @click="openSearch"
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path :d="rssIconPath" />
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path :d="searchIconPath" />
           </svg>
         </button>
 
         <button
           class="theme-button"
           type="button"
-          :aria-label="$t('header.instagram')"
-          :title="$t('header.instagram')"
+          :aria-label="$t('header.rss')"
+          :title="$t('header.rss')"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path :d="instagramIconPath" />
+            <path :d="rssIconPath" />
           </svg>
         </button>
 
@@ -201,6 +203,13 @@ const instagramIconPath = 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-
   width: 24px;
   height: 24px;
   fill: currentColor;
+}
+
+.theme-button .search-icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
 }
 
 @media (max-width: 860px) {

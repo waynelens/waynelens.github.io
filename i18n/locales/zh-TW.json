@@ -3,7 +3,6 @@
     "home": "首頁",
     "actions": "社群、語言與主題操作",
     "rss": "RSS 訂閱",
-    "instagram": "Instagram 個人頁面",
     "switchToLight": "切換為亮色主題",
     "switchToDark": "切換為深色主題",
     "switchToEnglish": "切換為英文",
@@ -48,5 +47,17 @@
     "ready": "已完成，再按一次即可分享",
     "downloaded": "圖片已下載，連結已複製",
     "failed": "無法建立圖片"
+  },
+  "search": {
+    "open": "搜尋文章",
+    "title": "文章搜尋",
+    "placeholder": "搜尋故事、地點或標籤…",
+    "hint": "可搜尋標題、摘要、標籤、地點與文章內容。",
+    "minimum": "請至少輸入兩個字元。",
+    "noResults": "找不到符合的攝影故事。",
+    "resultCount": "找到 {count} 筆結果",
+    "navigate": "選擇",
+    "openResult": "開啟",
+    "close": "關閉"
   }
 }

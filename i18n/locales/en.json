@@ -3,7 +3,6 @@
     "home": "Home",
     "actions": "Social, language, and theme actions",
     "rss": "RSS feed",
-    "instagram": "Instagram profile",
     "switchToLight": "Switch to light theme",
     "switchToDark": "Switch to dark theme",
     "switchToEnglish": "Switch to English",
@@ -48,5 +47,17 @@
     "ready": "Ready — tap to share",
     "downloaded": "Image downloaded; link copied",
     "failed": "Unable to create image"
+  },
+  "search": {
+    "open": "Search articles",
+    "title": "Article search",
+    "placeholder": "Search stories, places, or tags...",
+    "hint": "Search titles, descriptions, tags, locations, and article text.",
+    "minimum": "Enter at least two characters to search.",
+    "noResults": "No matching stories found.",
+    "resultCount": "{count} results",
+    "navigate": "Navigate",
+    "openResult": "Open",
+    "close": "Close"
   }
 }
