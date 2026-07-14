@@ -21,6 +21,12 @@ const toggleTheme = () => {
 }
 
 const targetLocale = computed(() => (locale.value === 'zh-TW' ? 'en' : 'zh-TW'))
+const contentLocale = computed(() => {
+  if (route.path.startsWith('/blog/en/')) return 'en'
+  if (route.path.startsWith('/blog/zh-tw/')) return 'zh-TW'
+  return locale.value
+})
+const rssHref = computed(() => (contentLocale.value === 'en' ? '/rss/en.xml' : '/rss/zh-tw.xml'))
 const localeButtonText = computed(() => (targetLocale.value === 'en' ? 'EN' : '中'))
 const localeLabel = computed(() => (
   targetLocale.value === 'en'
@@ -90,16 +96,16 @@ const searchIconPath = 'm21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0a8 8 0 0 1 16 0
           </svg>
         </button>
 
-        <button
+        <a
           class="theme-button"
-          type="button"
+          :href="rssHref"
           :aria-label="$t('header.rss')"
           :title="$t('header.rss')"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path :d="rssIconPath" />
           </svg>
-        </button>
+        </a>
 
         <button
           class="theme-button language-button"

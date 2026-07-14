@@ -22,6 +22,8 @@ const blogRoutes = collectMarkdownFiles(blogContentDirectory).map((file) => {
   return `/blog/${contentPath}`
 })
 
+const rssRoutes = ['/rss/en.xml', '/rss/zh-tw.xml']
+
 export default defineNuxtConfig({
   modules: ['@nuxt/content', '@nuxtjs/i18n'],
   components: [
@@ -37,7 +39,7 @@ export default defineNuxtConfig({
   ],
   nitro: {
     prerender: {
-      routes: blogRoutes
+      routes: [...blogRoutes, ...rssRoutes]
     }
   },
   app: {
@@ -45,7 +47,19 @@ export default defineNuxtConfig({
       title: 'Wayne Jin',
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'shortcut icon', href: '/favicon.svg' }
+        { rel: 'shortcut icon', href: '/favicon.svg' },
+        {
+          rel: 'alternate',
+          type: 'application/rss+xml',
+          title: 'Wayne Jin — Photography Stories',
+          href: 'https://waynelens.dev/rss/en.xml'
+        },
+        {
+          rel: 'alternate',
+          type: 'application/rss+xml',
+          title: 'Wayne Jin — 攝影故事',
+          href: 'https://waynelens.dev/rss/zh-tw.xml'
+        }
       ],
       meta: [
         { name: 'description', content: 'A narrative-driven photography blog built with Nuxt.' },
