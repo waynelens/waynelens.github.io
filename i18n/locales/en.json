@@ -60,6 +60,18 @@
     "openResult": "Open",
     "close": "Close"
   },
+  "navigation": {
+    "primary": "Primary page navigation",
+    "home": "Home",
+    "gallery": "Gallery"
+  },
+  "galleryPage": {
+    "aria": "Photography gallery",
+    "empty": "No photographs are available yet.",
+    "photoAlt": "Photography gallery image",
+    "metaTitle": "Gallery | Wayne Jin",
+    "metaDescription": "A daily-changing masonry gallery of photography by Wayne Jin."
+  },
   "rssDialog": {
     "title": "Subscribe via RSS",
     "description": "Copy or share a feed link with your preferred RSS reader.",

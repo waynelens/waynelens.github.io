@@ -60,6 +60,18 @@
     "openResult": "開啟",
     "close": "關閉"
   },
+  "navigation": {
+    "primary": "主要頁面導覽",
+    "home": "首頁",
+    "gallery": "照片牆"
+  },
+  "galleryPage": {
+    "aria": "攝影作品集",
+    "empty": "目前還沒有可以顯示的照片。",
+    "photoAlt": "攝影作品",
+    "metaTitle": "作品集 | Wayne Jin",
+    "metaDescription": "Wayne Jin 每日變換排列的瀑布流攝影作品集。"
+  },
   "rssDialog": {
     "title": "訂閱 RSS",
     "description": "複製或分享訂閱連結，再加入你慣用的 RSS 閱讀器。",
