@@ -7,6 +7,12 @@ const isActive = (path: string) => normalizedPath.value === path
 
 <template>
   <nav class="bottom-page-nav" :aria-label="$t('navigation.primary')">
+    <span
+      class="bottom-page-nav-indicator"
+      :class="{ 'is-gallery': isActive('/gallery') }"
+      aria-hidden="true"
+    />
+
     <NuxtLink
       to="/"
       class="bottom-page-nav-link"
@@ -39,13 +45,16 @@ const isActive = (path: string) => normalizedPath.value === path
 
 <style scoped>
 .bottom-page-nav {
+  --nav-item-size: 48px;
+  --nav-item-step: 54px;
+
   position: fixed;
   left: 50%;
   bottom: max(18px, env(safe-area-inset-bottom));
   z-index: 80;
   isolation: isolate;
   display: grid;
-  grid-template-columns: repeat(2, 48px);
+  grid-template-columns: repeat(2, var(--nav-item-size));
   gap: 6px;
   overflow: hidden;
   padding: 6px;
@@ -63,6 +72,26 @@ const isActive = (path: string) => normalizedPath.value === path
   transform: translateX(-50%);
 }
 
+.bottom-page-nav-indicator {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 0;
+  width: var(--nav-item-size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--text) 88%, transparent);
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  pointer-events: none;
+  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bottom-page-nav-indicator.is-gallery {
+  transform: translateX(var(--nav-item-step));
+}
+
 .bottom-page-nav::before {
   position: absolute;
   z-index: -1;
@@ -74,13 +103,15 @@ const isActive = (path: string) => normalizedPath.value === path
 }
 
 .bottom-page-nav-link {
+  position: relative;
+  z-index: 1;
   display: grid;
-  width: 48px;
+  width: var(--nav-item-size);
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
   color: var(--muted);
-  transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+  transition: color 240ms ease, transform 160ms ease;
 }
 
 .bottom-page-nav-link:hover {
@@ -89,10 +120,6 @@ const isActive = (path: string) => normalizedPath.value === path
 }
 
 .bottom-page-nav-link.is-active {
-  background: color-mix(in srgb, var(--text) 88%, transparent);
-  box-shadow:
-    0 5px 14px rgba(0, 0, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.28);
   color: var(--bg);
 }
 
@@ -128,12 +155,16 @@ const isActive = (path: string) => normalizedPath.value === path
 
 @media (max-width: 560px) {
   .bottom-page-nav {
-    bottom: max(12px, env(safe-area-inset-bottom));
-    grid-template-columns: repeat(2, 46px);
-  }
+    --nav-item-size: 46px;
+    --nav-item-step: 52px;
 
-  .bottom-page-nav-link {
-    width: 46px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bottom-page-nav-indicator {
+    transition-duration: 0.01ms;
   }
 }
 </style>

@@ -297,14 +297,17 @@ onBeforeUnmount(() => {
 
 @media (max-width: 560px) {
   .rss-dialog {
+    inset: 0;
     width: calc(100% - 16px);
-    max-height: calc(100vh - 16px);
-    margin: auto auto 8px;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    margin: auto;
     border-radius: 22px;
   }
 
   .rss-panel {
-    max-height: calc(100vh - 16px);
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
     overflow-y: auto;
     padding: 20px 16px;
   }
