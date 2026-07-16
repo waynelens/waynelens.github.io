@@ -132,8 +132,14 @@ const searchIconPath = 'm21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0a8 8 0 0 1 16 0
 
 <style scoped>
 .header-shell {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   width: 100%;
-  padding: 24px 32px 0;
+  padding: 24px 32px 12px;
+  background: color-mix(in srgb, var(--page-bg) 82%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .header-backdrop {
@@ -222,7 +228,7 @@ const searchIconPath = 'm21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0a8 8 0 0 1 16 0
 
 @media (max-width: 560px) {
   .header-shell {
-    padding: 18px 18px 0;
+    padding: 18px 18px 10px;
   }
 
   .icon-group {
