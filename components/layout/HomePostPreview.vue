@@ -34,7 +34,7 @@ const openPreview = () => {
         class="home-post-image-element"
         :src="previewImage"
         :alt="post.title || t('home.previewImage')"
-        sizes="(max-width: 860px) calc(100vw - 48px), (max-width: 1080px) 48vw, 24vw"
+        sizes="(max-width: 900px) calc(100vw - 44px), (max-width: 1080px) calc(100vw - 60px), 586px"
       />
     </button>
 
@@ -71,9 +71,8 @@ const openPreview = () => {
 <style scoped>
 .home-post {
   display: grid;
-  grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
-  gap: 16px;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
   width: 100%;
   margin: 0 0 18px;
   padding: 14px;
@@ -174,8 +173,6 @@ const openPreview = () => {
 
 @media (max-width: 860px) {
   .home-post {
-    grid-template-columns: 1fr;
-    gap: 0;
     padding: 12px;
   }
 
