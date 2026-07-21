@@ -1,0 +1,20 @@
+diveId: green-island-shilang-demo-2026-07-18-01
+siteId: green-island-shilang-demo
+date: 2026-07-18
+diveNumber: 2
+title:
+  zh-TW: 2026.07.18 — 綠島石朗示範潛水紀錄
+  en: 2026.07.18 — Green Island Shilang Demo Dive Log
+summary:
+  zh-TW: 這是一筆綠島版面示範資料，深度、時間、氣瓶與水況均不是實際潛水紀錄。
+  en: This is a Green Island layout example. Depth, time, tank pressure, and conditions are not real dive data.
+maxDepthM: 18.6
+durationMin: 46
+waterTemperatureC: 28
+visibilityM: 18
+gas: Air
+tankStartBar: 200
+tankEndBar: 70
+entryType: shore
+photos: []
+isDemo: true

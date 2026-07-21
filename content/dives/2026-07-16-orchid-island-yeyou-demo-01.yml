@@ -1,0 +1,20 @@
+diveId: orchid-island-yeyou-demo-2026-07-16-01
+siteId: orchid-island-yeyou-demo
+date: 2026-07-16
+diveNumber: 3
+title:
+  zh-TW: 2026.07.16 — 蘭嶼椰油示範潛水紀錄
+  en: 2026.07.16 — Orchid Island Yeyou Demo Dive Log
+summary:
+  zh-TW: 這是一筆蘭嶼船潛版面示範資料，所有數值與水況均為虛構資料。
+  en: This is an Orchid Island boat-dive layout example. All values and conditions are fictional demo data.
+maxDepthM: 22.3
+durationMin: 51
+waterTemperatureC: 27
+visibilityM: 22
+gas: Air
+tankStartBar: 200
+tankEndBar: 60
+entryType: boat
+photos: []
+isDemo: true

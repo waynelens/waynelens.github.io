@@ -1,0 +1,16 @@
+siteId: okinawa-cape-maeda-demo
+name:
+  zh-TW: 沖繩真榮田岬（示範潛點）
+  en: Okinawa Cape Maeda (Demo Site)
+region:
+  zh-TW: 日本沖繩縣恩納村
+  en: Onna, Okinawa, Japan
+description:
+  zh-TW: 用來示範海外岸潛紀錄的近似位置，並非入口、潛線或現場安全資訊。
+  en: An approximate location used to demonstrate an overseas shore-dive log, not an entrance, dive route, or on-site safety guide.
+coordinates:
+  latitude: 26.443
+  longitude: 127.771
+precision: approximate
+entryType: shore
+isDemo: true

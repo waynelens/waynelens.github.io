@@ -1,0 +1,20 @@
+diveId: bali-tulamben-demo-2026-05-08-01
+siteId: bali-tulamben-demo
+date: 2026-05-08
+diveNumber: 5
+title:
+  zh-TW: 2026.05.08 — 峇里島土蘭奔示範潛水紀錄
+  en: 2026.05.08 — Bali Tulamben Demo Dive Log
+summary:
+  zh-TW: 這是一筆峇里島沉船潛水版面示範資料，所有數值均為虛構內容，不能作為潛水計畫依據。
+  en: This is a Bali wreck-dive layout example. All values are fictional and must not be used for dive planning.
+maxDepthM: 25.4
+durationMin: 49
+waterTemperatureC: 29
+visibilityM: 20
+gas: Nitrox 32
+tankStartBar: 210
+tankEndBar: 75
+entryType: shore
+photos: []
+isDemo: true

@@ -71,5 +71,85 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       '2026-07-20',
       '示範潛水'
     ]
+  },
+  'green-island-shilang-demo-2026-07-18-01': {
+    en: [
+      'Green Island',
+      'Shilang',
+      'Taitung Taiwan',
+      'scuba diving',
+      'shore dive',
+      '2026-07-18',
+      'demo dive'
+    ],
+    'zh-TW': [
+      '綠島',
+      '石朗',
+      '台東',
+      '水肺潛水',
+      '岸潛',
+      '2026-07-18',
+      '示範潛水'
+    ]
+  },
+  'orchid-island-yeyou-demo-2026-07-16-01': {
+    en: [
+      'Orchid Island',
+      'Lanyu',
+      'Yeyou',
+      'Taitung Taiwan',
+      'boat dive',
+      '2026-07-16',
+      'demo dive'
+    ],
+    'zh-TW': [
+      '蘭嶼',
+      '椰油',
+      '台東',
+      '船潛',
+      '水肺潛水',
+      '2026-07-16',
+      '示範潛水'
+    ]
+  },
+  'okinawa-cape-maeda-demo-2026-06-12-01': {
+    en: [
+      'Okinawa',
+      'Cape Maeda',
+      'Onna Japan',
+      'shore dive',
+      'overseas diving',
+      '2026-06-12',
+      'demo dive'
+    ],
+    'zh-TW': [
+      '沖繩',
+      '真榮田岬',
+      '恩納村',
+      '日本潛水',
+      '海外潛水',
+      '2026-06-12',
+      '示範潛水'
+    ]
+  },
+  'bali-tulamben-demo-2026-05-08-01': {
+    en: [
+      'Bali',
+      'Tulamben',
+      'Indonesia',
+      'wreck dive',
+      'Nitrox 32',
+      '2026-05-08',
+      'demo dive'
+    ],
+    'zh-TW': [
+      '峇里島',
+      '土蘭奔',
+      '印尼潛水',
+      '沉船潛水',
+      '高氧空氣',
+      '2026-05-08',
+      '示範潛水'
+    ]
   }
 }

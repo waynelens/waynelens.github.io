@@ -1,0 +1,16 @@
+siteId: orchid-island-yeyou-demo
+name:
+  zh-TW: 蘭嶼椰油（示範潛點）
+  en: Orchid Island Yeyou (Demo Site)
+region:
+  zh-TW: 台灣台東蘭嶼
+  en: Orchid Island, Taitung, Taiwan
+description:
+  zh-TW: 用來示範蘭嶼船潛紀錄的近似位置，並非實際下水點、航線或海況資訊。
+  en: An approximate location used to demonstrate an Orchid Island boat-dive log, not an actual entry point, route, or conditions guide.
+coordinates:
+  latitude: 22.056
+  longitude: 121.507
+precision: approximate
+entryType: boat
+isDemo: true

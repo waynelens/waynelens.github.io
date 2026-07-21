@@ -1,0 +1,16 @@
+siteId: bali-tulamben-demo
+name:
+  zh-TW: 峇里島土蘭奔（示範潛點）
+  en: Bali Tulamben (Demo Site)
+region:
+  zh-TW: 印尼峇里島卡朗阿森
+  en: Karangasem, Bali, Indonesia
+description:
+  zh-TW: 用來示範海外沉船潛水紀錄的近似位置，並非沉船位置、下水點或潛水計畫資訊。
+  en: An approximate location used to demonstrate an overseas wreck-dive log, not a wreck position, entry point, or dive plan.
+coordinates:
+  latitude: -8.275
+  longitude: 115.593
+precision: approximate
+entryType: shore
+isDemo: true

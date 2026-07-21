@@ -1,0 +1,20 @@
+diveId: okinawa-cape-maeda-demo-2026-06-12-01
+siteId: okinawa-cape-maeda-demo
+date: 2026-06-12
+diveNumber: 4
+title:
+  zh-TW: 2026.06.12 — 沖繩真榮田岬示範潛水紀錄
+  en: 2026.06.12 — Okinawa Cape Maeda Demo Dive Log
+summary:
+  zh-TW: 這是一筆沖繩岸潛版面示範資料，所有深度、時間與環境數據均非實際紀錄。
+  en: This is an Okinawa shore-dive layout example. Depth, time, and environmental values are not real dive data.
+maxDepthM: 16.8
+durationMin: 44
+waterTemperatureC: 25
+visibilityM: 15
+gas: Air
+tankStartBar: 200
+tankEndBar: 85
+entryType: shore
+photos: []
+isDemo: true

@@ -36,6 +36,7 @@ export default defineNuxtConfig({
     '@fontsource-variable/inter/wght.css',
     '@fontsource-variable/noto-sans-tc/wght.css',
     'leaflet/dist/leaflet.css',
+    'leaflet.markercluster/dist/MarkerCluster.css',
     '~/assets/css/main.css'
   ],
   nitro: {
