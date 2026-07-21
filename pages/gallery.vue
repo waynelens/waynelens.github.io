@@ -47,7 +47,7 @@ useSeoMeta({
 
 <template>
   <section class="gallery-page" :aria-label="$t('galleryPage.aria')">
-    <PhotoMasonry
+    <PhotoDenseGrid
       v-if="isReady && photos.length"
       :key="`${locale}-${daySeed}`"
       :photos="photos"
@@ -107,7 +107,12 @@ useSeoMeta({
   }
 
   .gallery-page-skeleton {
-    column-count: 1;
+    column-count: 2;
+    column-gap: 12px;
+  }
+
+  .gallery-page-skeleton span {
+    margin-bottom: 12px;
   }
 }
 </style>
