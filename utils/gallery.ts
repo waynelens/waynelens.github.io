@@ -4,7 +4,6 @@ const DAY_MS = 24 * 60 * 60 * 1000
 export type GalleryPhoto = {
   alt: string
   src: string
-  wideRank: number
 }
 
 export const hashGalleryValue = (value: string) => {
@@ -23,14 +22,13 @@ export const getTaipeiDaySeed = (timestamp = Date.now()) => {
 }
 
 export const arrangeDailyGallery = (
-  photos: Omit<GalleryPhoto, 'wideRank'>[],
+  photos: GalleryPhoto[],
   daySeed: string
 ): GalleryPhoto[] => {
   return photos
     .map(photo => ({
       ...photo,
-      order: hashGalleryValue(`${daySeed}:order:${photo.src}`),
-      wideRank: hashGalleryValue(`${daySeed}:size:${photo.src}`)
+      order: hashGalleryValue(`${daySeed}:order:${photo.src}`)
     }))
     .sort((a, b) => a.order - b.order || a.src.localeCompare(b.src))
     .map(({ order: _order, ...photo }) => photo)

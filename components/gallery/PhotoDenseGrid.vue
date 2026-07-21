@@ -5,13 +5,12 @@ const props = defineProps<{
   photos: GalleryPhoto[]
 }>()
 
-const LOOP_COUNT = 3
-const LANDSCAPE_WIDE_RATIO = 1.15
+const MAX_RENDERED_ITEMS = 72
+const MIN_RENDERED_ITEMS = 48
 
 const loopRoot = ref<HTMLElement | null>(null)
 const sentinel = ref<HTMLElement | null>(null)
-const cycles = ref(Array.from({ length: LOOP_COUNT }, (_, index) => index))
-const imageRatios = reactive(new Map<string, number>())
+const windowStart = ref(0)
 const lightbox = ref({
   index: 0,
   open: false,
@@ -23,21 +22,33 @@ let resizeObserver: ResizeObserver | null = null
 let layoutFrame = 0
 let recycling = false
 
-const wideSources = computed(() => {
-  const widePhotoCount = Math.max(1, Math.round(props.photos.length / 5))
+const renderedPhotos = computed(() => {
+  if (!props.photos.length) return []
 
-  return new Set(
-    props.photos
-      .filter(photo => (imageRatios.get(photo.src) ?? 0) >= LANDSCAPE_WIDE_RATIO)
-      .sort((a, b) => a.wideRank - b.wideRank || a.src.localeCompare(b.src))
-      .slice(0, widePhotoCount)
-      .map(photo => photo.src)
+  const itemCount = Math.min(
+    MAX_RENDERED_ITEMS,
+    Math.max(MIN_RENDERED_ITEMS, props.photos.length * 3)
   )
+
+  return Array.from({ length: itemCount }, (_, offset) => {
+    const sequence = windowStart.value + offset
+    const index = sequence % props.photos.length
+
+    return {
+      index,
+      photo: props.photos[index],
+      sequence
+    }
+  })
 })
 
-const isWide = (photo: GalleryPhoto) => {
-  return wideSources.value.has(photo.src)
-}
+const recycleBatchSize = computed(() => {
+  if (!props.photos.length) return 0
+  return Math.min(
+    props.photos.length,
+    Math.max(1, Math.floor(renderedPhotos.value.length / 3))
+  )
+})
 
 const openImage = (photo: GalleryPhoto, index: number) => {
   lightbox.value = {
@@ -79,34 +90,28 @@ const scheduleLayout = () => {
   })
 }
 
-const handleImageLoad = async (event: Event) => {
-  const image = event.target
-  if (!(image instanceof HTMLImageElement)) return
-
-  const source = image.dataset.gallerySource
-  if (source && image.naturalWidth && image.naturalHeight) {
-    imageRatios.set(source, image.naturalWidth / image.naturalHeight)
-  }
-
-  await nextTick()
+const handleImageLoad = () => {
   scheduleLayout()
 }
 
-const recycleCycles = async () => {
-  if (recycling || cycles.value.length < LOOP_COUNT || !loopRoot.value) return
+const recycleWindow = async () => {
+  if (recycling || !recycleBatchSize.value || !loopRoot.value) return
   recycling = true
 
-  const anchorCycle = cycles.value[1]
-  const anchorBefore = loopRoot.value.querySelector<HTMLElement>(`[data-cycle="${anchorCycle}"]`)
+  const anchorSequence = windowStart.value + recycleBatchSize.value
+  const anchorBefore = loopRoot.value.querySelector<HTMLElement>(
+    `[data-sequence="${anchorSequence}"]`
+  )
   const anchorTopBefore = anchorBefore?.getBoundingClientRect().top
-  const nextCycle = cycles.value[cycles.value.length - 1] + 1
 
-  cycles.value = [...cycles.value.slice(1), nextCycle]
+  windowStart.value += recycleBatchSize.value
   await nextTick()
   layoutGrids()
   await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
 
-  const anchorAfter = loopRoot.value?.querySelector<HTMLElement>(`[data-cycle="${anchorCycle}"]`)
+  const anchorAfter = loopRoot.value?.querySelector<HTMLElement>(
+    `[data-sequence="${anchorSequence}"]`
+  )
   if (anchorTopBefore !== undefined && anchorAfter) {
     window.scrollBy({
       top: anchorAfter.getBoundingClientRect().top - anchorTopBefore,
@@ -125,7 +130,7 @@ onMounted(() => {
 
   intersectionObserver = new IntersectionObserver((entries) => {
     if (entries.some(entry => entry.isIntersecting)) {
-      void recycleCycles()
+      void recycleWindow()
     }
   }, {
     rootMargin: '400px 0px 400px'
@@ -136,8 +141,7 @@ onMounted(() => {
 })
 
 watch(() => props.photos, async () => {
-  imageRatios.clear()
-  cycles.value = Array.from({ length: LOOP_COUNT }, (_, index) => index)
+  windowStart.value = 0
   await nextTick()
   scheduleLayout()
 })
@@ -155,31 +159,23 @@ onBeforeUnmount(() => {
     class="photo-dense-loop"
     @load.capture="handleImageLoad"
   >
-    <div
-      v-for="cycle in cycles"
-      :key="cycle"
-      class="photo-dense-grid"
-      :data-cycle="cycle"
-    >
+    <div class="photo-dense-grid">
       <button
-        v-for="(photo, index) in photos"
-        :key="`${cycle}:${photo.src}`"
+        v-for="entry in renderedPhotos"
+        :key="entry.sequence"
         class="photo-dense-item"
-        :class="{ 'photo-dense-item--wide': isWide(photo) }"
         type="button"
-        :aria-label="photo.alt"
-        :data-photo-index="index"
-        @click="openImage(photo, index)"
+        :aria-label="entry.photo.alt"
+        :data-photo-index="entry.index"
+        :data-sequence="entry.sequence"
+        @click="openImage(entry.photo, entry.index)"
       >
         <ResponsiveImage
           class="photo-dense-image"
-          :src="photo.src"
-          :alt="photo.alt"
-          :data-gallery-source="photo.src"
-          :default-width="isWide(photo) ? 1200 : 768"
-          :sizes="isWide(photo)
-            ? '(max-width: 720px) calc(100vw - 20px), (max-width: 1080px) 66vw, 40vw'
-            : '(max-width: 720px) calc(50vw - 16px), (max-width: 1080px) 32vw, 20vw'"
+          :src="entry.photo.src"
+          :alt="entry.photo.alt"
+          :default-width="768"
+          sizes="(max-width: 720px) calc(50vw - 16px), (max-width: 1080px) 32vw, 20vw"
         />
       </button>
     </div>
@@ -197,8 +193,6 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .photo-dense-loop {
-  display: grid;
-  gap: 18px;
   width: 100%;
 }
 
@@ -224,10 +218,6 @@ onBeforeUnmount(() => {
   cursor: zoom-in;
 }
 
-.photo-dense-item--wide {
-  grid-column: span 2;
-}
-
 .photo-dense-image {
   display: block;
   width: 100%;
@@ -236,6 +226,7 @@ onBeforeUnmount(() => {
 }
 
 .photo-dense-sentinel {
+  display: block;
   width: 1px;
   height: 1px;
   pointer-events: none;
@@ -248,12 +239,8 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 720px) {
-  .photo-dense-loop,
   .photo-dense-grid {
     gap: 12px;
-  }
-
-  .photo-dense-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: 6px;
   }
