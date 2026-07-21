@@ -9,7 +9,10 @@ const isActive = (path: string) => normalizedPath.value === path
   <nav class="bottom-page-nav" :aria-label="$t('navigation.primary')">
     <span
       class="bottom-page-nav-indicator"
-      :class="{ 'is-gallery': isActive('/gallery') }"
+      :class="{
+        'is-gallery': isActive('/gallery'),
+        'is-dives': isActive('/dives')
+      }"
       aria-hidden="true"
     />
 
@@ -40,6 +43,21 @@ const isActive = (path: string) => normalizedPath.value === path
         <path d="m5.5 18 4.3-4.5 3.2 3 2.1-2.1 3.4 3.6" />
       </svg>
     </NuxtLink>
+
+    <NuxtLink
+      to="/dives"
+      class="bottom-page-nav-link"
+      :class="{ 'is-active': isActive('/dives') }"
+      :aria-label="$t('navigation.dives')"
+      :aria-current="isActive('/dives') ? 'page' : undefined"
+      :title="$t('navigation.dives')"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="m3.5 6.5 5-2.5 7 2.5 5-2.5v13.5l-5 2.5-7-2.5-5 2.5z" />
+        <path d="M8.5 4v13.5M15.5 6.5V20" />
+        <circle cx="12" cy="10.5" r="2" />
+      </svg>
+    </NuxtLink>
   </nav>
 </template>
 
@@ -54,7 +72,7 @@ const isActive = (path: string) => normalizedPath.value === path
   z-index: 80;
   isolation: isolate;
   display: grid;
-  grid-template-columns: repeat(2, var(--nav-item-size));
+  grid-template-columns: repeat(3, var(--nav-item-size));
   gap: 6px;
   overflow: hidden;
   padding: 6px;
@@ -90,6 +108,10 @@ const isActive = (path: string) => normalizedPath.value === path
 
 .bottom-page-nav-indicator.is-gallery {
   transform: translateX(var(--nav-item-step));
+}
+
+.bottom-page-nav-indicator.is-dives {
+  transform: translateX(calc(var(--nav-item-step) * 2));
 }
 
 .bottom-page-nav::before {

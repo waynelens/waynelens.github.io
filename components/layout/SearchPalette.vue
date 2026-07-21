@@ -35,10 +35,18 @@ const { data: posts } = await useAsyncData('site-search-posts', () => {
   return queryCollection('blog').all()
 })
 
+const { data: diveSites } = await useAsyncData('site-search-dive-sites', () => {
+  return queryCollection('diveSites').all()
+})
+
+const { data: diveLogs } = await useAsyncData('site-search-dive-logs', () => {
+  return queryCollection('dives').all()
+})
+
 const currentLocale = computed(() => locale.value as SearchLocale)
 
 const documents = computed<SearchDocument[]>(() => {
-  return (posts.value || [])
+  const blogDocuments = (posts.value || [])
     .filter(post => post.lang === currentLocale.value)
     .map((post) => ({
       id: post.path,
@@ -51,6 +59,51 @@ const documents = computed<SearchDocument[]>(() => {
       keywords: (searchMetadata[post.translationKey]?.[currentLocale.value] || []).join(' '),
       lang: post.lang
     }))
+
+  const sites = diveSites.value || []
+  const dives = diveLogs.value || []
+  const siteDocuments = sites.map((site) => {
+    const latestDate = dives
+      .filter(dive => dive.siteId === site.siteId)
+      .map(dive => dive.date)
+      .sort((a, b) => b.localeCompare(a))[0] || ''
+
+    return {
+      id: `site:${site.siteId}`,
+      path: `/dives?site=${encodeURIComponent(site.siteId)}`,
+      title: site.name[currentLocale.value],
+      description: site.description[currentLocale.value],
+      date: latestDate,
+      tags: `${site.region[currentLocale.value]} ${site.entryType}`,
+      content: '',
+      keywords: `${site.name.en} ${site.name['zh-TW']} ${site.region.en} ${site.region['zh-TW']}`,
+      lang: currentLocale.value
+    }
+  })
+
+  const siteById = new Map(sites.map(site => [site.siteId, site]))
+  const diveDocuments = dives.map((dive) => {
+    const site = siteById.get(dive.siteId)
+
+    return {
+      id: `dive:${dive.diveId}`,
+      path: `/dives?site=${encodeURIComponent(dive.siteId)}&dive=${encodeURIComponent(dive.diveId)}`,
+      title: dive.title[currentLocale.value],
+      description: dive.summary[currentLocale.value],
+      date: dive.date,
+      tags: [
+        site?.name[currentLocale.value],
+        site?.region[currentLocale.value],
+        dive.entryType,
+        dive.gas
+      ].filter(Boolean).join(' '),
+      content: dive.summary[currentLocale.value],
+      keywords: (searchMetadata[dive.diveId]?.[currentLocale.value] || []).join(' '),
+      lang: currentLocale.value
+    }
+  })
+
+  return [...blogDocuments, ...siteDocuments, ...diveDocuments]
 })
 
 const searchIndex = computed(() => {

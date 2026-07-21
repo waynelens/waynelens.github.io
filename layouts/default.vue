@@ -1,7 +1,11 @@
 <script setup lang="ts">
 const route = useRoute()
 const normalizedPath = computed(() => route.path.replace(/\/+$/, '') || '/')
-const showBottomNav = computed(() => normalizedPath.value === '/' || normalizedPath.value === '/gallery')
+const showBottomNav = computed(() => (
+  normalizedPath.value === '/'
+  || normalizedPath.value === '/gallery'
+  || normalizedPath.value === '/dives'
+))
 </script>
 
 <template>

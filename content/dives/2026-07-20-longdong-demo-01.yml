@@ -1,0 +1,20 @@
+diveId: longdong-demo-2026-07-20-01
+siteId: longdong-demo
+date: 2026-07-20
+diveNumber: 1
+title:
+  zh-TW: 2026.07.20 — 龍洞示範潛水紀錄
+  en: 2026.07.20 — Longdong Demo Dive Log
+summary:
+  zh-TW: 這是一筆版面與資料結構示範，深度、時間、氣瓶與水況均不是實際潛水資料。
+  en: This entry demonstrates the layout and data model. Depth, time, tank pressure, and conditions are not real dive data.
+maxDepthM: 12.4
+durationMin: 42
+waterTemperatureC: 27
+visibilityM: 8
+gas: Air
+tankStartBar: 200
+tankEndBar: 90
+entryType: shore
+photos: []
+isDemo: true

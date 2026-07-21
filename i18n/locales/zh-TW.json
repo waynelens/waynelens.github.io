@@ -49,12 +49,12 @@
     "failed": "無法建立圖片"
   },
   "search": {
-    "open": "搜尋文章",
-    "title": "文章搜尋",
-    "placeholder": "搜尋故事、地點或標籤…",
-    "hint": "可搜尋標題、摘要、標籤、地點與文章內容。",
+    "open": "搜尋網站",
+    "title": "網站搜尋",
+    "placeholder": "搜尋故事、潛點、紀錄或標籤…",
+    "hint": "可搜尋文章、潛點、潛水紀錄、地點與標籤。",
     "minimum": "請至少輸入兩個字元。",
-    "noResults": "找不到符合的攝影故事。",
+    "noResults": "找不到符合的內容。",
     "resultCount": "找到 {count} 筆結果",
     "navigate": "選擇",
     "openResult": "開啟",
@@ -63,7 +63,8 @@
   "navigation": {
     "primary": "主要頁面導覽",
     "home": "首頁",
-    "gallery": "照片牆"
+    "gallery": "照片牆",
+    "dives": "潛點地圖"
   },
   "galleryPage": {
     "aria": "攝影作品集",
@@ -71,6 +72,40 @@
     "photoAlt": "攝影作品",
     "metaTitle": "作品集 | Wayne Jin",
     "metaDescription": "Wayne Jin 每日變換排列的瀑布流攝影作品集。"
+  },
+  "divesPage": {
+    "aria": "潛點地圖與潛水紀錄",
+    "eyebrow": "Scuba Log",
+    "title": "潛點地圖",
+    "description": "以地圖整理造訪過的潛點與每一次水肺潛水紀錄。",
+    "statistics": "潛水統計",
+    "totalDives": "潛水次數",
+    "totalSites": "造訪潛點",
+    "deepestDive": "最深深度",
+    "totalTime": "累積時間",
+    "filters": "潛水紀錄篩選",
+    "year": "年份",
+    "region": "地區",
+    "allYears": "所有年份",
+    "allRegions": "所有地區",
+    "mapLabel": "潛點位置地圖",
+    "loadingMap": "正在載入地圖…",
+    "siteList": "潛點列表",
+    "selectedSite": "選取的潛點",
+    "diveCount": "{count} 次",
+    "demo": "示範資料",
+    "approximate": "近似位置",
+    "shore": "岸潛",
+    "boat": "船潛",
+    "maxDepth": "最大深度",
+    "duration": "潛水時間",
+    "waterTemperature": "水溫",
+    "visibility": "能見度",
+    "gas": "氣體",
+    "tankPressure": "氣瓶壓力",
+    "noResults": "目前沒有符合篩選條件的潛水紀錄。",
+    "metaTitle": "潛點地圖與潛水紀錄 | Wayne Jin",
+    "metaDescription": "Wayne Jin 的水肺潛點地圖、潛水統計與個人潛水紀錄。"
   },
   "rssDialog": {
     "title": "訂閱 RSS",

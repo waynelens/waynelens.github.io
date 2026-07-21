@@ -49,12 +49,12 @@
     "failed": "Unable to create image"
   },
   "search": {
-    "open": "Search articles",
-    "title": "Article search",
-    "placeholder": "Search stories, places, or tags...",
-    "hint": "Search titles, descriptions, tags, locations, and article text.",
+    "open": "Search site",
+    "title": "Site search",
+    "placeholder": "Search stories, dive sites, logs, or tags...",
+    "hint": "Search articles, dive sites, dive logs, locations, and tags.",
     "minimum": "Enter at least two characters to search.",
-    "noResults": "No matching stories found.",
+    "noResults": "No matching content found.",
     "resultCount": "{count} results",
     "navigate": "Navigate",
     "openResult": "Open",
@@ -63,7 +63,8 @@
   "navigation": {
     "primary": "Primary page navigation",
     "home": "Home",
-    "gallery": "Gallery"
+    "gallery": "Gallery",
+    "dives": "Dive map"
   },
   "galleryPage": {
     "aria": "Photography gallery",
@@ -71,6 +72,40 @@
     "photoAlt": "Photography gallery image",
     "metaTitle": "Gallery | Wayne Jin",
     "metaDescription": "A daily-changing masonry gallery of photography by Wayne Jin."
+  },
+  "divesPage": {
+    "aria": "Dive site map and scuba logs",
+    "eyebrow": "Scuba Log",
+    "title": "Dive Map",
+    "description": "A map of visited dive sites and a structured record of each scuba dive.",
+    "statistics": "Dive statistics",
+    "totalDives": "Total dives",
+    "totalSites": "Dive sites",
+    "deepestDive": "Deepest dive",
+    "totalTime": "Bottom time",
+    "filters": "Dive log filters",
+    "year": "Year",
+    "region": "Region",
+    "allYears": "All years",
+    "allRegions": "All regions",
+    "mapLabel": "Dive site location map",
+    "loadingMap": "Loading map…",
+    "siteList": "Dive site list",
+    "selectedSite": "Selected site",
+    "diveCount": "{count} dives",
+    "demo": "Demo data",
+    "approximate": "Approximate location",
+    "shore": "Shore dive",
+    "boat": "Boat dive",
+    "maxDepth": "Max depth",
+    "duration": "Dive time",
+    "waterTemperature": "Water temperature",
+    "visibility": "Visibility",
+    "gas": "Gas",
+    "tankPressure": "Tank pressure",
+    "noResults": "No dive logs match the current filters.",
+    "metaTitle": "Dive Map and Scuba Logs | Wayne Jin",
+    "metaDescription": "Wayne Jin's scuba dive map, dive statistics, and personal dive logs."
   },
   "rssDialog": {
     "title": "Subscribe via RSS",

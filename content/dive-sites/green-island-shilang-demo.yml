@@ -1,0 +1,16 @@
+siteId: green-island-shilang-demo
+name:
+  zh-TW: 綠島石朗（示範潛點）
+  en: Green Island Shilang (Demo Site)
+region:
+  zh-TW: 台灣台東綠島
+  en: Green Island, Taitung, Taiwan
+description:
+  zh-TW: 用來示範綠島潛水紀錄的近似位置，並非下水點、航線或即時海況資訊。
+  en: An approximate location used to demonstrate a Green Island dive log, not an entry point, route, or current conditions guide.
+coordinates:
+  latitude: 22.6545
+  longitude: 121.4755
+precision: approximate
+entryType: shore
+isDemo: true

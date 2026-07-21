@@ -1,0 +1,16 @@
+siteId: longdong-demo
+name:
+  zh-TW: 龍洞（示範潛點）
+  en: Longdong (Demo Site)
+region:
+  zh-TW: 新北市東北角
+  en: Northeast Coast, New Taipei
+description:
+  zh-TW: 用來示範潛點地圖與潛水紀錄格式的近似位置，並非下水點導航資訊。
+  en: An approximate location used to demonstrate the dive map and log format, not an entry-point guide.
+coordinates:
+  latitude: 25.116
+  longitude: 121.917
+precision: approximate
+entryType: shore
+isDemo: true
