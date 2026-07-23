@@ -9,12 +9,41 @@ summary:
   zh-TW: 這是一筆蘭嶼船潛版面示範資料，所有數值與水況均為虛構資料。
   en: This is an Orchid Island boat-dive layout example. All values and conditions are fictional demo data.
 maxDepthM: 22.3
+averageDepthM: 13.7
 durationMin: 51
+startTime: "08:42"
+surfaceIntervalMin: 82
 waterTemperatureC: 27
 visibilityM: 22
 gas: Air
 tankStartBar: 200
 tankEndBar: 60
 entryType: boat
+buddy: Kai
+guide: Demo Guide
+conditions:
+  weather:
+    zh-TW: 晴時多雲
+    en: Partly cloudy
+  current:
+    zh-TW: 中等順流
+    en: Moderate following current
+  waves:
+    zh-TW: 中等湧浪
+    en: Moderate swell
+equipment:
+  suit:
+    zh-TW: 3 mm 濕式防寒衣
+    en: 3 mm wetsuit
+  weightKg: 3
+  tank: 12 L aluminum
+notes:
+  zh-TW: 由船尾負浮力入水，沿岩壁順流前進，安全停留後由象拔完成出水程序。此為虛構示範內容。
+  en: Made a negative entry from the stern, followed the wall with the current, and deployed an SMB before surfacing. This is fictional demo content.
+wildlife:
+  - zh-TW: 隆頭鸚哥
+    en: Bumphead parrotfish
+  - zh-TW: 海蛇
+    en: Sea snake
 photos: []
 isDemo: true

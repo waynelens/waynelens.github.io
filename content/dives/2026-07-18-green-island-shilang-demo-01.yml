@@ -9,12 +9,43 @@ summary:
   zh-TW: 這是一筆綠島版面示範資料，深度、時間、氣瓶與水況均不是實際潛水紀錄。
   en: This is a Green Island layout example. Depth, time, tank pressure, and conditions are not real dive data.
 maxDepthM: 18.6
+averageDepthM: 11.2
 durationMin: 46
+startTime: "10:35"
+surfaceIntervalMin: 68
 waterTemperatureC: 28
 visibilityM: 18
 gas: Air
 tankStartBar: 200
 tankEndBar: 70
 entryType: shore
+buddy: Mina
+guide: Demo Guide
+conditions:
+  weather:
+    zh-TW: 晴朗
+    en: Sunny
+  current:
+    zh-TW: 輕微側流
+    en: Mild cross-current
+  waves:
+    zh-TW: 平穩
+    en: Calm
+equipment:
+  suit:
+    zh-TW: 3 mm 濕式防寒衣
+    en: 3 mm wetsuit
+  weightKg: 3
+  tank: 12 L aluminum
+notes:
+  zh-TW: 從石朗岸邊入水，沿著礁盤緩慢下潛並維持適合拍攝的節奏。此為虛構示範內容。
+  en: Entered from the Shilang shore and descended slowly along the reef at a photography-friendly pace. This is fictional demo content.
+wildlife:
+  - zh-TW: 海龜
+    en: Green sea turtle
+  - zh-TW: 角蝶魚
+    en: Pennant coralfish
+  - zh-TW: 花園鰻
+    en: Garden eel
 photos: []
 isDemo: true

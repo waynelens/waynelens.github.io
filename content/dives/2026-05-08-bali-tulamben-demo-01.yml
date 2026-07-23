@@ -9,12 +9,43 @@ summary:
   zh-TW: 這是一筆峇里島沉船潛水版面示範資料，所有數值均為虛構內容，不能作為潛水計畫依據。
   en: This is a Bali wreck-dive layout example. All values are fictional and must not be used for dive planning.
 maxDepthM: 25.4
+averageDepthM: 15.1
 durationMin: 49
+startTime: "07:52"
+surfaceIntervalMin: 89
 waterTemperatureC: 29
 visibilityM: 20
 gas: Nitrox 32
 tankStartBar: 210
 tankEndBar: 75
 entryType: shore
+buddy: Sam
+guide: Demo Guide
+conditions:
+  weather:
+    zh-TW: 晴朗
+    en: Sunny
+  current:
+    zh-TW: 微流
+    en: Light current
+  waves:
+    zh-TW: 碎浪
+    en: Light shore break
+equipment:
+  suit:
+    zh-TW: 3 mm 短袖防寒衣
+    en: 3 mm shorty wetsuit
+  weightKg: 2
+  tank: 12 L aluminum
+notes:
+  zh-TW: 從卵石岸進入，沿沉船外側緩慢下降並保持不接觸結構。此為虛構示範內容。
+  en: Entered from the pebble beach, descended along the wreck exterior, and maintained a no-contact approach. This is fictional demo content.
+wildlife:
+  - zh-TW: 梭魚群
+    en: Schooling barracuda
+  - zh-TW: 甜唇魚
+    en: Sweetlips
+  - zh-TW: 海蛞蝓
+    en: Nudibranch
 photos: []
 isDemo: true

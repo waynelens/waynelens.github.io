@@ -60,13 +60,48 @@ export default defineContentConfig({
           'zh-TW': z.string()
         }),
         maxDepthM: z.number().nonnegative(),
+        averageDepthM: z.number().nonnegative().optional(),
         durationMin: z.number().int().positive(),
+        startTime: z.string().optional(),
+        surfaceIntervalMin: z.number().int().nonnegative().optional(),
         waterTemperatureC: z.number().optional(),
         visibilityM: z.number().optional(),
         gas: z.string(),
         tankStartBar: z.number().int().positive().optional(),
         tankEndBar: z.number().int().nonnegative().optional(),
         entryType: z.enum(['shore', 'boat']),
+        buddy: z.string().optional(),
+        guide: z.string().optional(),
+        conditions: z.object({
+          weather: z.object({
+            en: z.string(),
+            'zh-TW': z.string()
+          }).optional(),
+          current: z.object({
+            en: z.string(),
+            'zh-TW': z.string()
+          }).optional(),
+          waves: z.object({
+            en: z.string(),
+            'zh-TW': z.string()
+          }).optional()
+        }).optional(),
+        equipment: z.object({
+          suit: z.object({
+            en: z.string(),
+            'zh-TW': z.string()
+          }).optional(),
+          weightKg: z.number().nonnegative().optional(),
+          tank: z.string().optional()
+        }).optional(),
+        notes: z.object({
+          en: z.string(),
+          'zh-TW': z.string()
+        }).optional(),
+        wildlife: z.array(z.object({
+          en: z.string(),
+          'zh-TW': z.string()
+        })).default([]),
         photos: z.array(z.string()).default([]),
         isDemo: z.boolean().default(false)
       })

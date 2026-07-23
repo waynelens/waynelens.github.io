@@ -9,12 +9,41 @@ summary:
   zh-TW: 這是一筆版面與資料結構示範，深度、時間、氣瓶與水況均不是實際潛水資料。
   en: This entry demonstrates the layout and data model. Depth, time, tank pressure, and conditions are not real dive data.
 maxDepthM: 12.4
+averageDepthM: 7.8
 durationMin: 42
+startTime: "09:18"
+surfaceIntervalMin: 74
 waterTemperatureC: 27
 visibilityM: 8
 gas: Air
 tankStartBar: 200
 tankEndBar: 90
 entryType: shore
+buddy: Alex
+guide: Demo Guide
+conditions:
+  weather:
+    zh-TW: 多雲
+    en: Cloudy
+  current:
+    zh-TW: 微流
+    en: Light current
+  waves:
+    zh-TW: 小浪
+    en: Small waves
+equipment:
+  suit:
+    zh-TW: 3 mm 濕式防寒衣
+    en: 3 mm wetsuit
+  weightKg: 4
+  tank: 12 L aluminum
+notes:
+  zh-TW: 由緩坡入水，沿礁區完成中性浮力練習。這段文字僅用來示範詳細紀錄的閱讀版面。
+  en: Entered from the gentle slope and practiced neutral buoyancy along the reef. This text only demonstrates the detailed log layout.
+wildlife:
+  - zh-TW: 蝴蝶魚
+    en: Butterflyfish
+  - zh-TW: 海兔
+    en: Nudibranch
 photos: []
 isDemo: true

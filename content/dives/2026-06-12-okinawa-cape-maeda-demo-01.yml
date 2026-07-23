@@ -9,12 +9,41 @@ summary:
   zh-TW: 這是一筆沖繩岸潛版面示範資料，所有深度、時間與環境數據均非實際紀錄。
   en: This is an Okinawa shore-dive layout example. Depth, time, and environmental values are not real dive data.
 maxDepthM: 16.8
+averageDepthM: 9.6
 durationMin: 44
+startTime: "11:06"
+surfaceIntervalMin: 61
 waterTemperatureC: 25
 visibilityM: 15
 gas: Air
 tankStartBar: 200
 tankEndBar: 85
 entryType: shore
+buddy: Yuki
+guide: Demo Guide
+conditions:
+  weather:
+    zh-TW: 晴朗
+    en: Sunny
+  current:
+    zh-TW: 無明顯水流
+    en: No notable current
+  waves:
+    zh-TW: 小浪
+    en: Small waves
+equipment:
+  suit:
+    zh-TW: 5 mm 濕式防寒衣
+    en: 5 mm wetsuit
+  weightKg: 5
+  tank: 10 L steel
+notes:
+  zh-TW: 由階梯完成岸潛進出，控制深度並避開洞穴內較擁擠的區域。此為虛構示範內容。
+  en: Used the stairs for shore entry and exit, controlled depth, and avoided the busier part of the cavern. This is fictional demo content.
+wildlife:
+  - zh-TW: 燕魚
+    en: Batfish
+  - zh-TW: 海葵魚
+    en: Anemonefish
 photos: []
 isDemo: true

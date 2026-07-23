@@ -19,6 +19,9 @@ const currentLocale = computed(() => locale.value as SiteLocale)
 const selectedYear = ref('all')
 const selectedRegion = ref('all')
 const selectedSiteId = ref(typeof route.query.site === 'string' ? route.query.site : '')
+const selectedDiveId = computed(() => (
+  typeof route.query.dive === 'string' ? route.query.dive : ''
+))
 
 const localizedSites = computed(() => (siteRecords.value || []).map((site) => {
   const dives = (diveRecords.value || []).filter(dive => dive.siteId === site.siteId)
@@ -67,6 +70,16 @@ const selectedSite = computed(() => {
     || filteredSites.value[0]
 })
 
+const selectedDive = computed(() => {
+  if (!selectedDiveId.value) return undefined
+  return (diveRecords.value || []).find(dive => dive.diveId === selectedDiveId.value)
+})
+
+const selectedDiveSite = computed(() => {
+  if (!selectedDive.value) return undefined
+  return localizedSites.value.find(site => site.siteId === selectedDive.value?.siteId)
+})
+
 const statistics = computed(() => {
   const dives = diveRecords.value || []
   const deepest = dives.reduce((maximum, dive) => Math.max(maximum, dive.maxDepthM), 0)
@@ -82,12 +95,28 @@ const statistics = computed(() => {
 
 const selectSite = async (siteId: string) => {
   selectedSiteId.value = siteId
+  const { dive: _dive, ...query } = route.query
   await router.replace({
     query: {
-      ...route.query,
+      ...query,
       site: siteId
     }
   })
+}
+
+const openDive = async (diveId: string, siteId: string) => {
+  await router.push({
+    query: {
+      ...route.query,
+      site: siteId,
+      dive: diveId
+    }
+  })
+}
+
+const closeDive = async () => {
+  const { dive: _dive, ...query } = route.query
+  await router.replace({ query })
 }
 
 watch(filteredSites, (sites) => {
@@ -103,6 +132,13 @@ watch(filteredSites, (sites) => {
 watch(() => route.query.site, (siteId) => {
   if (typeof siteId === 'string') selectedSiteId.value = siteId
 })
+
+watch(selectedDive, (dive) => {
+  if (!dive) return
+  selectedYear.value = 'all'
+  selectedRegion.value = 'all'
+  selectedSiteId.value = dive.siteId
+}, { immediate: true })
 
 useSeoMeta({
   title: () => t('divesPage.metaTitle'),
@@ -221,29 +257,32 @@ useSeoMeta({
                 <dt>{{ $t('divesPage.duration') }}</dt>
                 <dd>{{ dive.durationMin }} min</dd>
               </div>
-              <div v-if="dive.waterTemperatureC !== undefined">
-                <dt>{{ $t('divesPage.waterTemperature') }}</dt>
-                <dd>{{ dive.waterTemperatureC }} °C</dd>
-              </div>
-              <div v-if="dive.visibilityM !== undefined">
-                <dt>{{ $t('divesPage.visibility') }}</dt>
-                <dd>{{ dive.visibilityM }} m</dd>
-              </div>
-              <div>
-                <dt>{{ $t('divesPage.gas') }}</dt>
-                <dd>{{ dive.gas }}</dd>
-              </div>
-              <div v-if="dive.tankStartBar !== undefined && dive.tankEndBar !== undefined">
-                <dt>{{ $t('divesPage.tankPressure') }}</dt>
-                <dd>{{ dive.tankStartBar }} → {{ dive.tankEndBar }} bar</dd>
-              </div>
             </dl>
+
+            <span class="dive-log-action" aria-hidden="true">
+              {{ $t('divesPage.viewDetails') }} <span>→</span>
+            </span>
+            <button
+              type="button"
+              class="dive-log-trigger"
+              :aria-label="$t('divesPage.openDetails', { title: dive.title[currentLocale] })"
+              @click="openDive(dive.diveId, dive.siteId)"
+            />
           </article>
         </section>
       </aside>
     </div>
 
     <p v-else class="dives-empty">{{ $t('divesPage.noResults') }}</p>
+
+    <DiveLogDialog
+      v-if="selectedDive && selectedDiveSite"
+      :open="true"
+      :dive="selectedDive"
+      :site-name="selectedDiveSite.name"
+      :locale="currentLocale"
+      @close="closeDive"
+    />
   </section>
 </template>
 
@@ -439,12 +478,26 @@ useSeoMeta({
 }
 
 .dive-log-card {
+  position: relative;
   display: grid;
   gap: 12px;
   padding: 15px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: color-mix(in srgb, var(--bg-soft) 72%, transparent);
+  cursor: pointer;
+  transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+}
+
+.dive-log-card:hover {
+  border-color: color-mix(in srgb, var(--text) 28%, var(--line));
+  background: color-mix(in srgb, var(--bg-soft) 92%, transparent);
+  transform: translateY(-1px);
+}
+
+.dive-log-card:has(.dive-log-trigger:focus-visible) {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
 }
 
 .dive-log-card h3 {
@@ -472,6 +525,33 @@ useSeoMeta({
 .dive-log-card dd {
   margin: 0;
   font-size: 0.84rem;
+}
+
+.dive-log-action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.dive-log-action span {
+  font-size: 1rem;
+  transition: transform 180ms ease;
+}
+
+.dive-log-card:hover .dive-log-action span {
+  transform: translateX(3px);
+}
+
+.dive-log-trigger {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
 }
 
 .dives-empty {
