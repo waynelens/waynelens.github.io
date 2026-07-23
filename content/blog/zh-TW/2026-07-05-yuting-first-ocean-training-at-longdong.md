@@ -25,6 +25,21 @@ images:
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0754.jpg"
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0774.jpg"
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0781.jpg"
+galleryImages:
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0695.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0007.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0017.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0329.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0395.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0434.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0455.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0620.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0666.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0721.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0745.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0754.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0774.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0781.jpg"
 ---
 
 小朱換了工作之後，週日固定有空潛水。那個週末，我原本就打算去龍洞看看宇庭的第一次海訓，便臨時問了小朱要不要同行。只是時間已經很接近週日，我也不知道還能找誰一起去；幸好宇庭的同期同學願意讓我們搭便車，這趟行程才順利成行。

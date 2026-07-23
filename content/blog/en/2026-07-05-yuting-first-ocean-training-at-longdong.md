@@ -25,6 +25,21 @@ images:
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0754.jpg"
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0774.jpg"
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0781.jpg"
+galleryImages:
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0695.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0007.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0017.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0329.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0395.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0434.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0455.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0620.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0666.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0721.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0745.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0754.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0774.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0781.jpg"
 ---
 
 After changing jobs, Xiao Zhu finally had Sundays free for diving. I was already planning to visit Longdong that weekend to watch Yuting's first ocean training session, so I asked if he wanted to come along. It was a last-minute plan, and I had no idea who else we could travel with. Thankfully, one of Yuting's classmates offered us a ride, and the trip came together.

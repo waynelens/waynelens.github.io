@@ -14,9 +14,7 @@ const sourcePhotos = computed(() => {
     .sort((a, b) => Number(b.lang === locale.value) - Number(a.lang === locale.value))
 
   for (const post of posts) {
-    const sources = [post.cover, ...post.images].filter((source): source is string => Boolean(source))
-
-    for (const source of sources) {
+    for (const source of post.galleryImages) {
       if (seen.has(source)) continue
       seen.add(source)
       photos.push({

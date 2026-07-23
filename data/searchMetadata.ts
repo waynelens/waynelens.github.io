@@ -13,7 +13,9 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       'beginner snorkeling',
       'coral reef',
       'float buoy',
-      'underwater photography'
+      'underwater photography',
+      'photo gallery',
+      'curated gallery images'
     ],
     'zh-TW': [
       '2024-09-01',
@@ -24,7 +26,9 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       '初學者浮潛',
       '珊瑚礁',
       '浮標',
-      '水下攝影'
+      '水下攝影',
+      '攝影作品集',
+      '精選照片'
     ]
   },
   'yuting-first-ocean-training-at-longdong': {
@@ -37,7 +41,9 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       'freediving practice',
       'underwater photography',
       'Portuguese man of war',
-      'northeast coast'
+      'northeast coast',
+      'photo gallery',
+      'curated gallery images'
     ],
     'zh-TW': [
       '2026-07-05',
@@ -49,7 +55,9 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       '自由潛水練習',
       '水下攝影',
       '僧帽水母',
-      '東北角'
+      '東北角',
+      '攝影作品集',
+      '精選照片'
     ]
   },
   'longdong-demo-2026-07-20-01': {
