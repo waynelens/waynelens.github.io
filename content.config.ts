@@ -48,6 +48,7 @@ export default defineContentConfig({
       source: 'dives/**/*.yml',
       schema: z.object({
         diveId: z.string(),
+        profileId: z.string().optional(),
         siteId: z.string(),
         date: z.string(),
         diveNumber: z.number().int().positive(),
@@ -104,6 +105,42 @@ export default defineContentConfig({
         })).default([]),
         photos: z.array(z.string()).default([]),
         isDemo: z.boolean().default(false)
+      })
+    }),
+    diveProfiles: defineCollection({
+      type: 'data',
+      source: 'dive-profiles/**/*.json',
+      schema: z.object({
+        profileId: z.string(),
+        diveId: z.string(),
+        source: z.enum(['demo', 'fit', 'uddf']),
+        recordedAt: z.string().optional(),
+        sampleIntervalSec: z.number().positive().optional(),
+        samples: z.array(z.object({
+          elapsedSec: z.number().nonnegative(),
+          depthM: z.number().nonnegative(),
+          temperatureC: z.number().optional(),
+          tankPressureBar: z.number().nonnegative().optional(),
+          ndlSec: z.number().nonnegative().optional(),
+          ceilingM: z.number().nonnegative().optional()
+        })).min(2),
+        events: z.array(z.object({
+          elapsedSec: z.number().nonnegative(),
+          depthM: z.number().nonnegative().optional(),
+          type: z.enum([
+            'max-depth',
+            'safety-stop-start',
+            'safety-stop-end',
+            'rapid-ascent',
+            'gas-switch',
+            'deco',
+            'custom'
+          ]),
+          label: z.object({
+            en: z.string(),
+            'zh-TW': z.string()
+          }).optional()
+        })).default([])
       })
     })
   }

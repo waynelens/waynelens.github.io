@@ -7,8 +7,11 @@ A narrative-driven photography blog and digital gallery. The site presents photo
 - Responsive photography post feed
 - Markdown-based articles with typed frontmatter
 - Image previews and a lightweight custom carousel
-- Full gallery using a CSS multi-column layout
+- Daily dense-grid gallery with bounded circular rendering
 - Custom image lightbox
+- Clustered dive-site map and detailed scuba logs
+- Interactive depth, water-temperature, and tank-pressure profiles
+- Local FIT and UDDF dive-computer import workflow
 - Dark and light themes
 - Static generation and automatic GitHub Pages deployment
 - Images hosted on Cloudflare R2
@@ -20,8 +23,10 @@ A narrative-driven photography blog and digital gallery. The site presents photo
 | Framework | Nuxt 4 and Vue 3 |
 | Content | Nuxt Content 3 with Markdown |
 | Validation | Zod |
-| Gallery | Vue components and CSS multi-column layout |
+| Gallery | Vue components and CSS Grid |
 | Image viewer | Custom Vue lightbox |
+| Dive charts | Apache ECharts |
+| Dive import | Garmin FIT SDK and fast-xml-parser |
 | Storage | Cloudflare R2 |
 | Hosting | GitHub Pages |
 
@@ -32,8 +37,13 @@ A narrative-driven photography blog and digital gallery. The site presents photo
 ├── assets/css/             # Global styles
 ├── components/
 │   ├── gallery/           # Carousel, gallery, and lightbox
+│   ├── dives/             # Dive map, log dialog, and profile chart
 │   └── layout/            # Header and post previews
 ├── content/blog/           # Markdown photography stories
+├── content/dives/          # Dive log summaries
+├── content/dive-profiles/  # Normalized time-series profiles
+├── content/dive-sites/     # Dive-site coordinates and descriptions
+├── scripts/import-dive.mjs # FIT/UDDF importer
 ├── layouts/default.vue     # Shared page layout
 ├── pages/
 │   ├── index.vue          # Homepage feed
@@ -54,6 +64,18 @@ Create a production build with:
 ```bash
 npm run generate
 ```
+
+Import a dive-computer log with:
+
+```bash
+npm run import:dive -- "/path/to/dive.fit" --site-id longdong --dive-number 12
+```
+
+The importer also accepts `.uddf` and `.xml` files. It writes a draft dive YAML
+and a normalized profile JSON while excluding GPS coordinates, device serials,
+owner data, and unrelated watch metadata. Review the bilingual copy, site,
+breathing gas, and entry type before publishing. Use `--dry-run` to inspect the
+normalized result without writing files.
 
 ## Publishing Workflow
 

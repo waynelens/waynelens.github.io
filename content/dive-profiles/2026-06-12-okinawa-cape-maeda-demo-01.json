@@ -1,0 +1,28 @@
+{
+  "profileId": "okinawa-cape-maeda-demo-2026-06-12-01-profile",
+  "diveId": "okinawa-cape-maeda-demo-2026-06-12-01",
+  "source": "demo",
+  "recordedAt": "2026-06-12T11:06:00+09:00",
+  "sampleIntervalSec": 120,
+  "samples": [
+    { "elapsedSec": 0, "depthM": 0, "temperatureC": 26, "tankPressureBar": 200 },
+    { "elapsedSec": 90, "depthM": 5.6, "temperatureC": 25, "tankPressureBar": 195 },
+    { "elapsedSec": 210, "depthM": 12.4, "temperatureC": 25, "tankPressureBar": 187 },
+    { "elapsedSec": 360, "depthM": 16.8, "temperatureC": 24, "tankPressureBar": 178 },
+    { "elapsedSec": 600, "depthM": 13.9, "temperatureC": 24, "tankPressureBar": 165 },
+    { "elapsedSec": 840, "depthM": 11.7, "temperatureC": 25, "tankPressureBar": 151 },
+    { "elapsedSec": 1080, "depthM": 9.8, "temperatureC": 25, "tankPressureBar": 139 },
+    { "elapsedSec": 1320, "depthM": 12.2, "temperatureC": 25, "tankPressureBar": 126 },
+    { "elapsedSec": 1560, "depthM": 8.6, "temperatureC": 25, "tankPressureBar": 114 },
+    { "elapsedSec": 1800, "depthM": 7.1, "temperatureC": 25, "tankPressureBar": 103 },
+    { "elapsedSec": 2100, "depthM": 5, "temperatureC": 25, "tankPressureBar": 92 },
+    { "elapsedSec": 2340, "depthM": 5, "temperatureC": 25, "tankPressureBar": 87 },
+    { "elapsedSec": 2520, "depthM": 3.1, "temperatureC": 25, "tankPressureBar": 86 },
+    { "elapsedSec": 2640, "depthM": 0, "temperatureC": 26, "tankPressureBar": 85 }
+  ],
+  "events": [
+    { "elapsedSec": 360, "depthM": 16.8, "type": "max-depth" },
+    { "elapsedSec": 2100, "depthM": 5, "type": "safety-stop-start" },
+    { "elapsedSec": 2340, "depthM": 5, "type": "safety-stop-end" }
+  ]
+}

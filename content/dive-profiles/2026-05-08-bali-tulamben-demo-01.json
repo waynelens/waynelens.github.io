@@ -1,0 +1,29 @@
+{
+  "profileId": "bali-tulamben-demo-2026-05-08-01-profile",
+  "diveId": "bali-tulamben-demo-2026-05-08-01",
+  "source": "demo",
+  "recordedAt": "2026-05-08T07:52:00+08:00",
+  "sampleIntervalSec": 120,
+  "samples": [
+    { "elapsedSec": 0, "depthM": 0, "temperatureC": 30, "tankPressureBar": 210 },
+    { "elapsedSec": 75, "depthM": 8.9, "temperatureC": 29, "tankPressureBar": 204 },
+    { "elapsedSec": 180, "depthM": 18.6, "temperatureC": 29, "tankPressureBar": 195 },
+    { "elapsedSec": 330, "depthM": 25.4, "temperatureC": 28, "tankPressureBar": 184 },
+    { "elapsedSec": 570, "depthM": 23.1, "temperatureC": 28, "tankPressureBar": 169 },
+    { "elapsedSec": 810, "depthM": 20.2, "temperatureC": 28, "tankPressureBar": 154 },
+    { "elapsedSec": 1050, "depthM": 17.6, "temperatureC": 29, "tankPressureBar": 140 },
+    { "elapsedSec": 1290, "depthM": 19.1, "temperatureC": 29, "tankPressureBar": 126 },
+    { "elapsedSec": 1530, "depthM": 15.4, "temperatureC": 29, "tankPressureBar": 112 },
+    { "elapsedSec": 1770, "depthM": 12.2, "temperatureC": 29, "tankPressureBar": 99 },
+    { "elapsedSec": 2100, "depthM": 8.3, "temperatureC": 29, "tankPressureBar": 87 },
+    { "elapsedSec": 2520, "depthM": 5, "temperatureC": 29, "tankPressureBar": 79 },
+    { "elapsedSec": 2700, "depthM": 5, "temperatureC": 29, "tankPressureBar": 77 },
+    { "elapsedSec": 2850, "depthM": 2.6, "temperatureC": 29, "tankPressureBar": 76 },
+    { "elapsedSec": 2940, "depthM": 0, "temperatureC": 30, "tankPressureBar": 75 }
+  ],
+  "events": [
+    { "elapsedSec": 330, "depthM": 25.4, "type": "max-depth" },
+    { "elapsedSec": 2520, "depthM": 5, "type": "safety-stop-start" },
+    { "elapsedSec": 2700, "depthM": 5, "type": "safety-stop-end" }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "profileId": "green-island-shilang-demo-2026-07-18-01-profile",
+  "diveId": "green-island-shilang-demo-2026-07-18-01",
+  "source": "demo",
+  "recordedAt": "2026-07-18T10:35:00+08:00",
+  "sampleIntervalSec": 120,
+  "samples": [
+    { "elapsedSec": 0, "depthM": 0, "temperatureC": 29, "tankPressureBar": 200 },
+    { "elapsedSec": 90, "depthM": 7.2, "temperatureC": 28, "tankPressureBar": 194 },
+    { "elapsedSec": 210, "depthM": 15.6, "temperatureC": 28, "tankPressureBar": 186 },
+    { "elapsedSec": 360, "depthM": 18.6, "temperatureC": 27, "tankPressureBar": 176 },
+    { "elapsedSec": 600, "depthM": 16.8, "temperatureC": 27, "tankPressureBar": 162 },
+    { "elapsedSec": 840, "depthM": 13.5, "temperatureC": 28, "tankPressureBar": 148 },
+    { "elapsedSec": 1080, "depthM": 11.2, "temperatureC": 28, "tankPressureBar": 135 },
+    { "elapsedSec": 1320, "depthM": 14.1, "temperatureC": 28, "tankPressureBar": 121 },
+    { "elapsedSec": 1560, "depthM": 10.4, "temperatureC": 28, "tankPressureBar": 108 },
+    { "elapsedSec": 1800, "depthM": 8.1, "temperatureC": 28, "tankPressureBar": 96 },
+    { "elapsedSec": 2100, "depthM": 6.2, "temperatureC": 28, "tankPressureBar": 84 },
+    { "elapsedSec": 2400, "depthM": 5, "temperatureC": 28, "tankPressureBar": 75 },
+    { "elapsedSec": 2580, "depthM": 5, "temperatureC": 28, "tankPressureBar": 72 },
+    { "elapsedSec": 2700, "depthM": 2.4, "temperatureC": 28, "tankPressureBar": 71 },
+    { "elapsedSec": 2760, "depthM": 0, "temperatureC": 29, "tankPressureBar": 70 }
+  ],
+  "events": [
+    { "elapsedSec": 360, "depthM": 18.6, "type": "max-depth" },
+    { "elapsedSec": 2400, "depthM": 5, "type": "safety-stop-start" },
+    { "elapsedSec": 2580, "depthM": 5, "type": "safety-stop-end" }
+  ]
+}

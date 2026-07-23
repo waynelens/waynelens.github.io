@@ -1,0 +1,29 @@
+{
+  "profileId": "orchid-island-yeyou-demo-2026-07-16-01-profile",
+  "diveId": "orchid-island-yeyou-demo-2026-07-16-01",
+  "source": "demo",
+  "recordedAt": "2026-07-16T08:42:00+08:00",
+  "sampleIntervalSec": 120,
+  "samples": [
+    { "elapsedSec": 0, "depthM": 0, "temperatureC": 28, "tankPressureBar": 200 },
+    { "elapsedSec": 60, "depthM": 8.4, "temperatureC": 28, "tankPressureBar": 194 },
+    { "elapsedSec": 180, "depthM": 18.2, "temperatureC": 27, "tankPressureBar": 185 },
+    { "elapsedSec": 300, "depthM": 22.3, "temperatureC": 27, "tankPressureBar": 176 },
+    { "elapsedSec": 540, "depthM": 19.6, "temperatureC": 27, "tankPressureBar": 160 },
+    { "elapsedSec": 780, "depthM": 16.8, "temperatureC": 27, "tankPressureBar": 145 },
+    { "elapsedSec": 1020, "depthM": 14.5, "temperatureC": 27, "tankPressureBar": 132 },
+    { "elapsedSec": 1260, "depthM": 16.1, "temperatureC": 27, "tankPressureBar": 118 },
+    { "elapsedSec": 1500, "depthM": 12.8, "temperatureC": 27, "tankPressureBar": 104 },
+    { "elapsedSec": 1800, "depthM": 10.7, "temperatureC": 27, "tankPressureBar": 89 },
+    { "elapsedSec": 2160, "depthM": 7.4, "temperatureC": 27, "tankPressureBar": 75 },
+    { "elapsedSec": 2640, "depthM": 5, "temperatureC": 27, "tankPressureBar": 64 },
+    { "elapsedSec": 2820, "depthM": 5, "temperatureC": 27, "tankPressureBar": 62 },
+    { "elapsedSec": 2970, "depthM": 2.8, "temperatureC": 27, "tankPressureBar": 61 },
+    { "elapsedSec": 3060, "depthM": 0, "temperatureC": 28, "tankPressureBar": 60 }
+  ],
+  "events": [
+    { "elapsedSec": 300, "depthM": 22.3, "type": "max-depth" },
+    { "elapsedSec": 2640, "depthM": 5, "type": "safety-stop-start" },
+    { "elapsedSec": 2820, "depthM": 5, "type": "safety-stop-end" }
+  ]
+}

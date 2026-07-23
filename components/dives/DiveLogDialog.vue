@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import type { DiveProfile } from '~/types/dive-profile'
+
 type SiteLocale = 'en' | 'zh-TW'
 type LocalizedText = Record<SiteLocale, string>
 
 type DiveLogDetail = {
   diveId: string
+  profileId?: string
   date: string
   diveNumber: number
   title: LocalizedText
@@ -43,6 +46,18 @@ const props = defineProps<{
   siteName: string
   locale: SiteLocale
 }>()
+
+const { data: diveProfile } = await useAsyncData(
+  `dive-profile-${props.dive.profileId || props.dive.diveId}`,
+  async () => {
+    if (!props.dive.profileId) return null
+    return queryCollection('diveProfiles')
+      .where('profileId', '=', props.dive.profileId)
+      .first()
+  }
+)
+
+const resolvedProfile = computed(() => diveProfile.value as DiveProfile | null | undefined)
 
 const emit = defineEmits<{
   close: []
@@ -118,6 +133,19 @@ onBeforeUnmount(() => {
       </header>
 
       <p class="detail-summary">{{ dive.summary[locale] }}</p>
+
+      <ClientOnly>
+        <LazyDiveProfileChart
+          v-if="resolvedProfile"
+          :profile="resolvedProfile"
+          :locale="locale"
+        />
+        <template #fallback>
+          <div v-if="dive.profileId" class="profile-loading">
+            {{ $t('divesPage.loadingProfile') }}
+          </div>
+        </template>
+      </ClientOnly>
 
       <section class="detail-section" :aria-label="$t('divesPage.profile')">
         <h3>{{ $t('divesPage.profile') }}</h3>
@@ -333,6 +361,16 @@ onBeforeUnmount(() => {
   margin: 0;
   color: var(--muted);
   line-height: 1.75;
+}
+
+.profile-loading {
+  display: grid;
+  min-height: 300px;
+  place-items: center;
+  border-top: 1px solid var(--line);
+  border-radius: 17px;
+  background: color-mix(in srgb, var(--bg-soft) 62%, transparent);
+  color: var(--muted);
 }
 
 .detail-section {
