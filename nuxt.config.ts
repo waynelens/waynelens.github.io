@@ -64,16 +64,11 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'zh-TW',
     strategy: 'no_prefix',
-    lazy: true,
     langDir: 'locales',
     locales: [
       { code: 'zh-TW', language: 'zh-TW', name: '繁體中文', file: 'zh-TW.json' },
       { code: 'en', language: 'en-US', name: 'English', file: 'en.json' }
     ],
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root'
-    }
+    detectBrowserLanguage: false
   }
 })

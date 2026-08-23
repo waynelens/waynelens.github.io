@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const route = useRoute()
-const { locale, setLocale } = useI18n()
 
 const { data: post } = await useAsyncData(route.path, () => {
   return queryCollection('blog')
@@ -11,10 +10,6 @@ const { data: post } = await useAsyncData(route.path, () => {
 
 if (!post.value) {
   setResponseStatus(404)
-}
-
-if (post.value?.lang && locale.value !== post.value.lang) {
-  await setLocale(post.value.lang)
 }
 
 const images = computed(() => {

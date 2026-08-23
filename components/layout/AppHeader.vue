@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { SITE_LOCALE_STORAGE_KEY } from '~/shared/utils/locale'
+
 const route = useRoute()
 const { locale, setLocale, t } = useI18n()
 const theme = ref<'dark' | 'light'>('dark')
@@ -55,6 +57,7 @@ const switchLanguage = async () => {
 
         if (translatedPost?.path) {
           await setLocale(nextLocale)
+          localStorage.setItem(SITE_LOCALE_STORAGE_KEY, nextLocale)
           await navigateTo(translatedPost.path)
           return
         }
@@ -69,6 +72,7 @@ const switchLanguage = async () => {
     }
 
     await setLocale(nextLocale)
+    localStorage.setItem(SITE_LOCALE_STORAGE_KEY, nextLocale)
   } finally {
     switchingLocale.value = false
   }
