@@ -38,7 +38,8 @@
     "noImage": "尚無預覽圖片",
     "previous": "上一張",
     "next": "下一張",
-    "navigation": "圖片導覽"
+    "navigation": "圖片導覽",
+    "goToImage": "前往第 {number} 張圖片"
   },
   "gallery": {
     "collection": "作品集",

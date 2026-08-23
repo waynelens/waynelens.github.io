@@ -12,7 +12,7 @@ export type DiveMapSite = {
 const props = defineProps<{
   sites: DiveMapSite[]
   selectedSiteId?: string
-  ariaLabel: string
+  label: string
 }>()
 
 const emit = defineEmits<{
@@ -68,7 +68,9 @@ const fitSites = () => {
   if (!leaflet || !map || !props.sites.length) return
 
   if (props.sites.length === 1) {
-    map.setView([props.sites[0].latitude, props.sites[0].longitude], 12)
+    const site = props.sites[0]
+    if (!site) return
+    map.setView([site.latitude, site.longitude], 12)
     return
   }
 
@@ -152,7 +154,7 @@ onBeforeUnmount(() => {
     ref="mapElement"
     class="dive-map"
     role="region"
-    :aria-label="ariaLabel"
+    :aria-label="label"
   />
 </template>
 

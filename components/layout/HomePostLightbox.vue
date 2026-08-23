@@ -16,23 +16,64 @@ const emit = defineEmits<{
   close: []
 }>()
 
-const close = () => {
-  emit('close')
+const dialog = ref<HTMLDialogElement>()
+const closeButton = ref<HTMLButtonElement>()
+const titleId = useId()
+let previousBodyOverflow = ''
+
+const close = () => emit('close')
+
+const handleBackdropClick = (event: MouseEvent) => {
+  if (event.target === dialog.value) close()
 }
+
+const syncDialogState = async (isOpen: boolean) => {
+  if (!import.meta.client) return
+  await nextTick()
+
+  if (isOpen) {
+    if (!dialog.value?.open) {
+      previousBodyOverflow = document.body.style.overflow
+      dialog.value?.showModal()
+    }
+    document.body.style.overflow = 'hidden'
+    closeButton.value?.focus()
+    return
+  }
+
+  if (dialog.value?.open) dialog.value.close()
+  document.body.style.overflow = previousBodyOverflow
+}
+
+watch(() => props.open, syncDialogState)
+
+onMounted(() => {
+  void syncDialogState(props.open)
+})
+
+onBeforeUnmount(() => {
+  document.body.style.overflow = previousBodyOverflow
+})
 </script>
 
 <template>
   <Teleport to="body">
-    <Transition name="home-post-lightbox">
-      <div v-if="props.open" class="home-post-lightbox" @click.self="close">
-        <div class="home-post-lightbox-panel glass-panel">
-          <button class="home-post-lightbox-close" type="button" @click="close">
+    <dialog
+      ref="dialog"
+      class="home-post-lightbox"
+      :aria-labelledby="titleId"
+      @cancel.prevent="close"
+      @click="handleBackdropClick"
+      @keydown.esc.prevent="close"
+    >
+        <article class="home-post-lightbox-panel glass-panel">
+          <button ref="closeButton" class="home-post-lightbox-close" type="button" @click="close">
             {{ $t('common.close') }}
           </button>
 
           <header class="home-post-lightbox-head">
             <p class="eyebrow">{{ $t('post.preview') }}</p>
-            <h2 class="section-title">{{ props.post.title }}</h2>
+            <h2 :id="titleId" class="section-title">{{ props.post.title }}</h2>
             <p v-if="props.post.description" class="home-post-lightbox-description">
               {{ props.post.description }}
             </p>
@@ -56,22 +97,33 @@ const close = () => {
           <NuxtLink :to="props.post.path" class="home-post-lightbox-link">
             {{ $t('post.openFull') }}
           </NuxtLink>
-        </div>
-      </div>
-    </Transition>
+        </article>
+    </dialog>
   </Teleport>
 </template>
 
 <style scoped>
 .home-post-lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 110;
-  display: grid;
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  color: var(--text);
+  background: transparent;
   place-items: center;
   padding: 18px;
+}
+
+.home-post-lightbox[open] {
+  display: grid;
+}
+
+.home-post-lightbox::backdrop {
   background: rgba(5, 7, 10, 0.82);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .home-post-lightbox-panel {
@@ -163,16 +215,6 @@ const close = () => {
   height: 1px;
   margin-top: 5px;
   background: currentColor;
-}
-
-.home-post-lightbox-enter-active,
-.home-post-lightbox-leave-active {
-  transition: opacity 180ms ease;
-}
-
-.home-post-lightbox-enter-from,
-.home-post-lightbox-leave-to {
-  opacity: 0;
 }
 
 @media (max-width: 700px) {

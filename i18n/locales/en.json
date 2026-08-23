@@ -38,7 +38,8 @@
     "noImage": "No preview image yet",
     "previous": "Prev",
     "next": "Next",
-    "navigation": "Image navigation"
+    "navigation": "Image navigation",
+    "goToImage": "Go to image {number}"
   },
   "gallery": {
     "collection": "Collection",

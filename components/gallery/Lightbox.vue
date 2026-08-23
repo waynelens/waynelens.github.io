@@ -10,40 +10,93 @@ const emit = defineEmits<{
   close: []
 }>()
 
-const close = () => {
-  // Emitting keeps the overlay controlled by the parent gallery.
-  emit('close')
+const dialog = ref<HTMLDialogElement>()
+const closeButton = ref<HTMLButtonElement>()
+let previousBodyOverflow = ''
+
+const close = () => emit('close')
+
+const handleBackdropClick = (event: MouseEvent) => {
+  if (event.target === dialog.value) close()
 }
+
+const syncDialogState = async (isOpen: boolean) => {
+  if (!import.meta.client) return
+  await nextTick()
+
+  if (isOpen) {
+    if (!dialog.value?.open) {
+      previousBodyOverflow = document.body.style.overflow
+      dialog.value?.showModal()
+    }
+    document.body.style.overflow = 'hidden'
+    closeButton.value?.focus()
+    return
+  }
+
+  if (dialog.value?.open) dialog.value.close()
+  document.body.style.overflow = previousBodyOverflow
+}
+
+watch(() => props.open, syncDialogState)
+
+onMounted(() => {
+  void syncDialogState(props.open)
+})
+
+onBeforeUnmount(() => {
+  document.body.style.overflow = previousBodyOverflow
+})
 </script>
 
 <template>
   <Teleport to="body">
-    <Transition name="lightbox">
-      <div v-if="props.open" class="lightbox" @click.self="close">
-        <button class="lightbox-close" type="button" @click="close">{{ $t('common.close') }}</button>
-        <figure class="lightbox-frame">
-          <img
-            :src="props.src"
-            :alt="t('gallery.expandedAlt', { number: props.index + 1 })"
-            decoding="async"
-            fetchpriority="high"
-          >
-        </figure>
-      </div>
-    </Transition>
+    <dialog
+      ref="dialog"
+      class="lightbox"
+      :aria-label="t('gallery.expandedAlt', { number: props.index + 1 })"
+      @cancel.prevent="close"
+      @click="handleBackdropClick"
+      @keydown.esc.prevent="close"
+    >
+      <button ref="closeButton" class="lightbox-close" type="button" @click="close">
+        {{ $t('common.close') }}
+      </button>
+      <figure class="lightbox-frame">
+        <img
+          :src="props.src"
+          :alt="t('gallery.expandedAlt', { number: props.index + 1 })"
+          decoding="async"
+          fetchpriority="high"
+        >
+      </figure>
+    </dialog>
   </Teleport>
 </template>
 
 <style scoped>
 .lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: grid;
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  color: var(--text);
+  background: transparent;
+  grid-template-rows: auto 1fr;
   place-items: center;
   padding: 24px;
+}
+
+.lightbox[open] {
+  display: grid;
+}
+
+.lightbox::backdrop {
   background: rgba(5, 7, 10, 0.82);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .lightbox-frame {
@@ -58,24 +111,15 @@ const close = () => {
 }
 
 .lightbox-close {
-  position: fixed;
+  position: absolute;
   top: 18px;
   right: 18px;
+  z-index: 1;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.05);
   color: var(--text);
   padding: 0.75rem 1rem;
   cursor: pointer;
-}
-
-.lightbox-enter-active,
-.lightbox-leave-active {
-  transition: opacity 180ms ease;
-}
-
-.lightbox-enter-from,
-.lightbox-leave-to {
-  opacity: 0;
 }
 </style>

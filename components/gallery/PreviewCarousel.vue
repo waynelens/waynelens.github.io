@@ -6,6 +6,7 @@ const props = defineProps<{
 }>()
 
 const current = ref(0)
+const currentImage = computed(() => props.images[current.value] || '')
 
 watch(
   () => props.images,
@@ -31,7 +32,7 @@ const prev = () => {
       <ResponsiveImage
         v-if="images.length"
         class="carousel-image"
-        :src="images[current]"
+        :src="currentImage"
         :alt="title || t('carousel.previewImage')"
         :default-width="1200"
         sizes="(max-width: 980px) calc(100vw - 64px), 50vw"
@@ -55,6 +56,8 @@ const prev = () => {
           :key="image + index"
           type="button"
           :class="{ active: index === current }"
+          :aria-label="t('carousel.goToImage', { number: index + 1 })"
+          :aria-current="index === current ? 'true' : undefined"
           @click="current = index"
         />
       </div>

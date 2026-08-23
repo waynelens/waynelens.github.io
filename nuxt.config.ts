@@ -5,8 +5,10 @@ const blogRoutes = getBlogSourceEntries()
   .map(entry => entry.route)
 
 const rssRoutes = ['/rss/en.xml', '/rss/zh-tw.xml']
+const themeInitScript = `(function(){try{var value=localStorage.getItem('theme');document.documentElement.dataset.theme=value==='light'?'light':'dark'}catch(error){document.documentElement.dataset.theme='dark'}})()`
 
 export default defineNuxtConfig({
+  compatibilityDate: '2026-08-23',
   modules: ['@nuxt/content', '@nuxtjs/i18n'],
   components: [
     {
@@ -29,6 +31,13 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Wayne Jin',
+      script: [
+        {
+          key: 'theme-init',
+          innerHTML: themeInitScript,
+          tagPosition: 'head'
+        }
+      ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'shortcut icon', href: '/favicon.svg' },

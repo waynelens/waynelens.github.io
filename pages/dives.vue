@@ -19,6 +19,7 @@ const currentLocale = computed(() => locale.value as SiteLocale)
 const selectedYear = ref('all')
 const selectedRegion = ref('all')
 const selectedSiteId = ref(typeof route.query.site === 'string' ? route.query.site : '')
+let diveTrigger: HTMLElement | null = null
 const selectedDiveId = computed(() => (
   typeof route.query.dive === 'string' ? route.query.dive : ''
 ))
@@ -105,6 +106,9 @@ const selectSite = async (siteId: string) => {
 }
 
 const openDive = async (diveId: string, siteId: string) => {
+  diveTrigger = document.activeElement instanceof HTMLElement
+    ? document.activeElement
+    : null
   await router.push({
     query: {
       ...route.query,
@@ -117,6 +121,9 @@ const openDive = async (diveId: string, siteId: string) => {
 const closeDive = async () => {
   const { dive: _dive, ...query } = route.query
   await router.replace({ query })
+  await nextTick()
+  diveTrigger?.focus()
+  diveTrigger = null
 }
 
 watch(filteredSites, (sites) => {
@@ -125,7 +132,8 @@ watch(filteredSites, (sites) => {
     return
   }
   if (!sites.some(site => site.siteId === selectedSiteId.value)) {
-    selectedSiteId.value = sites[0].siteId
+    const firstSite = sites[0]
+    if (firstSite) selectedSiteId.value = firstSite.siteId
   }
 }, { immediate: true })
 
@@ -196,7 +204,7 @@ useSeoMeta({
         <DiveMap
           :sites="mapSites"
           :selected-site-id="selectedSite?.siteId"
-          :aria-label="$t('divesPage.mapLabel')"
+          :label="$t('divesPage.mapLabel')"
           @select="selectSite"
         />
         <template #fallback>

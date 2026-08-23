@@ -16,8 +16,7 @@ const applyTheme = (value: 'dark' | 'light') => {
 }
 
 onMounted(() => {
-  const stored = localStorage.getItem('theme')
-  applyTheme(stored === 'light' ? 'light' : 'dark')
+  theme.value = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
 })
 
 const toggleTheme = () => {

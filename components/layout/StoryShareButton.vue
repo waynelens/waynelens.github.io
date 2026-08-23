@@ -19,16 +19,6 @@ const prepareCard = () => {
   return preparation
 }
 
-onMounted(() => {
-  prepareCard()
-    .then((file) => {
-      preparedFile.value = file
-    })
-    .catch(() => {
-      preparation = undefined
-    })
-})
-
 const label = computed(() => {
   if (state.value === 'preparing') return t('share.preparing')
   if (state.value === 'ready') return t('share.ready')
@@ -42,7 +32,7 @@ const handleShare = async () => {
   state.value = 'preparing'
 
   try {
-    if (!preparedFile.value && navigator.share) {
+    if (!preparedFile.value && 'share' in navigator) {
       preparedFile.value = await prepareCard()
       state.value = 'ready'
       return
@@ -55,7 +45,7 @@ const handleShare = async () => {
     state.value = 'error'
   }
 
-  if (state.value !== 'idle' && state.value !== 'ready') {
+  if (state.value === 'downloaded' || state.value === 'error') {
     setTimeout(() => {
       state.value = 'idle'
     }, 3500)

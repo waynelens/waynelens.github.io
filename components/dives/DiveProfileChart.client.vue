@@ -1,14 +1,25 @@
 <script setup lang="ts">
-import { LineChart, ScatterChart } from 'echarts/charts'
+import {
+  LineChart,
+  ScatterChart,
+  type LineSeriesOption,
+  type ScatterSeriesOption
+} from 'echarts/charts'
 import {
   DataZoomComponent,
   GridComponent,
   LegendComponent,
   MarkAreaComponent,
   MarkLineComponent,
-  TooltipComponent
+  TooltipComponent,
+  type DataZoomComponentOption,
+  type GridComponentOption,
+  type LegendComponentOption,
+  type MarkAreaComponentOption,
+  type MarkLineComponentOption,
+  type TooltipComponentOption
 } from 'echarts/components'
-import { init, use, type ECharts, type EChartsOption } from 'echarts/core'
+import { init, use, type ComposeOption, type ECharts } from 'echarts/core'
 import { SVGRenderer } from 'echarts/renderers'
 import type { DiveProfile, DiveProfileEvent } from '~/types/dive-profile'
 
@@ -25,6 +36,16 @@ use([
 ])
 
 type SiteLocale = 'en' | 'zh-TW'
+type DiveChartOption = ComposeOption<
+  | LineSeriesOption
+  | ScatterSeriesOption
+  | DataZoomComponentOption
+  | GridComponentOption
+  | LegendComponentOption
+  | MarkAreaComponentOption
+  | MarkLineComponentOption
+  | TooltipComponentOption
+>
 
 const props = defineProps<{
   profile: DiveProfile
@@ -59,7 +80,7 @@ const readThemeColors = () => {
   }
 }
 
-const buildOption = (): EChartsOption => {
+const buildOption = (): DiveChartOption => {
   const colors = readThemeColors()
   const samples = props.profile.samples
   const hasTemperature = samples.some(sample => sample.temperatureC !== undefined)
@@ -80,7 +101,7 @@ const buildOption = (): EChartsOption => {
     eventLabel(event)
   ])
 
-  const xAxes: EChartsOption['xAxis'] = [
+  const xAxes: NonNullable<DiveChartOption['xAxis']> = [
     {
       type: 'value',
       gridIndex: 0,
@@ -96,7 +117,7 @@ const buildOption = (): EChartsOption => {
     }
   ]
 
-  const yAxes: EChartsOption['yAxis'] = [
+  const yAxes: NonNullable<DiveChartOption['yAxis']> = [
     {
       type: 'value',
       gridIndex: 0,
@@ -111,7 +132,7 @@ const buildOption = (): EChartsOption => {
     }
   ]
 
-  const series: NonNullable<EChartsOption['series']> = [
+  const series: NonNullable<DiveChartOption['series']> = [
     {
       name: t('divesPage.depth'),
       type: 'line',
@@ -257,7 +278,9 @@ const buildOption = (): EChartsOption => {
           Boolean(item && typeof item === 'object' && 'value' in item && Array.isArray((item as { value: unknown }).value))
         ))
         if (!validParams.length) return ''
-        const lines = [`<strong>${formatElapsed(Number(validParams[0].axisValue))}</strong>`]
+        const firstParam = validParams[0]
+        if (!firstParam) return ''
+        const lines = [`<strong>${formatElapsed(Number(firstParam.axisValue))}</strong>`]
         for (const item of validParams) {
           if (item.seriesName === t('divesPage.events')) {
             if (item.value[2]) lines.push(String(item.value[2]))

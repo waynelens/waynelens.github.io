@@ -67,6 +67,7 @@ const dialog = ref<HTMLDialogElement>()
 const closeButton = ref<HTMLButtonElement>()
 const lightboxIndex = ref<number>()
 let previousBodyOverflow = ''
+let previouslyFocusedElement: HTMLElement | null = null
 
 const localized = (value?: LocalizedText) => value?.[props.locale]
 
@@ -83,6 +84,9 @@ const syncDialogState = async (isOpen: boolean) => {
   if (isOpen) {
     if (!dialog.value?.open) {
       previousBodyOverflow = document.body.style.overflow
+      previouslyFocusedElement = document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null
       dialog.value?.showModal()
     }
     document.body.style.overflow = 'hidden'
@@ -103,6 +107,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   document.body.style.overflow = previousBodyOverflow
+  previouslyFocusedElement?.focus()
 })
 </script>
 
@@ -113,6 +118,7 @@ onBeforeUnmount(() => {
     aria-labelledby="dive-log-dialog-title"
     @cancel.prevent="close"
     @click="handleBackdropClick"
+    @keydown.esc.prevent="close"
   >
     <article class="dive-log-detail">
       <header class="detail-header">
@@ -266,7 +272,7 @@ onBeforeUnmount(() => {
               :src="photo"
               :alt="$t('divesPage.photoAlt', { number: index + 1 })"
               sizes="(max-width: 560px) 44vw, 240px"
-              :default-width="384"
+              :default-width="480"
             />
           </button>
         </div>

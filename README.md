@@ -9,13 +9,13 @@ A narrative-driven photography blog and digital gallery. The site presents photo
 - Draft, published, and direct-link-only article statuses
 - Image previews and a lightweight custom carousel
 - Daily dense-grid gallery with bounded circular rendering
-- Custom image lightbox
+- Accessible native-dialog image lightbox
 - Clustered dive-site map and detailed scuba logs
 - Interactive depth, water-temperature, and tank-pressure profiles
 - Local FIT and UDDF dive-computer import workflow
 - Dark and light themes
 - Static generation and automatic GitHub Pages deployment
-- Images hosted on Cloudflare R2
+- Originals hosted on Cloudflare R2 with Cloudflare Images transformations for thumbnails
 
 ## Tech Stack
 
@@ -25,10 +25,10 @@ A narrative-driven photography blog and digital gallery. The site presents photo
 | Content | Nuxt Content 3 with Markdown |
 | Validation | Zod |
 | Gallery | Vue components and CSS Grid |
-| Image viewer | Custom Vue lightbox |
+| Image viewer | Vue-controlled native dialog |
 | Dive charts | Apache ECharts |
 | Dive import | Garmin FIT SDK and fast-xml-parser |
-| Storage | Cloudflare R2 |
+| Storage | Cloudflare R2 and Cloudflare Images transformations |
 | Hosting | GitHub Pages |
 
 ## Project Structure
@@ -80,7 +80,7 @@ normalized result without writing files.
 
 ## Publishing Workflow
 
-1. Upload exported images to Cloudflare R2.
+1. Upload exported images to Cloudflare R2. Use content-hashed object names (for example, `longdong-dive.a1b2c3.jpg`) so an updated file receives a new URL instead of reusing a cached object name.
 2. Add a Markdown file under `content/blog/` and define its metadata and image URLs in frontmatter.
 3. Leave `status` unset (or set it to `draft`) while writing. Use `published` for normal publication or `hidden` for a direct-link-only article.
 4. Push to `main`; GitHub Actions generates the static site and deploys it to GitHub Pages.

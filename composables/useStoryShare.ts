@@ -1,3 +1,5 @@
+import { getImageVariant } from '~/shared/utils/image'
+
 type StoryShareInput = {
   title: string
   description?: string
@@ -11,30 +13,38 @@ type StoryShareResult = 'shared' | 'downloaded' | 'cancelled'
 
 const CARD_WIDTH = 1080
 const CARD_HEIGHT = 1350
-const IMAGE_CACHE_VERSION = '20260714'
 const FONT_STACK = '"Inter Variable", "Noto Sans TC Variable", sans-serif'
 
 const loadImage = async (source: string) => {
-  const imageUrl = new URL(source, window.location.origin)
-  imageUrl.searchParams.set('v', IMAGE_CACHE_VERSION)
+  const candidates = [...new Set([getImageVariant(source, 1200), source])]
+  let lastError: unknown
 
-  const response = await fetch(imageUrl, { mode: 'cors' })
+  for (const candidate of candidates) {
+    try {
+      const imageUrl = new URL(candidate, window.location.origin)
+      const response = await fetch(imageUrl, { mode: 'cors' })
 
-  if (!response.ok) {
-    throw new Error(`Unable to load the article image (${response.status})`)
+      if (!response.ok) {
+        throw new Error(`Unable to load the article image (${response.status})`)
+      }
+
+      const objectUrl = URL.createObjectURL(await response.blob())
+
+      try {
+        const image = new Image()
+        image.decoding = 'async'
+        image.src = objectUrl
+        await image.decode()
+        return image
+      } finally {
+        URL.revokeObjectURL(objectUrl)
+      }
+    } catch (error) {
+      lastError = error
+    }
   }
 
-  const objectUrl = URL.createObjectURL(await response.blob())
-
-  try {
-    const image = new Image()
-    image.decoding = 'async'
-    image.src = objectUrl
-    await image.decode()
-    return image
-  } finally {
-    URL.revokeObjectURL(objectUrl)
-  }
+  throw lastError instanceof Error ? lastError : new Error('Unable to load the article image')
 }
 
 const roundedRect = (
@@ -127,7 +137,11 @@ const wrapText = (
   if (lines.length <= maxLines) return lines
 
   const visibleLines = lines.slice(0, maxLines)
-  visibleLines[maxLines - 1] = fitEllipsis(context, visibleLines[maxLines - 1], maxWidth)
+  const lastVisibleIndex = maxLines - 1
+  const lastVisibleLine = visibleLines[lastVisibleIndex]
+  if (lastVisibleLine) {
+    visibleLines[lastVisibleIndex] = fitEllipsis(context, lastVisibleLine, maxWidth)
+  }
   return visibleLines
 }
 

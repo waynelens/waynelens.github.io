@@ -140,7 +140,10 @@ const canSearch = computed(() => normalizedQueryLength.value >= 2)
 const results = computed<SearchHit[]>(() => {
   if (!canSearch.value) return []
 
-  return searchIndex.value.search(query.value).slice(0, 8) as SearchHit[]
+  return searchIndex.value.search(query.value).slice(0, 8).flatMap((result) => {
+    const document = documents.value.find(item => item.id === String(result.id))
+    return document ? [{ ...document, score: result.score }] : []
+  })
 })
 
 const resultSummary = computed(() => {
@@ -175,9 +178,10 @@ const handleInputKeydown = async (event: KeyboardEvent) => {
     return
   }
 
-  if (event.key === 'Enter' && results.value[selectedIndex.value]) {
+  const selectedResult = results.value[selectedIndex.value]
+  if (event.key === 'Enter' && selectedResult) {
     event.preventDefault()
-    await openResult(results.value[selectedIndex.value])
+    await openResult(selectedResult)
   }
 }
 

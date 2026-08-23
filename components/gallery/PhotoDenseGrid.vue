@@ -36,7 +36,7 @@ const renderedPhotos = computed(() => {
 
     return {
       index,
-      photo: props.photos[index],
+      photo: props.photos[index]!,
       sequence
     }
   })
