@@ -6,6 +6,7 @@ A narrative-driven photography blog and digital gallery. The site presents photo
 
 - Responsive photography post feed
 - Markdown-based articles with typed frontmatter
+- In-article interactive maps with multiple locations and marker clustering
 - Draft, published, and direct-link-only article statuses
 - Image previews and a lightweight custom carousel
 - Daily dense-grid gallery with bounded circular rendering
@@ -86,6 +87,33 @@ normalized result without writing files.
 4. Push to `main`; GitHub Actions generates the static site and deploys it to GitHub Pages.
 
 Draft articles are excluded from the production content database and static routes. Hidden articles keep a direct URL but do not appear on the homepage, in search, RSS feeds, or the gallery.
+
+### Embedding a map in an article
+
+Use the `article-map` MDC component anywhere in a Markdown article. Each block may contain one or more locations, and an article may contain multiple map blocks.
+
+```md
+::article-map
+---
+caption: Longdong Bay dive entry points
+zoom: 14
+height: 420
+locations:
+  - name: Longdong Bay
+    latitude: 25.116
+    longitude: 121.917
+    description: Shore entry near the bay.
+    precision: exact
+    link: https://www.openstreetmap.org/
+  - name: Nearby training area
+    latitude: 25.12
+    longitude: 121.91
+    precision: approximate
+---
+::
+```
+
+`zoom` defaults to `14`, and `height` defaults to `420` pixels on desktop with a mobile maximum of `300` pixels. Eight or more locations are clustered automatically. Map tiles come from OpenStreetMap and the map follows the site's light or dark theme.
 
 ## License
 

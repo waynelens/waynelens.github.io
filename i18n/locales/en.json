@@ -33,6 +33,16 @@
     "backHome": "Back to home",
     "translationUnavailable": "The {language} version of this article is not available yet."
   },
+  "articleMap": {
+    "label": "Locations mentioned in this article",
+    "location": "Location",
+    "loading": "Loading map…",
+    "unavailable": "The map is unavailable.",
+    "approximate": "Approximate location",
+    "openLink": "Open location link",
+    "enableInteraction": "Explore map",
+    "disableInteraction": "Resume page scrolling"
+  },
   "carousel": {
     "previewImage": "Preview image",
     "noImage": "No preview image yet",

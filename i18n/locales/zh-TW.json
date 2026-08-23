@@ -33,6 +33,16 @@
     "backHome": "回到首頁",
     "translationUnavailable": "此文章的{language}版本尚未提供。"
   },
+  "articleMap": {
+    "label": "文章提及的位置",
+    "location": "位置",
+    "loading": "正在載入地圖…",
+    "unavailable": "目前無法顯示地圖。",
+    "approximate": "近似位置",
+    "openLink": "開啟位置連結",
+    "enableInteraction": "操作地圖",
+    "disableInteraction": "恢復頁面捲動"
+  },
   "carousel": {
     "previewImage": "預覽圖片",
     "noImage": "尚無預覽圖片",
