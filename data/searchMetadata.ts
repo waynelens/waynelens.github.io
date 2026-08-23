@@ -3,6 +3,32 @@ import type { SearchLocale } from '~/utils/search'
 type LocalizedSearchMetadata = Record<SearchLocale, string[]>
 
 export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
+  'rose-garden-freediving': {
+    en: [
+      '2026-08-02',
+      'August 2 2026',
+      'Rose Garden dive site',
+      'Northeast Coast Taiwan',
+      'Elephant Trunk Rock',
+      'freediving',
+      'underwater photography',
+      'rose coral',
+      'shore entry',
+      'visibility'
+    ],
+    'zh-TW': [
+      '2026-08-02',
+      '2026年8月2日',
+      '玫瑰花園',
+      '東北角',
+      '象鼻岩',
+      '自由潛水',
+      '水下攝影',
+      '玫瑰珊瑚',
+      '岸潛',
+      '能見度'
+    ]
+  },
   'clare-first-dive-at-bitoujiao': {
     en: [
       '2024-09-01',
