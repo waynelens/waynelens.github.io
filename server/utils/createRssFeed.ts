@@ -34,6 +34,7 @@ export const createRssFeed = async (event: H3Event, locale: FeedLocale) => {
   const feedUrl = toAbsoluteUrl(config.path)
   const posts = await queryCollection(event, 'blog')
     .where('lang', '=', locale)
+    .where('status', '=', 'published')
     .order('date', 'DESC')
     .all()
 

@@ -1,6 +1,7 @@
 ---
 lang: zh-TW
 translationKey: clare-first-dive-at-bitoujiao
+status: published
 title: Clare 在鼻頭角的第一次潛水
 description: Clare 第一次在鼻頭角下水，平靜的海水、繽紛的珊瑚與不斷變化的柔和光線，讓這一天成為一段安靜而難忘的回憶。
 date: 2024-09-01

@@ -1,6 +1,7 @@
 ---
 lang: en
 translationKey: yuting-first-ocean-training-at-longdong
+status: published
 title: Yuting's First Ocean Training at Longdong
 description: I had planned to stay out of the water and simply watch Yuting's first ocean training session, but Xiao Zhu was free to dive as well—making this my first dive with such a small group.
 date: 2026-07-05

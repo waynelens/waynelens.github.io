@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const { locale } = useI18n()
-const { data } = await useAsyncData('home-posts', () => queryCollection('blog').all())
+const { data } = await useAsyncData('home-posts', () => {
+  return queryCollection('blog')
+    .where('status', '=', 'published')
+    .all()
+})
 
 const posts = computed(() => {
   return [...(data.value || [])]

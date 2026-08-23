@@ -5,6 +5,7 @@ const theme = ref<'dark' | 'light'>('dark')
 const switchingLocale = ref(false)
 const { openSearch } = useSearchDialog()
 const { openRss } = useRssDialog()
+const { showToast } = useSiteToast()
 
 const applyTheme = (value: 'dark' | 'light') => {
   theme.value = value
@@ -40,20 +41,30 @@ const switchLanguage = async () => {
 
   try {
     if (route.path.startsWith('/blog/')) {
-      const currentPost = await queryCollection('blog').path(route.path).first()
+      const currentPost = await queryCollection('blog')
+        .where('status', 'IN', ['published', 'hidden'])
+        .path(route.path)
+        .first()
 
       if (currentPost?.translationKey) {
         const translatedPost = await queryCollection('blog')
           .where('translationKey', '=', currentPost.translationKey)
           .where('lang', '=', nextLocale)
+          .where('status', 'IN', ['published', 'hidden'])
           .first()
 
-        await setLocale(nextLocale)
-
         if (translatedPost?.path) {
+          await setLocale(nextLocale)
           await navigateTo(translatedPost.path)
           return
         }
+
+        const language = nextLocale === 'en'
+          ? t('languageNames.english')
+          : t('languageNames.traditionalChinese')
+
+        showToast(t('post.translationUnavailable', { language }))
+        return
       }
     }
 

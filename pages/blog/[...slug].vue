@@ -3,8 +3,15 @@ const route = useRoute()
 const { locale, setLocale } = useI18n()
 
 const { data: post } = await useAsyncData(route.path, () => {
-  return queryCollection('blog').path(route.path).first()
+  return queryCollection('blog')
+    .where('status', 'IN', ['published', 'hidden'])
+    .path(route.path)
+    .first()
 })
+
+if (!post.value) {
+  setResponseStatus(404)
+}
 
 if (post.value?.lang && locale.value !== post.value.lang) {
   await setLocale(post.value.lang)

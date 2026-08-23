@@ -12,6 +12,10 @@
     "close": "關閉",
     "unpublished": "尚未發佈"
   },
+  "languageNames": {
+    "english": "英文",
+    "traditionalChinese": "繁體中文"
+  },
   "home": {
     "aria": "攝影文章",
     "noPosts": "目前沒有文章",
@@ -26,7 +30,8 @@
     "openFull": "開啟完整文章",
     "narrative": "攝影故事",
     "notFound": "找不到文章",
-    "backHome": "回到首頁"
+    "backHome": "回到首頁",
+    "translationUnavailable": "此文章的{language}版本尚未提供。"
   },
   "carousel": {
     "previewImage": "預覽圖片",

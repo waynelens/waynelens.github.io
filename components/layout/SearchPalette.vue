@@ -32,7 +32,9 @@ const query = ref('')
 const selectedIndex = ref(0)
 
 const { data: posts } = await useAsyncData('site-search-posts', () => {
-  return queryCollection('blog').all()
+  return queryCollection('blog')
+    .where('status', '=', 'published')
+    .all()
 })
 
 const { data: diveSites } = await useAsyncData('site-search-dive-sites', () => {

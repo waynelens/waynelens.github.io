@@ -12,6 +12,10 @@
     "close": "Close",
     "unpublished": "Unpublished"
   },
+  "languageNames": {
+    "english": "English",
+    "traditionalChinese": "Traditional Chinese"
+  },
   "home": {
     "aria": "Photography posts",
     "noPosts": "No posts",
@@ -26,7 +30,8 @@
     "openFull": "Open full post",
     "narrative": "Narrative post",
     "notFound": "Post not found",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "translationUnavailable": "The {language} version of this article is not available yet."
   },
   "carousel": {
     "previewImage": "Preview image",

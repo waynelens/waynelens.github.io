@@ -1,26 +1,8 @@
-import { readdirSync } from 'node:fs'
-import { join, relative, resolve, sep } from 'node:path'
+import { getBlogSourceEntries } from './content/blog-source'
 
-const blogContentDirectory = resolve('content/blog')
-
-const collectMarkdownFiles = (directory: string): string[] => {
-  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    const entryPath = join(directory, entry.name)
-
-    if (entry.isDirectory()) return collectMarkdownFiles(entryPath)
-    return entry.isFile() && entry.name.endsWith('.md') ? [entryPath] : []
-  })
-}
-
-const blogRoutes = collectMarkdownFiles(blogContentDirectory).map((file) => {
-  const contentPath = relative(blogContentDirectory, file)
-    .split(sep)
-    .join('/')
-    .replace(/\.md$/, '')
-    .toLowerCase()
-
-  return `/blog/${contentPath}`
-})
+const blogRoutes = getBlogSourceEntries()
+  .filter(entry => entry.status !== 'draft')
+  .map(entry => entry.route)
 
 const rssRoutes = ['/rss/en.xml', '/rss/zh-tw.xml']
 

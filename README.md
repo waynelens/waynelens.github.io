@@ -6,6 +6,7 @@ A narrative-driven photography blog and digital gallery. The site presents photo
 
 - Responsive photography post feed
 - Markdown-based articles with typed frontmatter
+- Draft, published, and direct-link-only article statuses
 - Image previews and a lightweight custom carousel
 - Daily dense-grid gallery with bounded circular rendering
 - Custom image lightbox
@@ -81,7 +82,10 @@ normalized result without writing files.
 
 1. Upload exported images to Cloudflare R2.
 2. Add a Markdown file under `content/blog/` and define its metadata and image URLs in frontmatter.
-3. Push to `main`; GitHub Actions generates the static site and deploys it to GitHub Pages.
+3. Leave `status` unset (or set it to `draft`) while writing. Use `published` for normal publication or `hidden` for a direct-link-only article.
+4. Push to `main`; GitHub Actions generates the static site and deploys it to GitHub Pages.
+
+Draft articles are excluded from the production content database and static routes. Hidden articles keep a direct URL but do not appear on the homepage, in search, RSS feeds, or the gallery.
 
 ## License
 

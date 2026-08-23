@@ -11,6 +11,7 @@ const showBottomNav = computed(() => (
 <template>
   <div class="app-shell" :class="{ 'has-bottom-nav': showBottomNav }">
     <AppHeader />
+    <AppToast />
     <SearchPalette />
     <RssSubscribeDialog />
     <main class="app-main">

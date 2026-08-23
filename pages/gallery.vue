@@ -2,7 +2,11 @@
 import { arrangeDailyGallery, getTaipeiDaySeed } from '~/utils/gallery'
 
 const { locale, t } = useI18n()
-const { data } = await useAsyncData('gallery-posts', () => queryCollection('blog').all())
+const { data } = await useAsyncData('gallery-posts', () => {
+  return queryCollection('blog')
+    .where('status', '=', 'published')
+    .all()
+})
 
 const daySeed = ref('')
 const isReady = ref(false)

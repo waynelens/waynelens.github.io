@@ -1,6 +1,7 @@
 ---
 lang: zh-TW
 translationKey: yuting-first-ocean-training-at-longdong
+status: published
 title: 宇庭龍洞第一次海訓
 description: 原本只打算待在岸上，看宇庭完成第一次海訓；沒想到小朱也剛好有空下水，意外促成了這次難得的小隊潛水。
 date: 2026-07-05
