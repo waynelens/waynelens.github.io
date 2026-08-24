@@ -3,20 +3,17 @@ lang: zh-TW
 translationKey: rose-garden-freediving
 status: published
 title: 玫瑰花園
-description: 在知道象鼻岩這個潛點的時候，其實就同步聽過玫瑰花園這個潛點了。
+description: 很早聽聞東北角的玫瑰花園，卻一直沒有機會成行，這次和綠島小隊一起下水探點。
 date: 2026-08-02
 tags:
   - 玫瑰花園
   - 東北角
   - 自由潛水
   - 水下攝影
-cover: "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0157-d5bbca.jpg"
+cover: "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0144-bb2034.jpg"
 images: []
 galleryImages: []
 ---
-
-# 20260802玫瑰花園
-
 ## 前言
 在知道象鼻岩這個潛點的時候，其實就同步聽過玫瑰花園這個潛點了。</br>
 只是過往都沒什麼人開這個潛點，不然就是各種原因流團。
