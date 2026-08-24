@@ -14,7 +14,6 @@ cover: "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92
 carouselImages:
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0004-296305.jpg"
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0050-baacc7.jpg"
-  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0106-a74b0e.jpg"
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0157-6276b8.jpg"
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0245-70d0ef.jpg"
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0288-9d8c17.jpg"
