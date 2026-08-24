@@ -8,15 +8,17 @@ const props = withDefaults(defineProps<{
   href: ''
 })
 
-const linkHostname = computed(() => {
-  if (!props.href) return ''
+const linkUrl = computed(() => {
+  if (!props.href) return null
 
   try {
-    return new URL(props.href).hostname.toLowerCase()
+    return new URL(props.href)
   } catch {
-    return ''
+    return null
   }
 })
+
+const linkHostname = computed(() => linkUrl.value?.hostname.toLowerCase() || '')
 
 const isInstagramLink = computed(() => {
   const hostname = linkHostname.value
@@ -33,6 +35,22 @@ const isYouTubeLink = computed(() => {
     || hostname.endsWith('.youtube-nocookie.com')
 })
 
+const isGoogleMapsLink = computed(() => {
+  const hostname = linkHostname.value
+  const pathname = linkUrl.value?.pathname.toLowerCase() || ''
+
+  if (hostname === 'maps.app.goo.gl' || hostname.endsWith('.maps.app.goo.gl')) return true
+  if (hostname === 'goo.gl' && pathname.startsWith('/maps')) return true
+  if (hostname.startsWith('maps.google.')) return true
+
+  const isGoogleHost = hostname === 'google.com'
+    || hostname.endsWith('.google.com')
+    || /^google\.[a-z.]+$/.test(hostname)
+    || /^www\.google\.[a-z.]+$/.test(hostname)
+
+  return isGoogleHost && pathname.startsWith('/maps')
+})
+
 const rel = computed(() => props.target === '_blank' ? 'noopener noreferrer' : undefined)
 </script>
 
@@ -45,7 +63,8 @@ const rel = computed(() => props.target === '_blank' ? 'noopener noreferrer' : u
     class="prose-link"
     :class="{
       'prose-person-link': isInstagramLink,
-      'prose-video-link': isYouTubeLink
+      'prose-video-link': isYouTubeLink,
+      'prose-location-link': isGoogleMapsLink
     }"
   >
     <svg
@@ -67,6 +86,16 @@ const rel = computed(() => props.target === '_blank' ? 'noopener noreferrer' : u
     >
       <circle cx="12" cy="12" r="8.5" />
       <path d="m10.2 8.8 5 3.2-5 3.2z" />
+    </svg>
+    <svg
+      v-else-if="isGoogleMapsLink"
+      class="prose-location-icon"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+      <circle cx="12" cy="10" r="2.25" />
     </svg>
     <span><slot /></span>
   </NuxtLink>
@@ -121,7 +150,8 @@ const rel = computed(() => props.target === '_blank' ? 'noopener noreferrer' : u
   color: var(--text);
 }
 
-.prose-video-link {
+.prose-video-link,
+.prose-location-link {
   display: inline-flex;
   align-items: center;
   gap: 0.25em;
@@ -130,7 +160,8 @@ const rel = computed(() => props.target === '_blank' ? 'noopener noreferrer' : u
   vertical-align: baseline;
 }
 
-.prose-video-link:hover {
+.prose-video-link:hover,
+.prose-location-link:hover {
   color: var(--text);
   text-decoration-color: var(--accent-2);
 }
@@ -162,10 +193,22 @@ const rel = computed(() => props.target === '_blank' ? 'noopener noreferrer' : u
   stroke: none;
 }
 
+.prose-location-icon {
+  width: 0.92em;
+  height: 0.92em;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.65;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .prose-link,
   .prose-person-link,
-  .prose-video-link {
+  .prose-video-link,
+  .prose-location-link {
     transition: none;
   }
 }

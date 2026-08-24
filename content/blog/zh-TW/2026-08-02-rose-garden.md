@@ -79,15 +79,29 @@ siteGalleryImages:
 在知道象鼻岩這個潛點的時候，其實就同步聽過玫瑰花園這個潛點了。</br>
 只是過往都沒什麼人開這個潛點，不然就是各種原因流團。
 
-在上週跟[小朱](https://www.instagram.com/7p_hhh/)、[大麥](https://www.instagram.com/shaneliu_eternal1713/)、[零零](https://www.instagram.com/_h_ven/)一次聚餐，想說下週約他們很久不見的綠島夥伴--[Rosa](https://www.instagram.com/rosa.xie_/)來潛水。
+在上週跟[小朱](https://www.instagram.com/7p_hhh/)、[大麥](https://www.instagram.com/shaneliu_eternal1713/)、[零零](https://www.instagram.com/_h_ven/)一次聚餐，想說下週約他們很久不見的綠島夥伴--[Rosa](https://www.instagram.com/rosa.xie_/)來潛水。</br>
 安排潛點的時候想了很久，終於想起這個一直有聽過、而且沒人去過的潛點。
 
 ## 潛點交通
-一開始是參考了[威毅的影片](https://www.youtube.com/watch?v=gk6NjPrCEMY&t=269s)，停在跟去象鼻岩一樣的[第一停車場](https://maps.app.goo.gl/HA7Lm1PufmLYVjZv6)，往象鼻岩反方向、一個看起來一堆草叢的地方走就可以了。
+出發前先參考了[威毅的影片](https://www.youtube.com/watch?v=gk6NjPrCEMY&t=269s)。車子可以停在前往象鼻岩時會使用的[第一停車場](https://maps.app.goo.gl/HA7Lm1PufmLYVjZv6)，再往象鼻岩的反方向走。
+入口看起來像是一片草叢，不太像有路，但穿過去後很快就能抵達下水點。
+這個潛點的交通算是相當輕鬆：停車方便，從停車場步行不到三分鐘就能走到海邊。</br>
+比較麻煩的是岸上較為空曠，幾乎沒有適合換裝的遮蔭；夏天很容易曬到受不了。如果不介意多走一小段，可以先到停車場的廁所換好裝備再過去。
 
-這裡最大的優點大概就交通蠻簡單的，好停車、走到下水點不用三分鐘。</br>
-缺點就比較空曠，換裝會被曬死，願意走的話可以到停車場廁所換裝。
-<!-- 鑲嵌地圖組件 -->
+::article-map
+---
+caption: 玫瑰花園潛點位置
+zoom: 16
+height: 420
+locations:
+  - name: 玫瑰花園潛點
+    latitude: 25.133299
+    longitude: 121.824019
+    description: 本次潛水記錄的下水點位置。
+    precision: exact
+    link: https://www.google.com/maps?q=25.133299,121.824019
+---
+::
 
 ## 心得
 我們是大約八點半下水，雖然大部分網路心得是說這裡很濁，但收益於最近的東北角能見度還不錯，這天能見度有十米左右。</br>

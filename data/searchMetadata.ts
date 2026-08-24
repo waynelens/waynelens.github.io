@@ -17,6 +17,10 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       'Rose Garden photo gallery',
       'rose coral',
       'shore entry',
+      'easy parking',
+      'three minute walk to shore',
+      'Rose Garden dive site map',
+      'Rose Garden dive site coordinates',
       'visibility'
     ],
     'zh-TW': [
@@ -32,6 +36,10 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       '玫瑰花園相簿',
       '玫瑰珊瑚',
       '岸潛',
+      '停車方便',
+      '步行三分鐘到海邊',
+      '玫瑰花園潛點地圖',
+      '玫瑰花園潛點座標',
       '能見度'
     ]
   },
