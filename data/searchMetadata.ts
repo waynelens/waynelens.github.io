@@ -14,6 +14,7 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       'small group freediving',
       'long-awaited dive trip',
       'underwater photography',
+      'Rose Garden photo gallery',
       'rose coral',
       'shore entry',
       'visibility'
@@ -28,6 +29,7 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       '小隊潛水',
       '終於成行',
       '水下攝影',
+      '玫瑰花園相簿',
       '玫瑰珊瑚',
       '岸潛',
       '能見度'

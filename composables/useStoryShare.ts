@@ -183,68 +183,81 @@ export const useStoryShare = () => {
     if (!context) throw new Error('Canvas is unavailable')
 
     const background = context.createLinearGradient(0, 0, CARD_WIDTH, CARD_HEIGHT)
-    background.addColorStop(0, '#181817')
-    background.addColorStop(1, '#080808')
+    background.addColorStop(0, '#f6f5f2')
+    background.addColorStop(1, '#e5e3de')
     context.fillStyle = background
     context.fillRect(0, 0, CARD_WIDTH, CARD_HEIGHT)
 
-    drawCover(context, image, 60, 60, 960, 585)
+    drawCover(context, image, 60, 60, 960, 680)
 
-    const imageShade = context.createLinearGradient(0, 60, 0, 645)
+    const imageShade = context.createLinearGradient(0, 60, 0, 740)
     imageShade.addColorStop(0, 'rgba(0, 0, 0, 0.28)')
     imageShade.addColorStop(0.38, 'rgba(0, 0, 0, 0)')
     imageShade.addColorStop(1, 'rgba(0, 0, 0, 0.48)')
     context.save()
-    roundedRect(context, 60, 60, 960, 585, 36)
+    roundedRect(context, 60, 60, 960, 680, 36)
     context.clip()
     context.fillStyle = imageShade
-    context.fillRect(60, 60, 960, 585)
+    context.fillRect(60, 60, 960, 680)
     context.restore()
 
     context.fillStyle = '#ffffff'
     context.font = '400 46px "Playwrite Deutschland Schulausgangschrift", "Segoe Script", cursive'
     context.fillText('WJ', 96, 128)
 
-    context.fillStyle = 'rgba(255, 255, 255, 0.82)'
+    context.fillStyle = 'rgba(24, 24, 23, 0.68)'
     context.font = `600 23px ${FONT_STACK}`
     context.letterSpacing = '2px'
-    context.fillText('PHOTOGRAPHY JOURNAL', 72, 710)
+    context.fillText('PHOTOGRAPHY JOURNAL', 72, 806)
     context.textAlign = 'right'
-    context.fillText(input.date || '', 1008, 710)
+    context.fillText(input.date || '', 1008, 806)
     context.textAlign = 'left'
     context.letterSpacing = '0px'
 
-    context.fillStyle = '#ffffff'
+    context.fillStyle = '#181817'
     context.font = `700 58px ${FONT_STACK}`
     const titleLines = wrapText(context, input.title, 936, 3)
-    const titleLineHeight = input.lang === 'zh-TW' ? 76 : 70
-    const titleY = 790
+    const titleLineHeight = input.lang === 'zh-TW' ? 72 : 68
+
+    context.font = `400 31px ${FONT_STACK}`
+    const descriptionLines = input.description
+      ? wrapText(context, input.description, 918, 3)
+      : []
+    const descriptionLineHeight = 44
+    const descriptionGap = 16
+    const contentBottom = 1178
+    const contentHeight = Math.max(0, titleLines.length - 1) * titleLineHeight
+      + (descriptionLines.length
+        ? titleLineHeight + descriptionGap + Math.max(0, descriptionLines.length - 1) * descriptionLineHeight
+        : 0)
+    const titleY = contentBottom - contentHeight
+
+    context.fillStyle = '#181817'
+    context.font = `700 58px ${FONT_STACK}`
     titleLines.forEach((line, index) => {
       context.fillText(line, 72, titleY + index * titleLineHeight)
     })
 
-    const descriptionY = titleY + titleLines.length * titleLineHeight + 24
-    if (input.description) {
-      context.fillStyle = 'rgba(255, 255, 255, 0.68)'
+    if (descriptionLines.length) {
+      const descriptionY = titleY + titleLines.length * titleLineHeight + descriptionGap
+      context.fillStyle = 'rgba(24, 24, 23, 0.66)'
       context.font = `400 31px ${FONT_STACK}`
-      const descriptionLines = wrapText(context, input.description, 918, 3)
-      const descriptionLineHeight = 46
       descriptionLines.forEach((line, index) => {
         context.fillText(line, 72, descriptionY + index * descriptionLineHeight)
       })
     }
 
-    context.strokeStyle = 'rgba(255, 255, 255, 0.16)'
+    context.strokeStyle = 'rgba(24, 24, 23, 0.14)'
     context.lineWidth = 1
     context.beginPath()
-    context.moveTo(72, 1242)
-    context.lineTo(1008, 1242)
+    context.moveTo(72, 1240)
+    context.lineTo(1008, 1240)
     context.stroke()
 
-    context.fillStyle = 'rgba(255, 255, 255, 0.78)'
+    context.fillStyle = 'rgba(24, 24, 23, 0.72)'
     context.font = `600 25px ${FONT_STACK}`
     context.letterSpacing = '2px'
-    context.fillText('WAYNELENS.DEV', 72, 1298)
+    context.fillText('WAYNELENS.DEV', 72, 1296)
     context.letterSpacing = '0px'
 
     const safeTitle = input.path
