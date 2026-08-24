@@ -12,12 +12,17 @@ if (!post.value) {
   setResponseStatus(404)
 }
 
-const images = computed(() => {
-  const value = post.value?.images || []
+const carouselImages = computed(() => {
+  const value = post.value?.carouselImages || []
   return Array.isArray(value) ? value : []
 })
 
-const shareImage = computed(() => post.value?.cover || images.value[0] || '')
+const articleGalleryImages = computed(() => {
+  const value = post.value?.articleGalleryImages || []
+  return Array.isArray(value) ? value : []
+})
+
+const shareImage = computed(() => post.value?.cover || carouselImages.value[0] || '')
 
 useSeoMeta({
   title: () => post.value?.title || 'Article',
@@ -49,14 +54,17 @@ useSeoMeta({
         />
       </div>
 
-      <PreviewCarousel :images="images" :title="post.title" />
+      <PreviewCarousel :images="carouselImages" :title="post.title" />
     </header>
 
     <section class="article-body glass-panel">
       <ContentRenderer :value="post" />
     </section>
 
-    <PostGallery v-if="images.length" :images="images" />
+    <PostGallery
+      v-if="articleGalleryImages.length"
+      :images="articleGalleryImages"
+    />
   </article>
 
   <div v-else class="article-not-found glass-panel">

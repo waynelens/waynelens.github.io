@@ -6,7 +6,6 @@ const props = defineProps<{
     title?: string
     description?: string
     date?: string
-    images?: string[]
     tags?: string[]
     body?: unknown
   }

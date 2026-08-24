@@ -12,7 +12,7 @@ tags:
   - taiwan
   - summer
 cover: "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0695.jpg"
-images:
+carouselImages:
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0007.jpg"
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0017.jpg"
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0329.jpg"
@@ -26,7 +26,21 @@ images:
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0754.jpg"
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0774.jpg"
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0781.jpg"
-galleryImages:
+articleGalleryImages:
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0007.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0017.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0329.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0395.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0434.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0455.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0620.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0666.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0721.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0745.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0754.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0774.jpg"
+  - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0781.jpg"
+siteGalleryImages:
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0695.jpg"
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0007.jpg"
   - "https://media.waynelens.dev/20260705%E5%AE%87%E5%BA%AD%E6%B5%B7%E8%A8%93-0017.jpg"

@@ -11,7 +11,21 @@ tags:
   - 自由潛水
   - 水下攝影
 cover: "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0106-a74b0e.jpg"
-images:
+carouselImages:
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0004-296305.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0050-baacc7.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0106-a74b0e.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0157-6276b8.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0245-70d0ef.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0288-9d8c17.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0289-942dd9.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0337-a79ee3.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0386-274565.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0390-065ee8.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0481-62ef3c.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0598-54b893.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0703-c93242.jpg"
+articleGalleryImages:
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0004-296305.jpg"
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0025-f7edc2.jpg"
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0045-fe7ea5.jpg"
@@ -43,13 +57,30 @@ images:
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0688-81efc0.jpg"
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0692-2a6ac7.jpg"
   - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0703-c93242.jpg"
-galleryImages: []
+siteGalleryImages:
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0004-296305.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0045-fe7ea5.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0050-baacc7.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0157-6276b8.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0215-a414aa.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0288-2-139312.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0289-942dd9.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0337-a79ee3.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0386-274565.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0390-065ee8.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0453-1bc8ec.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0470-fd4658.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0598-54b893.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0688-81efc0.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0703-c93242.jpg"
+  - "https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0481-62ef3c.jpg"
+
 ---
 ## 前言
 在知道象鼻岩這個潛點的時候，其實就同步聽過玫瑰花園這個潛點了。</br>
 只是過往都沒什麼人開這個潛點，不然就是各種原因流團。
 
-在上週跟小朱、大麥、零零一次聚餐，想說下週約他們很久不見的綠島夥伴--Rosa來潛水。
+在上週跟[小朱](https://www.instagram.com/7p_hhh/)、[大麥](https://www.instagram.com/shaneliu_eternal1713/)、[零零](https://www.instagram.com/_h_ven/)一次聚餐，想說下週約他們很久不見的綠島夥伴--[Rosa](https://www.instagram.com/rosa.xie_/)來潛水。
 安排潛點的時候想了很久，終於想起這個一直有聽過、而且沒人去過的潛點。
 
 ## 潛點交通

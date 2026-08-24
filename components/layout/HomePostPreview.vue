@@ -7,12 +7,12 @@ const props = defineProps<{
     description?: string
     date?: string
     cover?: string
-    images?: string[]
+    carouselImages?: string[]
     tags?: string[]
   }
 }>()
 
-const previewImage = computed(() => props.post.cover || props.post.images?.[0] || '')
+const previewImage = computed(() => props.post.cover || props.post.carouselImages?.[0] || '')
 const contentLightbox = ref(false)
 
 const openPreview = () => {

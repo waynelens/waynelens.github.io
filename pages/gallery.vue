@@ -18,7 +18,7 @@ const sourcePhotos = computed(() => {
     .sort((a, b) => Number(b.lang === locale.value) - Number(a.lang === locale.value))
 
   for (const post of posts) {
-    for (const source of post.galleryImages) {
+    for (const source of post.siteGalleryImages) {
       if (seen.has(source)) continue
       seen.add(source)
       photos.push({

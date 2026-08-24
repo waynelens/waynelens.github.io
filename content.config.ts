@@ -16,8 +16,9 @@ export default defineContentConfig({
         date: z.string(),
         tags: z.array(z.string()).default([]),
         cover: z.string().optional(),
-        images: z.array(z.string()).default([]),
-        galleryImages: z.array(z.string()).default([])
+        carouselImages: z.array(z.string()).default([]),
+        articleGalleryImages: z.array(z.string()).default([]),
+        siteGalleryImages: z.array(z.string()).default([])
       })
     }),
     diveSites: defineCollection({

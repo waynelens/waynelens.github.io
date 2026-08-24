@@ -12,12 +12,17 @@ tags:
   - 台灣
   - 夏天
 cover: "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-129.jpg"
-images:
+carouselImages:
   - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-112-%E7%B7%A8%E8%BC%AF.jpg"
   - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-131.jpg"
   - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-27.jpg"
   - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-66.jpg"
-galleryImages:
+articleGalleryImages:
+  - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-112-%E7%B7%A8%E8%BC%AF.jpg"
+  - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-131.jpg"
+  - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-27.jpg"
+  - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-66.jpg"
+siteGalleryImages:
   - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-129.jpg"
   - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-112-%E7%B7%A8%E8%BC%AF.jpg"
   - "https://media.waynelens.dev/20240901%E7%BE%8E%E8%B1%94%E5%B1%B1%E6%BD%9B%E6%B0%B4-131.jpg"
