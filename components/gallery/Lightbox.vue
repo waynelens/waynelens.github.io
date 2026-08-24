@@ -85,9 +85,14 @@ onBeforeUnmount(() => {
   border: 0;
   color: var(--text);
   background: transparent;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 12px;
   place-items: center;
-  padding: 24px;
+  padding:
+    calc(18px + env(safe-area-inset-top))
+    calc(18px + env(safe-area-inset-right))
+    calc(18px + env(safe-area-inset-bottom))
+    calc(18px + env(safe-area-inset-left));
 }
 
 .lightbox[open] {
@@ -102,20 +107,31 @@ onBeforeUnmount(() => {
 
 .lightbox-frame {
   width: min(100%, 1100px);
+  height: 100%;
+  min-height: 0;
   margin: 0;
+  display: grid;
+  place-items: center;
 }
 
 .lightbox-frame img {
-  width: 100%;
-  max-height: 86vh;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: calc(
+    100dvh
+    - 97px
+    - env(safe-area-inset-top)
+    - env(safe-area-inset-bottom)
+  );
   object-fit: contain;
 }
 
 .lightbox-close {
-  position: absolute;
-  top: 18px;
-  right: 18px;
+  position: static;
   z-index: 1;
+  min-height: 44px;
+  justify-self: end;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.05);
