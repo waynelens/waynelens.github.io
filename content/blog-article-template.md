@@ -37,6 +37,43 @@ siteGalleryImages:
 在這裡撰寫文章正文。
 
 <!--
+文章單張圖片（選用）：
+- 適合正文中的單張重點照片；保留原始比例、不裁切，點擊後以 Lightbox 開啟原圖。
+- src 為必要屬性；alt 是替代文字，caption 是顯示在照片下方的說明。
+- 使用時移除這段說明最外層的 HTML 註解標記。
+
+::article-image
+---
+src: https://media.waynelens.dev/path/to/article-image.jpg
+alt: 照片內容的替代文字
+caption: 顯示在照片下方的說明文字。
+---
+::
+-->
+
+<!--
+文章多張組圖（選用）：
+- 適合把正文中的數張照片緊湊排列；桌面最多三欄，平板與手機兩欄。
+- 每張照片保留原始比例、不裁切，並可分別設定 alt 與 caption。
+- 點擊縮圖後以 Lightbox 開啟原圖；沒有說明時可省略 caption。
+- 使用時移除這段說明最外層的 HTML 註解標記。
+
+::article-image-group
+---
+images:
+  - src: https://media.waynelens.dev/path/to/article-image-01.jpg
+    alt: 第一張照片的替代文字
+    caption: 第一張照片的說明。
+  - src: https://media.waynelens.dev/path/to/article-image-02.jpg
+    alt: 第二張照片的替代文字
+    caption: 第二張照片的說明。
+  - src: https://media.waynelens.dev/path/to/article-image-03.jpg
+    alt: 第三張照片的替代文字
+---
+::
+-->
+
+<!--
 文章內嵌地圖（選用）：
 - 可放在正文任意位置，也可以在同一篇文章中放入多個 article-map。
 - locations 至少需要一筆；name、latitude、longitude 為必要屬性。

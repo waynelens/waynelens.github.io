@@ -4,6 +4,7 @@ const props = defineProps<{
   open: boolean
   src: string
   index: number
+  alt?: string
 }>()
 
 const emit = defineEmits<{
@@ -65,7 +66,7 @@ onBeforeUnmount(() => {
       <figure class="lightbox-frame">
         <img
           :src="props.src"
-          :alt="t('gallery.expandedAlt', { number: props.index + 1 })"
+          :alt="props.alt || t('gallery.expandedAlt', { number: props.index + 1 })"
           decoding="async"
           fetchpriority="high"
         >

@@ -83,10 +83,12 @@ siteGalleryImages:
 安排潛點的時候想了很久，終於想起這個一直有聽過、而且沒人去過的潛點。
 
 ## 潛點交通
-出發前先參考了[威毅的影片](https://www.youtube.com/watch?v=gk6NjPrCEMY&t=269s)。車子可以停在前往象鼻岩時會使用的[第一停車場](https://maps.app.goo.gl/HA7Lm1PufmLYVjZv6)，再往象鼻岩的反方向走。
+出發前先參考了[威毅的影片](https://www.youtube.com/watch?v=gk6NjPrCEMY&t=269s)，車子可以停在前往象鼻岩時會使用的[第一停車場](https://maps.app.goo.gl/HA7Lm1PufmLYVjZv6)，再往象鼻岩的反方向走。</br>
 入口看起來像是一片草叢，不太像有路，但穿過去後很快就能抵達下水點。
-這個潛點的交通算是相當輕鬆：停車方便，從停車場步行不到三分鐘就能走到海邊。</br>
-比較麻煩的是岸上較為空曠，幾乎沒有適合換裝的遮蔭；夏天很容易曬到受不了。如果不介意多走一小段，可以先到停車場的廁所換好裝備再過去。
+
+- 交通算是相當輕鬆、停車方便，從停車場步行不到三分鐘就能走到下水點。</br>
+- 比較麻煩的是岸上較為空曠，幾乎沒有適合換裝的遮蔭；夏天很容易曬到受不了。</br>
+  如果不介意多走一小段，可以先到停車場的廁所換好裝備再過去。
 
 ::article-map
 ---
@@ -104,18 +106,62 @@ locations:
 ::
 
 ## 心得
-我們是大約八點半下水，雖然大部分網路心得是說這裡很濁，但收益於最近的東北角能見度還不錯，這天能見度有十米左右。</br>
+我們是大約八點半下水，雖然大部分網路心得是說這裡很濁，但受益於最近的東北角能見度還不錯，這天能見度有十米左右。</br>
 浮球架設也比預期簡單，不像潮境珊瑚多到根本沒地方綁底。
 
 完全不用擔心找不到玫瑰珊瑚，因爲覆蓋面積確實很大，中間會點綴其他顏色的珊瑚。</br>
+::article-image-group
+---
+images:
+  - src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0481-62ef3c.jpg
+    alt: 大片的玫瑰珊瑚
+    caption: 有大片的玫瑰珊瑚做前景
+  - src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0157-6276b8.jpg
+    alt: 大片的玫瑰珊瑚
+    caption: 有大片的玫瑰珊瑚做前景
+---
+::
 這天光線間歇的灑下，深度以放呆算是蠻友善的，介於5~10米，拍照超級適合。
-![玫瑰花園水下攝影](https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0106-0eecd0.jpg)
-![玫瑰花園水下攝影](https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0289-75d596.jpg)
-![玫瑰花園水下攝影](https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0476-dff224.jpg)
+::article-image-group
+---
+images:
+  - src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0288-9d8c17.jpg
+    alt: 友善的深度跟多變的地景
+    caption: 友善的深度跟多變的地景
+  - src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0703-c93242.jpg
+    alt: 友善的深度跟多變的地景
+    caption: 友善的深度跟多變的地景
+---
+::
 
 大大小小的魚穿梭在珊瑚之間，數量不能到說到爆多，但會一直持續看到魚經過。
+::article-image-group
+---
+images:
+  - src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0448-7d0ae0.jpg
+    alt: 滿滿的倒吊
+    caption: 滿滿的倒吊
+  - src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0453-1bc8ec.jpg
+    alt: 觀看倒吊的潛伴
+    caption: 觀看倒吊的潛伴
+  - src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0598-54b893.jpg
+    alt: 衝撞鏡頭的河豚
+    caption: 衝撞鏡頭的河豚
+---
+::
 
 然後下水才確定我運動相機掛了，自拍杆淪爲拍攝道具😂
+::article-image-group
+---
+images:
+  - src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0386-274565.jpg
+    alt: 自拍杆淪爲拍攝道具
+  - src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0490-e5f03e.jpg
+    alt: 自拍杆淪爲拍攝道具
+  - src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0390-065ee8.jpg
+    alt: 自拍杆淪爲拍攝道具
+---
+::
 
 ## 結論
 優點：
@@ -130,3 +176,20 @@ locations:
 - 附近熱炒或海鮮小吃通常上岸的時候，都大排長龍，還是要去其他地方吃。
 
 我們實際上岸時間大約十一點，跟潮境蠻像的，大約十點會起流，能見度也會開始下降。
+
+最後是我很喜歡的分水照片，以及潛伴的防寒衣顏色好讚😍
+::article-image
+---
+src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0045-fe7ea5.jpg
+alt: 玫瑰珊瑚分水
+caption: 背後山景跟玫瑰珊瑚分水
+---
+::
+
+::article-image
+---
+src: https://media.waynelens.dev/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0215-a414aa.jpg
+alt: 漂亮的防寒衣
+caption: 漂亮的防寒衣
+---
+::
