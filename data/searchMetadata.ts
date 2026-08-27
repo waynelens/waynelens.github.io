@@ -3,6 +3,41 @@ import type { SearchLocale } from '~/utils/search'
 type LocalizedSearchMetadata = Record<SearchLocale, string[]>
 
 export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
+  'gengziping-hot-spring': {
+    en: [
+      '2024-02-14',
+      'February 14 2024',
+      'Yangmingshan',
+      'Gengziping Hot Springs',
+      'access prohibited area',
+      'wild hot spring',
+      'Xiaqigu Hot Spring',
+      'geothermal landscape',
+      'sulfur springs',
+      'stream valley hot spring',
+      'natural hot spring pools',
+      'hot spring mud mask',
+      'birthday trip',
+      'Lunar New Year'
+    ],
+    'zh-TW': [
+      '2024-02-14',
+      '2024年2月14日',
+      '陽明山',
+      '焿子坪',
+      '焿子坪溫泉',
+      '禁止進入區域',
+      '野溪溫泉',
+      '下七股溫泉',
+      '地熱景觀',
+      '硫磺泉',
+      '溪谷溫泉',
+      '天然溫泉池',
+      '溫泉泥面膜',
+      '生日旅行',
+      '過年泡湯'
+    ]
+  },
   'rose-garden-freediving': {
     en: [
       '2026-08-02',
