@@ -18,7 +18,7 @@
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",
     "@fontsource-variable/noto-sans-tc": "^5.3.0",
-    "@nuxt/content": "^3.15.2",
+    "@nuxt/content": "^3.16.1",
     "@nuxtjs/i18n": "^10.6.0",
     "better-sqlite3": "^12.11.1",
     "echarts": "^6.1.0",
@@ -27,18 +27,18 @@
     "leaflet.markercluster": "^1.5.3",
     "minisearch": "^7.2.0",
     "nuxt": "^4.5.2",
-    "vue": "^3.5.41",
-    "zod": "^4.4.3"
+    "vue": "^3.5.43",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@garmin/fitsdk": "^21.213.0",
+    "@garmin/fitsdk": "^21.217.0",
     "@types/leaflet": "^1.9.22",
     "@types/leaflet.markercluster": "^1.5.6",
-    "@types/node": "^24.13.3",
-    "fast-xml-parser": "^5.11.0",
+    "@types/node": "^24.19.1",
+    "fast-xml-parser": "^5.11.2",
     "serve": "^14.2.6",
     "typescript": "^5.9.3",
-    "vue-tsc": "^3.3.11"
+    "vue-tsc": "^3.3.12"
   },
   "allowScripts": {
     "esbuild@0.25.12": true,

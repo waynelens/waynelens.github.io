@@ -1,7 +1,7 @@
 ---
 lang: zh-TW
 translationKey: gengziping-hot-spring
-status: published
+status: draft
 title: 陽明山焿子坪野溪溫泉
 description: 生日聚會才剛結束，又和朋友相約走進陽明山焿子坪，在白煙瀰漫的地熱溪谷裡泡一場野溪溫泉。
 date: 2024-02-14
