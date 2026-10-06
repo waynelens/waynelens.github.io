@@ -84,6 +84,39 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       '能見度'
     ]
   },
+  'rose-garden-sunrise-dive': {
+    en: [
+      '2026-08-30',
+      'August 30 2026',
+      'Rose Garden sunrise dive',
+      'Northeast Coast Taiwan',
+      'freediving before dawn',
+      'night shore entry',
+      'sunrise from the sea',
+      'split-level photography',
+      'Shuanghe dive buddies',
+      'two dives before noon',
+      'Longdong second dive',
+      'float setup practice',
+      'underwater costume photography',
+      'Green Island farewell dive'
+    ],
+    'zh-TW': [
+      '2026-08-30',
+      '2026年8月30日',
+      '玫瑰花園日出潛水',
+      '東北角自由潛水',
+      '摸黑下水',
+      '海上看日出',
+      '分水攝影',
+      '雙和潛伴',
+      '一天二潛',
+      '龍洞二潛',
+      '浮球架設',
+      '水下服裝攝影',
+      '綠島出發前潛水'
+    ]
+  },
   'clare-first-dive-at-bitoujiao': {
     en: [
       '2024-09-01',
