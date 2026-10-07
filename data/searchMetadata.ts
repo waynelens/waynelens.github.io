@@ -106,6 +106,8 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       'Longdong second dive',
       'float setup practice',
       'underwater costume photography',
+      'Naruto Akatsuki cloak underwater photos',
+      'Attack on Titan underwater costume photos',
       'Green Island farewell dive'
     ],
     'zh-TW': [
@@ -128,6 +130,8 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       '龍洞二潛',
       '浮球架設',
       '水下服裝攝影',
+      '火影忍者曉袍水下攝影',
+      '進擊的巨人水下服裝攝影',
       '綠島出發前潛水'
     ]
   },

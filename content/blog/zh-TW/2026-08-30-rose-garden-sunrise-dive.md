@@ -143,6 +143,7 @@ locations:
 ---
 ::
 
+
 ### 海上看日出
 
 來之前就知道水下幾乎會是一片漆黑，所以我們沒有急著往下潛，大多數時間只是抓著浮球聊天，看天空從深藍慢慢染上晨光。
@@ -192,14 +193,58 @@ images:
 ::
 
 拍照也以分水畫面為主。<br>
+
+::article-image-group
+---
+images:
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0090-10e923.jpg
+    alt: 分水阿金
+    caption: 分水阿金
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0083-6bc231.jpg
+    alt: 分水小朱
+    caption: 分水小朱
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0085-c7d411.jpg
+    alt: 分水阿仁
+    caption: 分水阿仁
+---
+::
+
 玫瑰花園三面被陸地包圍，無論相機朝哪個方向，後方都有不同的岸線和山勢，畫面意外地很有層次。
+
+::article-image-group
+---
+images:
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0031-1fba49.jpg
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0077-dcf99b.jpg
+---
+::
 
 ## 龍洞二潛
 
 會選這一天，另一個原因是[宇庭](https://www.instagram.com/hsiao0615/)剛好和教練約在龍洞訓練，我們便把二潛也一起排了進去。<br>
 沒想到完成一天兩潛時，居然才剛到中午。😂
 
+::article-image-group
+---
+images:
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0135-0e3457.jpg
+    alt: 宇庭好棒😍
+    caption: 宇庭好棒😍
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0138-2c31b7.jpg
+    alt: 看起來很放鬆
+    caption: 看起來很放鬆
+---
+::
+
 我們也約了[Rosa](https://www.instagram.com/rosa.xie_/)來龍洞潛水，以後要多找她出來自潛。
+
+::article-image-group
+---
+images:
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0115-df743b.jpg
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0116-de29b9.jpg
+---
+::
 
 我們還帶了《火影忍者》的曉袍和《進擊的巨人》服裝下水試拍，不過在水裡要怎麼固定布料，還得再研究一下；衣服一浮起來，角色最有辨識度的部分很容易就被遮住。
 
@@ -207,3 +252,12 @@ images:
 
 為了看一場日出，半夜起床、摸黑下水，怎麼想都不是一件輕鬆的事。<br>
 但真的漂在海上，看著天色一點一點亮起來之後，又會覺得這群人願意一起瘋一次，確實很值得。
+
+::article-image-group
+---
+images:
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0095-326673.jpg
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0140-a8f9c6.jpg
+  - src: https://media.waynelens.dev/20260830%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92%E6%97%A5%E5%87%BA-0144-d740c8.jpg
+---
+::
