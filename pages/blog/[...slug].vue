@@ -1,9 +1,12 @@
 <script setup lang="ts">
 const route = useRoute()
+const visibleStatuses = import.meta.dev
+  ? ['draft', 'published', 'hidden']
+  : ['published', 'hidden']
 
 const { data: post } = await useAsyncData(route.path, () => {
   return queryCollection('blog')
-    .where('status', 'IN', ['published', 'hidden'])
+    .where('status', 'IN', visibleStatuses)
     .path(route.path)
     .first()
 })

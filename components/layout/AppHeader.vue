@@ -8,6 +8,9 @@ const switchingLocale = ref(false)
 const { openSearch } = useSearchDialog()
 const { openRss } = useRssDialog()
 const { showToast } = useSiteToast()
+const visibleArticleStatuses = import.meta.dev
+  ? ['draft', 'published', 'hidden']
+  : ['published', 'hidden']
 
 const applyTheme = (value: 'dark' | 'light') => {
   theme.value = value
@@ -43,7 +46,7 @@ const switchLanguage = async () => {
   try {
     if (route.path.startsWith('/blog/')) {
       const currentPost = await queryCollection('blog')
-        .where('status', 'IN', ['published', 'hidden'])
+        .where('status', 'IN', visibleArticleStatuses)
         .path(route.path)
         .first()
 
@@ -51,7 +54,7 @@ const switchLanguage = async () => {
         const translatedPost = await queryCollection('blog')
           .where('translationKey', '=', currentPost.translationKey)
           .where('lang', '=', nextLocale)
-          .where('status', 'IN', ['published', 'hidden'])
+          .where('status', 'IN', visibleArticleStatuses)
           .first()
 
         if (translatedPost?.path) {

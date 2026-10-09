@@ -10,6 +10,16 @@ const themeInitScript = `(function(){try{var value=localStorage.getItem('theme')
 export default defineNuxtConfig({
   compatibilityDate: '2026-08-23',
   modules: ['@nuxt/content', '@nuxtjs/i18n'],
+  hooks: {
+    'pages:extend'(pages) {
+      if (process.env.NODE_ENV === 'development') return
+
+      for (let index = pages.length - 1; index >= 0; index -= 1) {
+        const path = pages[index]?.path || ''
+        if (path === '/cms' || path.startsWith('/cms/')) pages.splice(index, 1)
+      }
+    }
+  },
   components: [
     {
       path: '~/components',
