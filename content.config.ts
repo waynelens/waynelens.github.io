@@ -2,11 +2,18 @@ import { defineCollection, defineContentConfig } from '@nuxt/content'
 import { z } from 'zod'
 import { blogSource } from './content/blog-source'
 
+const blogCollectionSource = process.env.NODE_ENV === 'development'
+  ? {
+      include: 'blog/**/*.md',
+      prefix: '/blog'
+    }
+  : blogSource
+
 export default defineContentConfig({
   collections: {
     blog: defineCollection({
       type: 'page',
-      source: blogSource,
+      source: blogCollectionSource,
       schema: z.object({
         lang: z.enum(['en', 'zh-TW']),
         translationKey: z.string(),
