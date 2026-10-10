@@ -33,6 +33,11 @@ const ARTICLE_DIRECTORIES: Record<CmsLocale, string> = {
   en: 'content/blog/en'
 }
 
+const ARTICLE_ROUTE_LOCALES: Record<CmsLocale, string> = {
+  'zh-TW': 'zh-tw',
+  en: 'en'
+}
+
 const frontmatterPattern = /^---\s*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/u
 const fileNamePattern = /^\d{4}-\d{2}-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$/u
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u
@@ -141,7 +146,7 @@ const parseMarkdown = (
   return {
     locale,
     fileName,
-    path: `/blog/${locale}/${fileName.replace(/\.md$/u, '')}`,
+    path: `/blog/${ARTICLE_ROUTE_LOCALES[locale]}/${fileName.replace(/\.md$/u, '')}`,
     revision: hash(content),
     modifiedAt,
     frontmatter: parsed,
