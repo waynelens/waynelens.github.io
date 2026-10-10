@@ -76,6 +76,10 @@ export type CmsCreatePayload = {
   locales: CmsLocale[]
 }
 
+export type CmsCreateLocalePayload = {
+  locale: CmsLocale
+}
+
 export type CmsMutationResult = {
   ok: true
   translationKey: string

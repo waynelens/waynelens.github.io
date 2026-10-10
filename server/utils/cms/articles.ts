@@ -19,6 +19,7 @@ import type {
   CmsArticleGroup,
   CmsArticleGroupSummary,
   CmsArticleSaveInput,
+  CmsCreateLocalePayload,
   CmsCreatePayload,
   CmsLocale,
   CmsMutationResult,
@@ -62,6 +63,10 @@ const createSchema = z.object({
   slug: z.string().regex(slugPattern),
   translationKey: z.string().regex(translationKeyPattern),
   locales: z.array(z.enum(['zh-TW', 'en'])).min(1)
+})
+
+const createLocaleSchema = z.object({
+  locale: z.enum(['zh-TW', 'en'])
 })
 
 const saveSchema = z.object({
@@ -417,6 +422,67 @@ export const createCmsArticleGroup = async (
 
   await writeFilesAtomically(changes)
   return { ok: true, translationKey: payload.translationKey, warnings: [] }
+}
+
+export const createCmsArticleLocale = async (
+  translationKey: string,
+  input: CmsCreateLocalePayload,
+  rootDirectory = process.cwd()
+): Promise<CmsMutationResult> => {
+  if (!translationKeyPattern.test(translationKey)) {
+    throw createError({ statusCode: 400, message: 'Invalid translationKey' })
+  }
+
+  const payload = parseInput(createLocaleSchema, input)
+  const group = await getCmsArticleGroup(translationKey, rootDirectory)
+  if (group.articles[payload.locale]) {
+    throw createError({ statusCode: 409, message: `${payload.locale} version already exists` })
+  }
+
+  const source = group.articles[payload.locale === 'en' ? 'zh-TW' : 'en']
+  if (!source) {
+    throw createError({ statusCode: 409, message: 'No source language is available to copy' })
+  }
+
+  const frontmatter: CmsArticleFrontmatter = {
+    ...source.frontmatter,
+    lang: payload.locale,
+    status: 'draft',
+    tags: [...source.frontmatter.tags],
+    carouselImages: [...source.frontmatter.carouselImages],
+    articleGalleryImages: [...source.frontmatter.articleGalleryImages],
+    siteGalleryImages: [...source.frontmatter.siteGalleryImages]
+  }
+  const body = source.body.startsWith('\n') ? source.body : `\n${source.body}`
+  const changes: FileChange[] = [{
+    path: articlePath(rootDirectory, payload.locale, source.fileName),
+    expectedRevision: null,
+    content: `---\n${stringify(frontmatter, { lineWidth: 0 }).trimEnd()}\n---\n${body}`
+  }]
+
+  const metadataFile = await readSearchMetadataFile(rootDirectory)
+  const metadata = metadataFile.entries[translationKey] || { en: [], 'zh-TW': [] }
+  if (!metadata[payload.locale].length) {
+    metadata[payload.locale] = payload.locale === 'en'
+      ? [frontmatter.date]
+      : [
+          frontmatter.date,
+          `${frontmatter.date.slice(0, 4)}年${Number(frontmatter.date.slice(5, 7))}月${Number(frontmatter.date.slice(8, 10))}日`
+        ]
+    metadataFile.entries[translationKey] = metadata
+    changes.push({
+      path: metadataFile.path,
+      content: renderSearchMetadata(metadataFile.entries),
+      expectedRevision: hash(metadataFile.content)
+    })
+  }
+
+  await writeFilesAtomically(changes)
+  return {
+    ok: true,
+    translationKey,
+    warnings: ['已複製現有內容並建立 draft；請完成翻譯後再發佈。']
+  }
 }
 
 export const saveCmsArticleGroup = async (

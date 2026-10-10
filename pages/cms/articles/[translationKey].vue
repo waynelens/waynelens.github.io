@@ -30,6 +30,10 @@ const searchEnText = ref('')
 const searchZhText = ref('')
 const saveState = ref<'idle' | 'saving' | 'saved' | 'error'>('idle')
 const saveMessage = ref('')
+const creatingLocale = ref<CmsLocale>()
+const localeDialogTarget = ref<CmsLocale>()
+const localeDialogError = ref('')
+const localeDialog = ref<HTMLDialogElement>()
 const showPreview = ref(false)
 const previewRevision = ref(0)
 const markdownEditor = ref<HTMLTextAreaElement>()
@@ -165,6 +169,68 @@ const errorMessage = (value: unknown) => {
   return '儲存失敗'
 }
 
+const closeLocaleDialog = () => {
+  if (creatingLocale.value) return
+  localeDialogTarget.value = undefined
+  localeDialogError.value = ''
+}
+
+const openLocaleDialog = (locale: CmsLocale) => {
+  if (!editor.value || creatingLocale.value) return
+  if (isDirty.value) {
+    saveState.value = 'error'
+    saveMessage.value = '請先儲存目前修改，再建立新的語言版本。'
+    return
+  }
+
+  localeDialogError.value = ''
+  localeDialogTarget.value = locale
+}
+
+const handleLocaleBackdropClick = (event: MouseEvent) => {
+  if (event.target === localeDialog.value) closeLocaleDialog()
+}
+
+watch(localeDialogTarget, async (locale) => {
+  await nextTick()
+  if (locale) {
+    if (!localeDialog.value?.open) localeDialog.value?.showModal()
+    document.body.style.overflow = 'hidden'
+    return
+  }
+
+  if (localeDialog.value?.open) localeDialog.value.close()
+  document.body.style.overflow = ''
+})
+
+const createLocale = async () => {
+  const locale = localeDialogTarget.value
+  if (!locale || !editor.value || creatingLocale.value) return
+
+  const targetLabel = locale === 'zh-TW' ? '中文版' : 'English 版本'
+  creatingLocale.value = locale
+  localeDialogError.value = ''
+  saveMessage.value = ''
+  try {
+    const result = await $fetch<CmsMutationResult>(`${requestUrl.value}/locales`, {
+      method: 'POST',
+      body: { locale }
+    })
+    await refresh()
+    activeLocale.value = locale
+    localeDialogTarget.value = undefined
+    saveState.value = 'saved'
+    saveMessage.value = result.warnings[0] || `${targetLabel}已建立。`
+    window.setTimeout(() => {
+      if (saveState.value === 'saved') saveState.value = 'idle'
+    }, 5000)
+  } catch (requestError) {
+    localeDialogError.value = errorMessage(requestError)
+  } finally {
+    creatingLocale.value = undefined
+  }
+}
+
 const save = async () => {
   if (!editor.value || saveState.value === 'saving') return
 
@@ -219,7 +285,10 @@ const handleBeforeUnload = (event: BeforeUnloadEvent) => {
 }
 
 onMounted(() => window.addEventListener('beforeunload', handleBeforeUnload))
-onBeforeUnmount(() => window.removeEventListener('beforeunload', handleBeforeUnload))
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeunload', handleBeforeUnload)
+  document.body.style.overflow = ''
+})
 onBeforeRouteLeave(() => !isDirty.value || window.confirm('尚有未儲存的內容，確定離開？'))
 </script>
 
@@ -265,8 +334,22 @@ onBeforeRouteLeave(() => !isDirty.value || window.confirm('尚有未儲存的內
                 {{ editor.articles[locale]?.frontmatter.status }}
               </span>
             </button>
-            <button v-if="!editor.articles['zh-TW']" type="button" disabled>＋ 中文版</button>
-            <button v-if="!editor.articles.en" type="button" disabled>＋ English</button>
+            <button
+              v-if="!editor.articles['zh-TW']"
+              type="button"
+              :disabled="Boolean(creatingLocale)"
+              @click="openLocaleDialog('zh-TW')"
+            >
+              {{ creatingLocale === 'zh-TW' ? '建立中…' : '＋ 中文版' }}
+            </button>
+            <button
+              v-if="!editor.articles.en"
+              type="button"
+              :disabled="Boolean(creatingLocale)"
+              @click="openLocaleDialog('en')"
+            >
+              {{ creatingLocale === 'en' ? '建立中…' : '＋ English' }}
+            </button>
           </nav>
 
           <template v-if="activeArticle">
@@ -442,6 +525,57 @@ onBeforeRouteLeave(() => !isDirty.value || window.confirm('尚有未儲存的內
         </aside>
       </div>
     </template>
+
+    <dialog
+      ref="localeDialog"
+      class="locale-dialog"
+      aria-labelledby="locale-dialog-title"
+      @cancel.prevent="closeLocaleDialog"
+      @click="handleLocaleBackdropClick"
+    >
+      <section class="locale-dialog__panel">
+        <header class="locale-dialog__header">
+          <div>
+            <p class="eyebrow">Bilingual draft</p>
+            <h2 id="locale-dialog-title">
+              建立{{ localeDialogTarget === 'en' ? '英文版' : '中文版' }}
+            </h2>
+          </div>
+          <button type="button" :disabled="Boolean(creatingLocale)" @click="closeLocaleDialog">取消</button>
+        </header>
+
+        <p class="locale-dialog__description">
+          以目前的{{ localeDialogTarget === 'en' ? '中文版' : '英文版' }}為基礎建立翻譯草稿，原始文章不會被修改。
+        </p>
+
+        <div class="locale-dialog__summary">
+          <div>
+            <span>新檔案</span>
+            <code>{{ activeArticle?.fileName }}</code>
+          </div>
+          <div>
+            <span>初始狀態</span>
+            <strong>draft</strong>
+          </div>
+          <div>
+            <span>將會複製</span>
+            <strong>日期、圖片、地圖與正文</strong>
+          </div>
+        </div>
+
+        <p class="locale-dialog__notice">
+          建立後會自動切換到新語言版本；完成翻譯並確認內容後，再將狀態改為 published。
+        </p>
+        <p v-if="localeDialogError" class="locale-dialog__error">{{ localeDialogError }}</p>
+
+        <footer class="locale-dialog__actions">
+          <button type="button" :disabled="Boolean(creatingLocale)" @click="closeLocaleDialog">返回編輯</button>
+          <button type="button" class="primary-button" :disabled="Boolean(creatingLocale)" @click="createLocale">
+            {{ creatingLocale ? '建立草稿中…' : '建立翻譯草稿' }}
+          </button>
+        </footer>
+      </section>
+    </dialog>
     </div>
   </CmsShell>
 </template>
@@ -529,6 +663,41 @@ textarea { padding: 12px; resize: vertical; line-height: 1.6; }
 .file-card dt,
 .file-card dd { margin: 0; color: var(--muted); font-size: 0.68rem; }
 
+.locale-dialog {
+  width: min(580px, calc(100% - 28px));
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  box-shadow: 0 32px 100px rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(28px);
+}
+.locale-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+.locale-dialog__panel { display: grid; gap: 20px; padding: clamp(22px, 4vw, 32px); }
+.locale-dialog__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.locale-dialog__header .eyebrow { margin: 0 0 6px; }
+.locale-dialog__header h2 { margin: 0; font-size: clamp(1.55rem, 4vw, 2.2rem); line-height: 1.1; }
+.locale-dialog__header > button { padding: 7px 10px; color: var(--muted); font-size: 0.74rem; }
+.locale-dialog__description,
+.locale-dialog__notice,
+.locale-dialog__error { margin: 0; line-height: 1.65; }
+.locale-dialog__description { color: var(--muted); }
+.locale-dialog__summary { display: grid; gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--line); }
+.locale-dialog__summary > div { display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: center; gap: 14px; padding: 13px 15px; background: var(--bg-soft); }
+.locale-dialog__summary span { color: var(--muted); font-size: 0.72rem; }
+.locale-dialog__summary strong,
+.locale-dialog__summary code { overflow-wrap: anywhere; font-size: 0.78rem; }
+.locale-dialog__summary code { color: var(--text); }
+.locale-dialog__notice { padding: 13px 15px; border-radius: 13px; background: rgba(242, 195, 139, 0.12); color: #d9a85f; font-size: 0.78rem; }
+.locale-dialog__error { color: #ef7777; font-size: 0.8rem; }
+.locale-dialog__actions { display: flex; justify-content: flex-end; gap: 9px; }
+
 @media (max-width: 1120px) {
   .editor-layout { grid-template-columns: 1fr; }
   .editor-sidebar { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -549,5 +718,9 @@ textarea { padding: 12px; resize: vertical; line-height: 1.6; }
   .snippet-actions,
   .preview-actions { justify-content: flex-start; }
   .markdown-editor { min-height: 480px; }
+  .locale-dialog { width: calc(100% - 16px); max-height: calc(100dvh - 32px); }
+  .locale-dialog__panel { max-height: calc(100dvh - 32px); overflow-y: auto; padding: 20px 16px; }
+  .locale-dialog__summary > div { grid-template-columns: 80px minmax(0, 1fr); }
+  .locale-dialog__actions { display: grid; grid-template-columns: 1fr 1fr; }
 }
 </style>
