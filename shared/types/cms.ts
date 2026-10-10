@@ -87,3 +87,27 @@ export type CmsValidationIssue = {
   field: string
   message: string
 }
+
+export type CmsR2ConnectionStatus = {
+  configured: boolean
+  connected: boolean
+  bucket?: string
+  publicBaseUrl?: string
+  error?: string
+  missing?: string[]
+}
+
+export type CmsR2UploadedImage = {
+  originalName: string
+  key: string
+  url: string
+  size: number
+  contentType: string
+  sha256: string
+  reused: boolean
+}
+
+export type CmsR2UploadResult = {
+  ok: true
+  files: CmsR2UploadedImage[]
+}

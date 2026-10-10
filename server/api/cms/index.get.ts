@@ -8,7 +8,7 @@ export default defineEventHandler((event) => {
     ok: true,
     mode: 'local',
     integrations: {
-      r2: 'planned',
+      r2: 'available',
       github: 'planned'
     }
   }

@@ -1,9 +1,18 @@
 <script setup lang="ts">
-defineProps<{
+withDefaults(defineProps<{
   title: string
   description: string
   action: string
   icon: 'cloud' | 'git'
+  status?: string
+  actionDisabled?: boolean
+}>(), {
+  status: 'Planned',
+  actionDisabled: true
+})
+
+const emit = defineEmits<{
+  action: []
 }>()
 </script>
 
@@ -23,10 +32,10 @@ defineProps<{
     <div>
       <div class="integration-card__heading">
         <h3>{{ title }}</h3>
-        <span>Planned</span>
+        <span>{{ status }}</span>
       </div>
       <p>{{ description }}</p>
-      <button type="button" disabled>{{ action }}</button>
+      <button type="button" :disabled="actionDisabled" @click="emit('action')">{{ action }}</button>
     </div>
   </article>
 </template>
@@ -74,6 +83,7 @@ defineProps<{
   border-radius: 9px;
   background: transparent;
   color: var(--muted);
-  cursor: not-allowed;
+  cursor: pointer;
 }
+.integration-card button:disabled { cursor: not-allowed; opacity: 0.55; }
 </style>

@@ -1,4 +1,14 @@
-import { ListObjectsV2Command, S3Client } from '@aws-sdk/client-s3'
+import {
+  HeadObjectCommand,
+  ListObjectsV2Command,
+  PutObjectCommand,
+  S3Client
+} from '@aws-sdk/client-s3'
+import { createHash } from 'node:crypto'
+import type {
+  CmsR2ConnectionStatus,
+  CmsR2UploadedImage
+} from '../../../shared/types/cms'
 
 const REQUIRED_ENVIRONMENT_KEYS = [
   'R2_ACCOUNT_ID',
@@ -16,16 +26,18 @@ type R2Configuration = {
   publicBaseUrl: string
 }
 
-export type R2ConnectionStatus = {
-  configured: boolean
-  connected: boolean
-  bucket?: string
-  publicBaseUrl?: string
-  error?: string
-  missing?: string[]
+type SupportedImage = {
+  extension: 'avif' | 'gif' | 'jpg' | 'png' | 'webp'
+  contentType: string
 }
 
-const readR2Configuration = (): R2Configuration | { missing: string[] } => {
+export const R2_UPLOAD_LIMITS = {
+  files: 20,
+  bytesPerFile: 50 * 1024 * 1024,
+  totalBytes: 250 * 1024 * 1024
+} as const
+
+export const readR2Configuration = (): R2Configuration | { missing: string[] } => {
   const values = Object.fromEntries(REQUIRED_ENVIRONMENT_KEYS.map(key => [key, process.env[key]?.trim() || '']))
   const missing = REQUIRED_ENVIRONMENT_KEYS.filter(key => !values[key])
 
@@ -38,6 +50,72 @@ const readR2Configuration = (): R2Configuration | { missing: string[] } => {
     bucket: values.R2_BUCKET!,
     publicBaseUrl: values.R2_PUBLIC_BASE_URL!.replace(/\/$/u, '')
   }
+}
+
+const createR2Client = (configuration: R2Configuration) => new S3Client({
+  region: 'auto',
+  endpoint: `https://${configuration.accountId}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: configuration.accessKeyId,
+    secretAccessKey: configuration.secretAccessKey
+  }
+})
+
+const detectImage = (data: Buffer): SupportedImage | undefined => {
+  if (data.length >= 3 && data[0] === 0xff && data[1] === 0xd8 && data[2] === 0xff) {
+    return { extension: 'jpg', contentType: 'image/jpeg' }
+  }
+  if (data.length >= 8 && data.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))) {
+    return { extension: 'png', contentType: 'image/png' }
+  }
+  if (data.length >= 12 && data.toString('ascii', 0, 4) === 'RIFF' && data.toString('ascii', 8, 12) === 'WEBP') {
+    return { extension: 'webp', contentType: 'image/webp' }
+  }
+  if (data.length >= 6 && ['GIF87a', 'GIF89a'].includes(data.toString('ascii', 0, 6))) {
+    return { extension: 'gif', contentType: 'image/gif' }
+  }
+  if (data.length >= 12 && data.toString('ascii', 4, 8) === 'ftyp') {
+    const brand = data.toString('ascii', 8, 12)
+    if (brand === 'avif' || brand === 'avis') return { extension: 'avif', contentType: 'image/avif' }
+  }
+}
+
+const safeStem = (fileName: string) => {
+  const withoutExtension = fileName.replace(/\.[^.]+$/u, '')
+  const normalized = withoutExtension
+    .normalize('NFKC')
+    .replace(/\s+/gu, '-')
+    .replace(/[^\p{L}\p{N}._-]+/gu, '-')
+    .replace(/-{2,}/gu, '-')
+    .replace(/^[-_.]+|[-_.]+$/gu, '')
+  return (normalized || 'image').slice(0, 80)
+}
+
+const safeFolder = (translationKey?: string) => {
+  if (!translationKey) return 'uploads'
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(translationKey)) return 'uploads'
+  return `articles/${translationKey}`
+}
+
+const publicObjectUrl = (baseUrl: string, key: string) => (
+  `${baseUrl}/${key.split('/').map(segment => encodeURIComponent(segment)).join('/')}`
+)
+
+const isMissingObjectError = (error: unknown) => {
+  if (!error || typeof error !== 'object') return false
+  const value = error as { name?: string, $metadata?: { httpStatusCode?: number } }
+  return value.name === 'NotFound' || value.name === 'NoSuchKey' || value.$metadata?.httpStatusCode === 404
+}
+
+export const validateR2Image = (input: { data: Buffer, fileName: string }) => {
+  if (!input.data.length) throw new Error(`${input.fileName} 是空白檔案。`)
+  if (input.data.length > R2_UPLOAD_LIMITS.bytesPerFile) {
+    throw new Error(`${input.fileName} 超過 50 MB 上限。`)
+  }
+
+  const image = detectImage(input.data)
+  if (!image) throw new Error(`${input.fileName} 不是支援的圖片格式。`)
+  return image
 }
 
 const safeConnectionError = (error: unknown) => {
@@ -53,7 +131,7 @@ const safeConnectionError = (error: unknown) => {
   return messages[name] || `R2 連線失敗（${name}）。`
 }
 
-export const inspectR2Connection = async (): Promise<R2ConnectionStatus> => {
+export const inspectR2Connection = async (): Promise<CmsR2ConnectionStatus> => {
   const configuration = readR2Configuration()
   if ('missing' in configuration) {
     return {
@@ -76,14 +154,7 @@ export const inspectR2Connection = async (): Promise<R2ConnectionStatus> => {
     }
   }
 
-  const client = new S3Client({
-    region: 'auto',
-    endpoint: `https://${configuration.accountId}.r2.cloudflarestorage.com`,
-    credentials: {
-      accessKeyId: configuration.accessKeyId,
-      secretAccessKey: configuration.secretAccessKey
-    }
-  })
+  const client = createR2Client(configuration)
 
   try {
     await client.send(new ListObjectsV2Command({
@@ -105,6 +176,68 @@ export const inspectR2Connection = async (): Promise<R2ConnectionStatus> => {
       publicBaseUrl: publicBaseUrl.toString().replace(/\/$/u, ''),
       error: safeConnectionError(error)
     }
+  } finally {
+    client.destroy()
+  }
+}
+
+export const uploadR2Image = async (input: {
+  data: Buffer
+  fileName: string
+  translationKey?: string
+}): Promise<CmsR2UploadedImage> => {
+  const configuration = readR2Configuration()
+  if ('missing' in configuration) {
+    throw new Error(`R2 尚未設定完成：${configuration.missing.join(', ')}`)
+  }
+
+  const image = validateR2Image(input)
+
+  const digest = createHash('sha256').update(input.data).digest('hex')
+  const folder = safeFolder(input.translationKey)
+  const stem = safeStem(input.fileName)
+  let key = `${folder}/${stem}-${digest.slice(0, 16)}.${image.extension}`
+  const client = createR2Client(configuration)
+  let reused = false
+
+  try {
+    try {
+      const existing = await client.send(new HeadObjectCommand({
+        Bucket: configuration.bucket,
+        Key: key
+      }))
+      if (existing.Metadata?.sha256 === digest) {
+        reused = true
+      } else {
+        key = `${folder}/${stem}-${digest}.${image.extension}`
+      }
+    } catch (error) {
+      if (!isMissingObjectError(error)) throw error
+    }
+
+    if (!reused) {
+      await client.send(new PutObjectCommand({
+        Bucket: configuration.bucket,
+        Key: key,
+        Body: input.data,
+        ContentLength: input.data.length,
+        ContentType: image.contentType,
+        CacheControl: 'public, max-age=31536000, immutable',
+        Metadata: { sha256: digest }
+      }))
+    }
+
+    return {
+      originalName: input.fileName,
+      key,
+      url: publicObjectUrl(configuration.publicBaseUrl, key),
+      size: input.data.length,
+      contentType: image.contentType,
+      sha256: digest,
+      reused
+    }
+  } catch (error) {
+    throw new Error(safeConnectionError(error))
   } finally {
     client.destroy()
   }

@@ -11,7 +11,7 @@ tags:
   - 野溪溫泉
   - 台北
   - 泡湯
-cover: "https://media.waynelens.dev/20240214%E5%88%9D%E4%BA%94%E7%84%BF%E5%AD%90%E5%9D%AA%E6%BA%AB%E6%B3%89-426-f4a7bf.jpg"
+cover: "https://media.waynelens.dev/articles/gengziping-hot-spring/20260802%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9C%92-0215-b316b308b3342f70.jpg"
 carouselImages: []
 articleGalleryImages: []
 siteGalleryImages: []

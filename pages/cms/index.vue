@@ -1,10 +1,20 @@
 <script setup lang="ts">
-import type { CmsArticleGroupSummary, CmsCreatePayload, CmsLocale } from '~~/shared/types/cms'
+import type {
+  CmsArticleGroupSummary,
+  CmsCreatePayload,
+  CmsLocale,
+  CmsR2ConnectionStatus
+} from '~~/shared/types/cms'
 
 definePageMeta({ layout: false })
 useSeoMeta({ title: 'Local CMS · Wayne Jin', robots: 'noindex, nofollow' })
 
 const { data: groups, status, error, refresh } = await useFetch<CmsArticleGroupSummary[]>('/api/cms/articles')
+const {
+  data: r2Status,
+  status: r2RequestStatus,
+  refresh: refreshR2Status
+} = await useFetch<CmsR2ConnectionStatus>('/api/cms/r2/status')
 const query = ref('')
 const statusFilter = ref<'all' | 'draft' | 'published' | 'hidden'>('all')
 const showCreate = ref(false)
@@ -17,6 +27,15 @@ const createForm = reactive<CmsCreatePayload>({
   locales: ['zh-TW', 'en']
 })
 const localeOptions: CmsLocale[] = ['zh-TW', 'en']
+const modifiedFormatter = new Intl.DateTimeFormat('zh-TW', {
+  timeZone: 'Asia/Taipei',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  hourCycle: 'h23'
+})
 
 const filteredGroups = computed(() => {
   const needle = query.value.trim().toLocaleLowerCase()
@@ -73,10 +92,13 @@ const createArticle = async () => {
   }
 }
 
-const formatModified = (value: string) => new Intl.DateTimeFormat('zh-TW', {
-  dateStyle: 'medium',
-  timeStyle: 'short'
-}).format(new Date(value))
+const formatModified = (value: string) => {
+  const parts = Object.fromEntries(modifiedFormatter
+    .formatToParts(new Date(value))
+    .filter(part => part.type !== 'literal')
+    .map(part => [part.type, part.value]))
+  return `${parts.year}/${parts.month}/${parts.day} ${parts.hour}:${parts.minute}`
+}
 </script>
 
 <template>
@@ -152,9 +174,14 @@ const formatModified = (value: string) => new Intl.DateTimeFormat('zh-TW', {
     <section class="integration-grid" aria-label="外部整合">
       <CmsIntegrationCard
         title="Cloudflare R2"
-        description="之後可加入本機選檔、hash、上傳與 object URL 回填；目前只預留操作位置。"
-        action="上傳照片（尚未連線）"
+        :description="r2Status?.connected
+          ? `已連線 ${r2Status.bucket}；進入文章即可上傳 Cover 與各圖片集合。`
+          : (r2Status?.error || '尚未完成 R2 設定。')"
+        :status="r2Status?.connected ? 'Connected' : 'Unavailable'"
+        action="重新檢查連線"
         icon="cloud"
+        :action-disabled="r2RequestStatus === 'pending'"
+        @action="refreshR2Status"
       />
       <CmsIntegrationCard
         title="GitHub"

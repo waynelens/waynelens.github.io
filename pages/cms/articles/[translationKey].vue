@@ -5,6 +5,7 @@ import type {
   CmsArticleSaveInput,
   CmsLocale,
   CmsMutationResult,
+  CmsR2ConnectionStatus,
   CmsSavePayload,
   CmsStatus
 } from '~~/shared/types/cms'
@@ -16,6 +17,11 @@ const route = useRoute()
 const translationKey = computed(() => String(route.params.translationKey || ''))
 const requestUrl = computed(() => `/api/cms/articles/${encodeURIComponent(translationKey.value)}`)
 const { data, status, error, refresh } = await useFetch<CmsArticleGroup>(requestUrl)
+const {
+  data: r2Status,
+  status: r2RequestStatus,
+  refresh: refreshR2Status
+} = await useFetch<CmsR2ConnectionStatus>('/api/cms/r2/status')
 
 const editor = ref<CmsArticleGroup>()
 const baseline = ref('')
@@ -26,9 +32,28 @@ const saveState = ref<'idle' | 'saving' | 'saved' | 'error'>('idle')
 const saveMessage = ref('')
 const showPreview = ref(false)
 const previewRevision = ref(0)
+const markdownEditor = ref<HTMLTextAreaElement>()
+const markdownCursor = ref<number>()
 const statusOptions: CmsStatus[] = ['draft', 'published', 'hidden']
+const modifiedFormatter = new Intl.DateTimeFormat('zh-TW', {
+  timeZone: 'Asia/Taipei',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hourCycle: 'h23'
+})
 
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value)) as T
+const formatModified = (value: string) => {
+  const parts = Object.fromEntries(modifiedFormatter
+    .formatToParts(new Date(value))
+    .filter(part => part.type !== 'literal')
+    .map(part => [part.type, part.value]))
+  return `${parts.year}/${parts.month}/${parts.day} ${parts.hour}:${parts.minute}:${parts.second}`
+}
 const splitLines = (value: string) => [...new Set(value
   .split(/\r?\n/u)
   .map(item => item.trim())
@@ -94,6 +119,18 @@ const updateImageField = (
   if (activeArticle.value) activeArticle.value.frontmatter[field] = value
 }
 
+const updateCover = (urls: string[]) => {
+  if (activeArticle.value && urls[0]) activeArticle.value.frontmatter.cover = urls[0]
+}
+
+const rememberMarkdownCursor = () => {
+  markdownCursor.value = markdownEditor.value?.selectionStart
+}
+
+watch(activeLocale, () => {
+  markdownCursor.value = undefined
+})
+
 const insertSnippet = (type: 'image' | 'group' | 'map' | 'instagram') => {
   if (!activeArticle.value) return
   const snippets = {
@@ -102,7 +139,22 @@ const insertSnippet = (type: 'image' | 'group' | 'map' | 'instagram') => {
     map: `\n::article-map\n---\ncaption: 地圖說明\nzoom: 14\nheight: 420\nlocations:\n  - name: 地點名稱\n    latitude: 25.000000\n    longitude: 121.000000\n    precision: exact\n---\n::\n`,
     instagram: `[Instagram 帳號](https://www.instagram.com/username/)`
   }
-  activeArticle.value.body += snippets[type]
+  const editorElement = markdownEditor.value
+  const body = activeArticle.value.body
+  const position = Math.min(markdownCursor.value ?? body.length, body.length)
+  const snippet = snippets[type]
+  const needsLeadingBreak = position > 0 && body[position - 1] !== '\n' && !snippet.startsWith('\n')
+  const needsTrailingBreak = position < body.length && body[position] !== '\n' && !snippet.endsWith('\n')
+  const insertion = `${needsLeadingBreak ? '\n' : ''}${snippet}${needsTrailingBreak ? '\n' : ''}`
+
+  activeArticle.value.body = `${body.slice(0, position)}${insertion}${body.slice(position)}`
+
+  nextTick(() => {
+    const nextPosition = position + insertion.length
+    markdownCursor.value = nextPosition
+    editorElement?.focus()
+    editorElement?.setSelectionRange(nextPosition, nextPosition)
+  })
 }
 
 const errorMessage = (value: unknown) => {
@@ -247,10 +299,16 @@ onBeforeRouteLeave(() => !isDirty.value || window.confirm('尚有未儲存的內
                   <span>Tags（以逗號分隔）</span>
                   <input v-model="tagsText" type="text" placeholder="自由潛水, 水下攝影">
                 </label>
-                <label class="field-full">
+                <div class="form-field field-full">
                   <span>Cover URL</span>
                   <input v-model="activeArticle.frontmatter.cover" type="url" placeholder="https://media.waynelens.dev/...">
-                </label>
+                  <CmsR2Uploader
+                    :translation-key="translationKey"
+                    :multiple="false"
+                    label="上傳 Cover"
+                    @uploaded="updateCover"
+                  />
+                </div>
               </div>
             </section>
 
@@ -265,10 +323,16 @@ onBeforeRouteLeave(() => !isDirty.value || window.confirm('尚有未儲存的內
                 </div>
               </div>
               <textarea
+                ref="markdownEditor"
                 v-model="activeArticle.body"
                 class="markdown-editor"
                 spellcheck="false"
                 aria-label="Markdown 正文"
+                @blur="rememberMarkdownCursor"
+                @click="rememberMarkdownCursor"
+                @input="rememberMarkdownCursor"
+                @keyup="rememberMarkdownCursor"
+                @select="rememberMarkdownCursor"
               />
               <p class="editor-hint">保留 Markdown、MDC 元件與必要的 &lt;br&gt;；CMS 不會自動重排正文。</p>
             </section>
@@ -276,22 +340,25 @@ onBeforeRouteLeave(() => !isDirty.value || window.confirm('尚有未儲存的內
             <section class="editor-section images-section">
               <div class="section-heading">
                 <div><p class="eyebrow">Media</p><h2>圖片 URL</h2></div>
-                <span>R2 上傳與狀態檢查稍後接入</span>
+                <span>{{ r2Status?.connected ? `已連線 · ${r2Status.bucket}` : 'R2 尚未連線' }}</span>
               </div>
               <CmsImageListEditor
                 :model-value="activeArticle.frontmatter.carouselImages"
+                :translation-key="translationKey"
                 title="Carousel Images"
                 description="文章頂部輪播使用的精選照片。"
                 @update:model-value="updateImageField('carouselImages', $event)"
               />
               <CmsImageListEditor
                 :model-value="activeArticle.frontmatter.articleGalleryImages"
+                :translation-key="translationKey"
                 title="Article Gallery Images"
                 description="文章底部的完整作品集合。"
                 @update:model-value="updateImageField('articleGalleryImages', $event)"
               />
               <CmsImageListEditor
                 :model-value="activeArticle.frontmatter.siteGalleryImages"
+                :translation-key="translationKey"
                 title="Site Gallery Images"
                 description="希望顯示在全站 Gallery 的精選照片。"
                 @update:model-value="updateImageField('siteGalleryImages', $event)"
@@ -348,9 +415,14 @@ onBeforeRouteLeave(() => !isDirty.value || window.confirm('尚有未儲存的內
 
           <CmsIntegrationCard
             title="Cloudflare R2"
-            description="UI 已預留。之後加入本機檔案 hash、上傳、URL 回填及 HTTP 驗證。"
-            action="管理 R2 圖片（尚未連線）"
+            :description="r2Status?.connected
+              ? `已連線 ${r2Status.bucket}；上傳後會自動產生 hash 檔名與公開 URL。`
+              : (r2Status?.error || '尚未完成 R2 設定。')"
+            :status="r2Status?.connected ? 'Connected' : 'Unavailable'"
+            action="重新檢查連線"
             icon="cloud"
+            :action-disabled="r2RequestStatus === 'pending'"
+            @action="refreshR2Status"
           />
           <CmsIntegrationCard
             title="GitHub 發佈"
@@ -364,7 +436,7 @@ onBeforeRouteLeave(() => !isDirty.value || window.confirm('尚有未儲存的內
             <code>{{ activeArticle.fileName }}</code>
             <dl>
               <div><dt>revision</dt><dd>{{ activeArticle.revision.slice(0, 10) }}</dd></div>
-              <div><dt>updated</dt><dd>{{ new Date(activeArticle.modifiedAt).toLocaleString('zh-TW') }}</dd></div>
+              <div><dt>updated</dt><dd>{{ formatModified(activeArticle.modifiedAt) }}</dd></div>
             </dl>
           </section>
         </aside>
@@ -415,8 +487,10 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 .sidebar-card h2 { margin: 3px 0 0; font-size: 1.25rem; }
 .section-heading > span { color: var(--muted); font-size: 0.72rem; }
 .form-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(140px, 0.65fr) minmax(160px, 0.75fr); gap: 15px; }
-label { display: grid; gap: 7px; }
-label > span { color: var(--muted); font-size: 0.75rem; }
+label,
+.form-field { display: grid; gap: 7px; }
+label > span,
+.form-field > span { color: var(--muted); font-size: 0.75rem; }
 input,
 select,
 textarea {

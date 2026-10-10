@@ -3,6 +3,7 @@ const props = defineProps<{
   modelValue: string[]
   title: string
   description: string
+  translationKey: string
 }>()
 
 const emit = defineEmits<{
@@ -35,6 +36,7 @@ const addUrls = () => {
   bulkInput.value = ''
 }
 const deduplicate = () => update([...new Set(props.modelValue.map(value => value.trim()).filter(Boolean))])
+const addUploaded = (urls: string[]) => update([...new Set([...props.modelValue, ...urls])])
 const fileLabel = (url: string) => {
   try {
     return decodeURIComponent(new URL(url).pathname.split('/').pop() || url)
@@ -54,7 +56,11 @@ const fileLabel = (url: string) => {
       <div class="image-editor__tools">
         <span>{{ modelValue.length }} 張</span>
         <button type="button" :disabled="!modelValue.length" @click="deduplicate">去除重複</button>
-        <button type="button" disabled title="R2 整合將在下一階段實作">檢查 R2</button>
+        <CmsR2Uploader
+          :translation-key="translationKey"
+          label="上傳到 R2"
+          @uploaded="addUploaded"
+        />
       </div>
     </header>
 
