@@ -298,11 +298,16 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
   },
   'cms-end-to-end-test': {
     en: [
-      '2026-10-12'
+      'CMS test',
+      'this is a test',
+      'end-to-end test',
+      'test article'
     ],
     'zh-TW': [
-      '2026-10-12',
-      '2026年10月12日'
+      'CMS 測試',
+      '這是測試',
+      '端到端測試',
+      '測試文章'
     ]
   }
 }
