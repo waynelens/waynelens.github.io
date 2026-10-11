@@ -7,6 +7,7 @@ $ErrorActionPreference = 'Stop'
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $localUrl = 'http://localhost:3000/'
+$readinessUrl = 'http://127.0.0.1:3000/'
 $stdout = Join-Path $repoRoot 'nuxt-dev.stdout.log'
 $stderr = Join-Path $repoRoot 'nuxt-dev.stderr.log'
 
@@ -15,7 +16,7 @@ function Open-LocalSiteInChrome {
   $ready = $false
   do {
     try {
-      $response = Invoke-WebRequest -Uri $localUrl -UseBasicParsing -TimeoutSec 2
+      $response = Invoke-WebRequest -Uri $readinessUrl -UseBasicParsing -TimeoutSec 2
       if ($response.StatusCode -ge 200 -and $response.StatusCode -lt 500) {
         $ready = $true
         break

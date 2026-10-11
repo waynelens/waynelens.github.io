@@ -67,7 +67,19 @@ const fileLabel = (url: string) => {
     <div v-if="modelValue.length" class="image-editor__list">
       <div v-for="(url, index) in modelValue" :key="`${index}-${url}`" class="image-row">
         <div class="image-row__preview">
-          <img v-if="url" :src="url" alt="" loading="lazy">
+          <ResponsiveImage
+            v-if="url"
+            :src="url"
+            alt=""
+            sizes="52px"
+            :widths="[128]"
+            :default-width="128"
+            :quality="70"
+            loading="lazy"
+            fetch-priority="low"
+            width="52"
+            height="42"
+          />
           <span v-else>{{ index + 1 }}</span>
         </div>
         <label>

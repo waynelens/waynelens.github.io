@@ -503,15 +503,8 @@ onBeforeRouteLeave(() => !isDirty.value || window.confirm('尚有未儲存的內
               : (r2Status?.error || '尚未完成 R2 設定。')"
             :status="r2Status?.connected ? 'Connected' : 'Unavailable'"
             action="重新檢查連線"
-            icon="cloud"
             :action-disabled="r2RequestStatus === 'pending'"
             @action="refreshR2Status"
-          />
-          <CmsIntegrationCard
-            title="GitHub 發佈"
-            description="UI 已預留。之後加入 diff、commit 與 push；目前不會自動操作 Git。"
-            action="Commit & Push（尚未連線）"
-            icon="git"
           />
 
           <section class="sidebar-card file-card" v-if="activeArticle">

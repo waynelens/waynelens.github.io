@@ -171,7 +171,7 @@ const formatModified = (value: string) => {
       </form>
     </section>
 
-    <section class="integration-grid" aria-label="外部整合">
+    <section class="integration-panel" aria-label="媒體儲存狀態">
       <CmsIntegrationCard
         title="Cloudflare R2"
         :description="r2Status?.connected
@@ -179,15 +179,8 @@ const formatModified = (value: string) => {
           : (r2Status?.error || '尚未完成 R2 設定。')"
         :status="r2Status?.connected ? 'Connected' : 'Unavailable'"
         action="重新檢查連線"
-        icon="cloud"
         :action-disabled="r2RequestStatus === 'pending'"
         @action="refreshR2Status"
-      />
-      <CmsIntegrationCard
-        title="GitHub"
-        description="之後可顯示 diff、建立 commit 並推送；目前儲存只會修改本機工作樹。"
-        action="發佈變更（尚未連線）"
-        icon="git"
       />
     </section>
 
@@ -299,7 +292,7 @@ fieldset button,
 fieldset button.active { border-color: var(--text); color: var(--text); }
 .create-actions { grid-column: 1 / -1; display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
 .form-error { margin: 0 auto 0 0; color: #ef7777; }
-.integration-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.integration-panel { display: grid; }
 .articles-panel { overflow: hidden; }
 .articles-toolbar { padding: 22px 24px; border-bottom: 1px solid var(--line); }
 .filters { display: grid; grid-template-columns: minmax(220px, 1fr) auto auto; gap: 8px; }
@@ -342,7 +335,6 @@ fieldset button.active { border-color: var(--text); color: var(--text); }
   .dashboard-hero,
   .panel-heading,
   .articles-toolbar { align-items: stretch; flex-direction: column; }
-  .integration-grid,
   .create-grid { grid-template-columns: 1fr; }
   .filters { grid-template-columns: 1fr; }
   .create-actions { grid-column: auto; align-items: stretch; flex-direction: column; }

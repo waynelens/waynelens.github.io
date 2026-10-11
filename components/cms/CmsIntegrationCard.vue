@@ -3,7 +3,6 @@ withDefaults(defineProps<{
   title: string
   description: string
   action: string
-  icon: 'cloud' | 'git'
   status?: string
   actionDisabled?: boolean
 }>(), {
@@ -19,14 +18,8 @@ const emit = defineEmits<{
 <template>
   <article class="integration-card">
     <div class="integration-card__icon" aria-hidden="true">
-      <svg v-if="icon === 'cloud'" viewBox="0 0 24 24">
+      <svg viewBox="0 0 24 24">
         <path d="M7 18h10a4 4 0 0 0 .7-7.94A6 6 0 0 0 6.2 8.3A4.8 4.8 0 0 0 7 18Z" />
-      </svg>
-      <svg v-else viewBox="0 0 24 24">
-        <circle cx="6" cy="5" r="2" />
-        <circle cx="18" cy="7" r="2" />
-        <circle cx="8" cy="19" r="2" />
-        <path d="M6 7v3a4 4 0 0 0 4 4h3a5 5 0 0 0 5-5M8 17v-3" />
       </svg>
     </div>
     <div>

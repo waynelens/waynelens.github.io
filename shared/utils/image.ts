@@ -1,5 +1,5 @@
 export const IMAGE_WIDTHS = [480, 768, 1200] as const
-export type ImageWidth = typeof IMAGE_WIDTHS[number]
+export type ImageWidth = 128 | typeof IMAGE_WIDTHS[number]
 
 export const DEFAULT_IMAGE_QUALITY = 82
 
