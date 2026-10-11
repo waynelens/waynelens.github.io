@@ -295,5 +295,14 @@ export const searchMetadata: Record<string, LocalizedSearchMetadata> = {
       '2026-05-08',
       '示範潛水'
     ]
+  },
+  'cms-end-to-end-test': {
+    en: [
+      '2026-10-12'
+    ],
+    'zh-TW': [
+      '2026-10-12',
+      '2026年10月12日'
+    ]
   }
 }
